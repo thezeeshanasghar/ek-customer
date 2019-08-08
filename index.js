@@ -1,4 +1,26 @@
 $(document).ready(function(){
+    $(".header-user-icon").click(function(){
+
+        $(".login-overlay").fadeIn();
+
+    });
+    $( ".login-overlay" ).on( 'click', function( event ) {
+        $( this ).fadeOut();
+        $(".login-overlay input[type=text] , input[type=password]").val("");
+    });
+
+    $( ".login-box" ).on( 'click', function( event ) {
+        event.stopPropagation();
+    });
+
+
+    $(".login-box-header .right-panel").click(function(){
+
+        $(".login-overlay").fadeOut();
+        $(".login-overlay input[type=text] , input[type=password]").val("");
+
+    });
+
     loadCities();
 });
 function loadCities() {
