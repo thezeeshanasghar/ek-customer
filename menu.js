@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    //TODO:get id from url
-    loadRestaurantDetails(2);
+    var id = parseInt(getParameterByName("id")) || 0;
+    loadRestaurantDetails(id);
 });
 
 function loadRestaurantDetails(restaurantId) {
@@ -15,6 +15,7 @@ function loadRestaurantDetails(restaurantId) {
             var cuisineHtml = '';
             if (result.IsSuccess) {
                 var restaurant = result.ResponseData;
+                $("#restName").text(restaurant.Name);
                 $.each(restaurant.cuisines, function (index, cuisine) {
 
                     cuisineHtml += '<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">';
@@ -43,11 +44,11 @@ function loadRestaurantDetails(restaurantId) {
                         html += '<div class="menu-item-info-img"></div>';
                         html += '<div class="menu-item-name">';
                         html += '<h4>' + menuItem.Name + '</h4>';
-                        html += '<p>' + menuItem.Half + " " + menuItem.Full + '</p>';
+                        html += '<p>' + getMenuSize(menuItem.Size) + " " + menuItem.Price + '</p>';
                         html += '</div></div>';
 
                         html += '<div class="right-panel">';
-                        html += '<a href="#">Add to order</a>';
+                        html += '<a href="order.html" target="_blank">Add to order</a>';
 
                         html += '</div></div>';
                     });
@@ -64,3 +65,20 @@ function loadRestaurantDetails(restaurantId) {
     });
 }
 
+function getMenuSize(size) {
+    let sizeName = "";
+    switch (size) {
+        case 0:
+            sizeName = "Nothing";
+            break;
+        case 1:
+            sizeName = "Half";
+            break;
+        case 2:
+            sizeName = "Full";
+            break;
+        // default:
+        //     sizeName = "Default Size";
+    }
+    return sizeName;
+}
