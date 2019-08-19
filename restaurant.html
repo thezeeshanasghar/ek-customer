@@ -19,6 +19,24 @@
    
   </head>
   <body>
+    <!-- Login Popup -->
+	<div class="login-overlay">
+		
+      <div class="login-box">
+        
+        <div class="login-box-header">
+          <div class="left-panel">Login</div>
+          <div class="right-panel">x</div>
+        </div>
+  
+        <div class="login-box-content">
+            <input type="text" id="Email" name="Email" placeholder="Please enter your email address">
+            <input type="password" id="Password" name="Password" placeholder="Please enter your password">
+            <input type="submit" value="Submit" onclick="login()" >
+        </div> 
+      </div> 
+    </div>
+  
     <!-- Banner -->
 
     <div id="header" class="restaurant-banner top-sticky">
@@ -39,7 +57,7 @@
                   </li>
 
                   <li>
-                    <a class="nav-item" href="#">
+                    <a class="nav-item loginBtn" href="#">
                       <img src="img/user-icon.png" />
                       login
                     </a>
@@ -84,7 +102,7 @@
                   </li>
 
                   <li class="top-btn">
-                    <a class="nav-item header-user-icon" href="#">
+                    <a class="nav-item header-user-icon loginBtn" href="#">
                       <img src="img/user-icon.png" />
                       Login
                     </a>
@@ -467,5 +485,6 @@
     </script>
      <script src="server.js" type="text/javascript"></script>
      <script src="restaurant.js" type="text/javascript"></script>
+     <script src="common.js"></script>
   </body>
 </html>

@@ -1,64 +1,82 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Eatklik - Your Order</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script type="text/javascript" src="js/jquery.js"></script>
 </head>
-<body>
 
+<body>
+	<!-- Login Popup -->
+	<div class="login-overlay">
+
+		<div class="login-box">
+
+			<div class="login-box-header">
+				<div class="left-panel">Login</div>
+				<div class="right-panel">x</div>
+			</div>
+
+			<div class="login-box-content">
+				<input type="text" id="Email" name="Email" placeholder="Please enter your email address">
+				<input type="password" id="Password" name="Password" placeholder="Please enter your password">
+				<input type="submit" value="Submit" onclick="login()">
+			</div>
+		</div>
+	</div>
 
 	<!-- Banner -->
 
 	<div id="header" class="restaurant-banner">
-		
+
 		<div class="container">
-			
+
 			<div class="row">
 
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
 					<div class="left-panel">
 
-							<div class="logo">
-								<a href="index.html"><img src="img/logo.png"></a>
-							</div>
+						<div class="logo">
+							<a href="index.html"><img src="img/logo.png"></a>
+						</div>
 
 					</div>
 
 					<div class="right-panel">
 
-							
-							<div class="nav">
-								
-								<ul>
-									<li>
-										<a class="back" href="03. menu.html">Back to menu</a>
-									</li>
 
-									<li>
-										<a class="nav-item" href="#">
-											<img src="img/user-icon.png">
-											login
-										</a>
-									</li>
+						<div class="nav">
 
-									<li>
-										<a class="nav-item" href="#">
-											<img src="img/cart-icon.png">
-											<span>3</span> Items
-										</a>
-									</li>
+							<ul>
+								<!-- <li>
+									<a class="back" href="03. menu.html">Back to menu</a>
+								</li> -->
 
-									
-								</ul>
+								<li>
+									<a class="nav-item loginBtn" href="#">
+										<img src="img/user-icon.png">
+										login
+									</a>
+								</li>
 
-							</div>
+								<li>
+									<a class="nav-item" href="#">
+										<img src="img/cart-icon.png">
+										<span>3</span> Items
+									</a>
+								</li>
+
+
+							</ul>
+
+						</div>
 
 					</div>
 
-				</div>	
+				</div>
 
 			</div>
 
@@ -70,15 +88,15 @@
 	<!-- Link Panel -->
 
 	<div id="link">
-		
+
 		<div class="container">
-			
+
 			<div class="row">
 
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
 					<ul>
-						
+
 						<li>
 							<a class="active" href="04.order.html"><span class="num">1</span> Your Order</a>
 						</li>
@@ -93,7 +111,7 @@
 
 					</ul>
 
-				</div>	
+				</div>
 
 			</div>
 
@@ -105,19 +123,19 @@
 	<!-- Order Panel -->
 
 	<div id="order">
-		
+
 		<div class="container">
-			
+
 			<div class="row">
 
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
 					<ul class="first-ul">
-						
+
 						<div class="left-panel">
 
 							<li>
-								
+
 							</li>
 
 							<li>
@@ -145,7 +163,7 @@
 					</ul>
 
 					<ul class="second-ul">
-						
+
 						<div class="left-panel">
 
 							<li>
@@ -166,7 +184,7 @@
 
 							<li>
 								<div class="quantity-box">
-									
+
 									<span class="left"><img src="img/minus.png"></span>
 									<span class="qty">2</span>
 									<span class="right"><img src="img/plus.png"></span>
@@ -183,7 +201,7 @@
 					</ul>
 
 					<ul class="second-ul">
-						
+
 						<div class="left-panel">
 
 							<li>
@@ -204,7 +222,7 @@
 
 							<li>
 								<div class="quantity-box">
-									
+
 									<span class="left"><img src="img/minus.png"></span>
 									<span class="qty">1</span>
 									<span class="right"><img src="img/plus.png"></span>
@@ -221,7 +239,7 @@
 					</ul>
 
 					<ul class="second-ul">
-						
+
 						<div class="left-panel">
 
 							<li>
@@ -242,7 +260,7 @@
 
 							<li>
 								<div class="quantity-box">
-									
+
 									<span class="left"><img src="img/minus.png"></span>
 									<span class="qty">3</span>
 									<span class="right"><img src="img/plus.png"></span>
@@ -259,7 +277,7 @@
 					</ul>
 
 					<ul class="second-ul last-ul">
-						
+
 						<div class="left-panel">
 
 							<li>
@@ -280,7 +298,7 @@
 
 							<li>
 								<div class="quantity-box">
-									
+
 									<span class="left"><img src="img/minus.png"></span>
 									<span class="qty">1</span>
 									<span class="right"><img src="img/plus.png"></span>
@@ -296,7 +314,7 @@
 
 					</ul>
 
-				</div>	
+				</div>
 
 			</div>
 
@@ -309,9 +327,9 @@
 	<!-- Coupon Panel -->
 
 	<div id="coupon">
-		
+
 		<div class="container">
-			
+
 			<div class="row">
 
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -321,7 +339,7 @@
 					<input type="text" name="" placeholder="Enter code here">
 					<input type="submit" name="" placeholder="" value="Apply">
 
-				</div>	
+				</div>
 
 			</div>
 
@@ -333,73 +351,73 @@
 	<!-- Order Totals -->
 
 	<div id="order-total">
-		
+
 		<div class="container">
-			
+
 			<div class="row">
 
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-					
-						<div class="order-summary">
-							
-							<h3>Order Totals</h3>
 
-							<ul>
-								<li>
-									
-									<div class="left-panel">
-										Subtotal
-									</div>
+					<div class="order-summary">
 
-									<div class="right-panel">
-										Rs. 5000
-									</div>	
+						<h3>Order Totals</h3>
 
-								</li>
+						<ul>
+							<li>
 
-								<li>
-									
-									<div class="left-panel">
-										GST (...%)
-									</div>
+								<div class="left-panel">
+									Subtotal
+								</div>
 
-									<div class="right-panel">
-										Rs. 250
-									</div>	
+								<div class="right-panel">
+									Rs. 5000
+								</div>
 
-								</li>
+							</li>
 
-								<li>
-									
-									<div class="left-panel">
-										Delivery Charges
-									</div>
+							<li>
 
-									<div class="right-panel">
-										Free
-									</div>	
+								<div class="left-panel">
+									GST (...%)
+								</div>
 
-								</li>
+								<div class="right-panel">
+									Rs. 250
+								</div>
 
-								<li>
-									
-									<div class="left-panel">
-										Total
-									</div>
+							</li>
 
-									<div class="right-panel">
-										Rs. 5250
-									</div>	
+							<li>
 
-								</li>
-							</ul>
+								<div class="left-panel">
+									Delivery Charges
+								</div>
 
-							<input type="submit" name="" value="Proceed to Checkout">
+								<div class="right-panel">
+									Free
+								</div>
 
-						</div>
+							</li>
 
-				</div>	
+							<li>
+
+								<div class="left-panel">
+									Total
+								</div>
+
+								<div class="right-panel">
+									Rs. 5250
+								</div>
+
+							</li>
+						</ul>
+
+						<input type="submit" name="" value="Proceed to Checkout">
+
+					</div>
+
+				</div>
 
 			</div>
 
@@ -414,9 +432,9 @@
 	<div id="footer">
 
 		<div class="panel footer">
-			
+
 			<div class="container">
-				
+
 				<div class="row">
 
 					<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
@@ -429,8 +447,8 @@
 
 					<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 
-						<div class="footer-contact" >
-							
+						<div class="footer-contact">
+
 							<h4>Get in touch</h4>
 
 							<div class="double-line">
@@ -454,7 +472,7 @@
 					<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 
 						<div class="footer-contact">
-							
+
 							<h4>Follow us</h4>
 
 							<div class="double-line">
@@ -466,7 +484,7 @@
 							</div>
 
 							<div class="footer-social">
-								
+
 								<ul>
 									<li>
 										<a href="#">
@@ -508,7 +526,7 @@
 			</div>
 
 		</div>
-		
+
 	</div>
 
 
@@ -518,6 +536,11 @@
 		<p>Copyright &copy; 2019 Eat Klik. All Rights Reserved.</p>
 	</div>
 
+	<!-- Srcipts -->
 
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/cycle.js"></script>
+	<script src="server.js"></script>
+	<script src="common.js"></script>
 
 </body>
