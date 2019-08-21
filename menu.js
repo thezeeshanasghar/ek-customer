@@ -1,3 +1,4 @@
+var items = [];
 $(document).ready(function () {
     var id = parseInt(getParameterByName("id")) || 0;
     loadRestaurantDetails(id);
@@ -48,7 +49,10 @@ function loadRestaurantDetails(restaurantId) {
                         html += '</div></div>';
 
                         html += '<div class="right-panel">';
-                        html += '<a href="order.html" target="_blank">Add to order</a>';
+                        html += '<a role="button" tabindex="0"  onclick="addToCart('
+                            + menuItem.Id + ',' + quoteAndEscape(menuItem.Name) +
+                            ',' + menuItem.Size + ',' + menuItem.Price +
+                            ')" style="cursor: pointer;">Add to cart</a>';
 
                         html += '</div></div>';
                     });
@@ -81,4 +85,36 @@ function getMenuSize(size) {
         //     sizeName = "Default Size";
     }
     return sizeName;
+}
+
+function addToCart(id, name, size, price) {
+    if (isLoggedIn()) {
+        items = getObjsFromLocalStorage("items");
+        if (!items) items = [];
+        let isExist = false;
+        if (items.length > 0) {
+            $.each(items, function (i, value) {
+                if (value.Id == id) {
+                    isExist = true;
+                    return false;
+                }
+            });
+        }
+        if (!isExist) {
+            var item = {
+                Id: id,
+                Name: name,
+                Size: size,
+                Price: price
+            }
+            item.Size = getMenuSize(item.Size);
+            items.push(item);
+            localStorage.setItem('items', JSON.stringify(items));
+            toggleCart();
+        } else {
+            alert('This item already added in your cart, please click items on right top corner!');
+        }
+    } else {
+        alert('Please login first');
+    }
 }

@@ -18,10 +18,12 @@ $(document).ready(function () {
         $("#Email , #Password").val("");
     });
 
-    $(".logoutLi").on('click', function(){
+    $(".logoutLi").on('click', function () {
         localStorage.clear();
+        toggleLogInOut();
         location.reload(true);
     });
+    toggleCart();
 });
 
 function login() {
@@ -65,14 +67,50 @@ function getValueFromLocalStorage(key) {
     var value = localStorage.getItem(key);
     return value;
 }
+function getObjsFromLocalStorage(key) {
+    var value = JSON.parse(localStorage.getItem(key));
+    return value;
+}
 
 function toggleLogInOut() {
-    var customer = JSON.parse(localStorage.getItem("Customer"));
-    if (customer) {
+    if (isLoggedIn()) {
         $(".logoutLi").show();
         $(".loginLi").hide();
     } else {
         $(".loginLi").show();
         $(".logoutLi").hide();
     }
+}
+
+function isLoggedIn() {
+    var customer = getObjsFromLocalStorage("Customer");
+    if (customer) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function toggleCart() {
+    var cartItems = getObjsFromLocalStorage("items");
+    var html = '';
+    html += '<a class="nav-item header-cart-icon" href="order.html" target="_blank">';
+    html += '<img src="img/cart-icon.png">';
+    if (cartItems && cartItems.length > 0) {
+        html += '<span>' + cartItems.length + '</span> Items';
+    } else {
+        html += '<span>0</span> Items';
+    }
+    html += '</a>';
+    $(".cart").html(html);
+}
+
+function quoteAndEscape(str) {
+    return ''
+        + '&#39;'                      // open quote '
+        + ('' + str)                     // force string
+            .replace(/\\/g, '\\\\')    // double \
+            .replace(/"/g, '\\&quot;') // encode "
+            .replace(/'/g, '\\&#39;')  // encode '
+        + '&#39;';                     // close quote '
 }
