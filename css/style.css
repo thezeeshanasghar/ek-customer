@@ -1173,7 +1173,7 @@ p.for-you {
 	padding-right: 10px;
 }
 
-.order-summary input {
+.order-summary #order-checkout {
 	width: 100%;
 	float: left;
 	background: #60ba62;
@@ -2154,8 +2154,14 @@ p.for-you {
 	margin: auto;
 	display: block;
 }
-
-
+/**/
+.order-summary-input-values {
+	line-height: 0px;
+	border: none;
+	width: 100px;
+	padding-left: 12px;
+	background: white;
+}
 
 
 

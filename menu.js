@@ -105,8 +105,11 @@ function addToCart(id, name, size, price) {
                 Id: id,
                 Name: name,
                 Size: size,
-                Price: price
+                Price: price,
+                Quantity: 1,
+                Total: 0
             }
+            item.Total = item.Price * item.Quantity;
             item.Size = getMenuSize(item.Size);
             items.push(item);
             localStorage.setItem('items', JSON.stringify(items));

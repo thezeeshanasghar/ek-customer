@@ -165,44 +165,8 @@
 
 					</ul>
 
-					<ul class="second-ul">
-
-						<div class="left-panel">
-
-							<li>
-								<img src="img/cross-dark.jpg">
-							</li>
-
-							<li>
-								Mutton Karhai (Full)
-							</li>
-
-						</div>
-
-						<div class="right-panel">
-
-							<li>
-								Rs. 950
-							</li>
-
-							<li>
-								<div class="quantity-box">
-
-									<span class="left"><img src="img/minus.png"></span>
-									<span class="qty">2</span>
-									<span class="right"><img src="img/plus.png"></span>
-
-								</div>
-							</li>
-
-							<li>
-								Rs. 1900
-							</li>
-
-						</div>
-
-					</ul>
-
+					<div id="itemValues"></div>
+					<!-- 
 					<ul class="second-ul">
 
 						<div class="left-panel">
@@ -315,7 +279,7 @@
 
 						</div>
 
-					</ul>
+					</ul> -->
 
 				</div>
 
@@ -374,7 +338,7 @@
 								</div>
 
 								<div class="right-panel">
-									Rs. 5000
+									<input type="number" id="subtotal" disabled class="order-summary-input-values">
 								</div>
 
 							</li>
@@ -410,13 +374,13 @@
 								</div>
 
 								<div class="right-panel">
-									Rs. 5250
+									<input type="number" id="grandTotal" disabled class="order-summary-input-values">
 								</div>
 
 							</li>
 						</ul>
 
-						<input type="submit" name="" value="Proceed to Checkout">
+						<input type="submit" onclick="checkout()" id="order-checkout" name="test" value="Proceed to Checkout">
 
 					</div>
 
@@ -545,5 +509,6 @@
 	<script type="text/javascript" src="js/cycle.js"></script>
 	<script src="server.js"></script>
 	<script src="common.js"></script>
+	<script src="order.js"></script>
 
 </body>
