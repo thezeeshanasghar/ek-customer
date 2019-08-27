@@ -85,6 +85,14 @@ function calculateOrderTotals() {
 function checkout() {
     if (isLoggedIn()) {
         var customer = getObjsFromLocalStorage("Customer");
+        for (var i = 0; i <= items.length - 1; i++) {
+            delete items[i].Id;
+            if (items[i].Quantity === 0) {
+                delete items[i];
+                items.length--;
+
+            }
+        }
         if (items && items.length > 0) {
             var order = {
                 Subtotal: $("#subtotal").val(),
@@ -106,6 +114,7 @@ function checkout() {
                         localStorage.removeItem("items");
                         toggleCart();
                         window.location.reload(true);
+                        location.href = 'index.html';
                     } else {
                         alert(result.Message);
                     }

@@ -94,7 +94,7 @@ function isLoggedIn() {
 function toggleCart() {
     var cartItems = getObjsFromLocalStorage("items");
     var html = '';
-    html += '<a class="nav-item header-cart-icon" href="order.html" target="_blank">';
+    html += '<a class="nav-item header-cart-icon" href="order.html">';
     html += '<img src="img/cart-icon.png">';
     if (cartItems && cartItems.length > 0) {
         html += '<span>' + cartItems.length + '</span> Items';
