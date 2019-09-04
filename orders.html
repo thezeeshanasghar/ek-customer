@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Eatklik - My Orders</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+</head>
+
+<body>
+
+
+	<!-- Banner -->
+
+	<div id="header" class="restaurant-banner">
+
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+					<div class="left-panel">
+
+						<div class="logo">
+							<a href="index.html"><img src="img/logo.png"></a>
+						</div>
+
+					</div>
+
+					<div class="right-panel">
+
+
+						<div class="nav">
+
+							<ul>
+								<li class="logoutLi">
+									<a class="nav-item header-user-icon" href="#">
+										<img src="img/user-icon.png">
+										logout
+									</a>
+								</li>
+
+								<li class="loginLi">
+									<a class="nav-item header-user-icon loginBtn" href="#">
+										<img src="img/user-icon.png">
+										login
+									</a>
+								</li>
+
+								<li>
+									<div class="cart"></div>
+								</li>
+								<span class="myProfileOrders"></span>
+							</ul>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- Order Section -->
+
+	<!-- <div class="pro-row">
+
+		<div class="col-l">
+
+			<div class="edit-icon">
+				<img src="img/order-icon-3.jpg">
+			</div>
+
+		</div>
+		<div class="col-r">
+
+			<div class="edit-heading order-heading">
+				<span id="order-pro-btn">My Orders <img src="img/down.png"></span>
+			</div>
+
+		</div>
+
+	</div> -->
+	<div class="pro-heading">
+			<h1></h1>
+		</div>
+	<div class="pro-heading">
+		<h1>My Orders</h1>
+	</div>
+	<div class="pro-row">
+
+		<div class="col-l">
+
+			<div class="edit-icon vanish-up" id="order-pro-up">
+				<img style="opacity: 0;" src="img/green-up-arrow.png">
+			</div>
+
+			<div class="vanish-left" id="order-pro-up">
+				<img src="img/green-left-arrow.png">
+			</div>
+
+		</div>
+		<div class="col-r">
+
+
+			<div class="cycle-slideshow composite-example" data-cycle-fx="scrollHorz" data-cycle-timeout="0"
+				data-cycle-prev=".vanish-left" data-cycle-next=".order-panel-btn span"
+				data-cycle-slides="> .order-panel">
+
+				<!-- Order Panel -->
+
+				<div class="order-panel">
+
+					<section class="order-panel-header">
+
+						<div class="order-panel-col order-panel-detail">
+							<h5>Short Detail</h5>
+						</div>
+
+						<div class="order-panel-col order-panel-amount">
+							<h5>Amount</h5>
+						</div>
+
+						<div class="order-panel-col order-panel-status">
+							<h5>Status</h5>
+						</div>
+
+						<div class="order-panel-col order-panel-btn">
+
+						</div>
+
+					</section>
+
+					<section>
+
+						<div class="order-panel-col order-panel-detail">
+							<h4>Order ID #152468</h4>
+
+							<p>07:40 PM, May 12, 2019</p>
+						</div>
+
+						<div class="order-panel-col order-panel-amount">
+							<h4>Rs. 1200</h4>
+						</div>
+
+						<div class="order-panel-col order-panel-status">
+							<h4 class="order-blue">Confirmation</h4>
+						</div>
+
+						<div class="order-panel-col order-panel-btn">
+							<span>View order Detail</span>
+						</div>
+
+					</section>
+
+					<section>
+
+						<div class="order-panel-col order-panel-detail">
+							<h4>Order ID #152468</h4>
+
+							<p>07:40 PM, May 12, 2019</p>
+						</div>
+
+						<div class="order-panel-col order-panel-amount">
+							<h4>Rs. 1200</h4>
+						</div>
+
+						<div class="order-panel-col order-panel-status">
+							<h4 class="order-orange">Pending</h4>
+						</div>
+
+						<div class="order-panel-col order-panel-btn">
+							<span>View order Detail</span>
+						</div>
+
+					</section>
+
+					<section>
+
+						<div class="order-panel-col order-panel-detail">
+							<h4>Order ID #152468</h4>
+
+							<p>07:40 PM, May 12, 2019</p>
+						</div>
+
+						<div class="order-panel-col order-panel-amount">
+							<h4>Rs. 1200</h4>
+						</div>
+
+						<div class="order-panel-col order-panel-status">
+							<h4 class="order-green">Delivered</h4>
+						</div>
+
+						<div class="order-panel-col order-panel-btn">
+							<span>View order Detail</span>
+						</div>
+
+					</section>
+
+					<section>
+
+						<div class="order-panel-col order-panel-detail">
+							<h4>Order ID #152468</h4>
+
+							<p>07:40 PM, May 12, 2019</p>
+						</div>
+
+						<div class="order-panel-col order-panel-amount">
+							<h4>Rs. 1200</h4>
+						</div>
+
+						<div class="order-panel-col order-panel-status">
+							<h4 class="order-red">Canceled</h4>
+						</div>
+
+						<div class="order-panel-col order-panel-btn">
+							<span>View order Detail</span>
+						</div>
+
+					</section>
+
+				</div>
+
+
+
+				<!-- Order Details Panel -->
+
+				<div class="order-panel order-detail-panel">
+
+					<section class="order-panel-header">
+
+						<div class="order-panel-col order-panel-menu">
+							<h5>Order Menu</h5>
+						</div>
+
+						<div class="order-panel-col order-panel-qty">
+							<h5>Qty</h5>
+						</div>
+
+						<div class="order-panel-col order-panel-price">
+							<h5>Price</h5>
+						</div>
+
+					</section>
+
+					<section>
+
+						<div class="order-panel-col order-panel-menu">
+							<p>Pizza Large</p>
+						</div>
+
+						<div class="order-panel-col order-panel-qty">
+							<p>1</p>
+						</div>
+
+						<div class="order-panel-col order-panel-price">
+							<p>Rs. 900</p>
+						</div>
+
+					</section>
+
+					<section>
+
+						<div class="order-panel-col order-panel-menu">
+							<p>Chicken Broast</p>
+						</div>
+
+						<div class="order-panel-col order-panel-qty">
+							<p>2</p>
+						</div>
+
+						<div class="order-panel-col order-panel-price">
+							<p>Rs. 300</p>
+						</div>
+
+					</section>
+
+					<section>
+
+						<div class="order-panel-col order-panel-menu">
+							<p>Fries Large</p>
+						</div>
+
+						<div class="order-panel-col order-panel-qty">
+							<p>1</p>
+						</div>
+
+						<div class="order-panel-col order-panel-price">
+							<p>Rs. 100</p>
+						</div>
+
+					</section>
+
+					<section>
+
+						<div class="order-panel-col order-panel-menu">
+							<p>Cold Drink 1.5 ltr</p>
+						</div>
+
+						<div class="order-panel-col order-panel-qty">
+							<p>2</p>
+						</div>
+
+						<div class="order-panel-col order-panel-price">
+							<p>Rs. 150</p>
+						</div>
+
+					</section>
+
+					<div class="order-detail-sum">
+
+						<div class="left-panel">
+							<p>Sub Total</p>
+							<p>GST (16%)</p>
+							<p>Delivery Charges</p>
+						</div>
+
+						<div class="right-panel">
+							<p>Rs 1450</p>
+							<p>Rs 232</p>
+							<p>Rs 100</p>
+						</div>
+
+					</div>
+
+					<div class="order-detail-total">
+
+						<div class="left-panel">
+							<p>Total</p>
+						</div>
+
+						<div class="right-panel">
+							<p>Rs 1782</p>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+
+		</div>
+
+	</div>
+
+	</div>
+
+
+	<!-- Footer -->
+
+	<div id="footer">
+
+		<div class="panel footer">
+
+			<div class="container">
+
+				<div class="row">
+
+					<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+						<div class="footer-logo">
+							<img src="img/footer-logo.jpg">
+						</div>
+
+					</div>
+
+					<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+						<div class="footer-contact">
+
+							<h4>Get in touch</h4>
+
+							<div class="double-line">
+								<img src="img/double-line.jpg">
+							</div>
+
+							<div class="footer-touch">
+								<div class="footer-touch-row">
+									<img class="contact-img" src="img/phone.jpg"> <span>064-2401631</span>
+								</div>
+
+								<div class="footer-touch-row">
+									<img class="contact-img" src="img/at.jpg"> <span>info@eatklik.net</span>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+						<div class="footer-contact">
+
+							<h4>Follow us</h4>
+
+							<div class="double-line">
+								<img src="img/double-line.jpg">
+							</div>
+
+							<div class="footer-text footer-mobile">
+								<p>Follow to get regular updates <br> about offers</p>
+							</div>
+
+							<div class="footer-social">
+
+								<ul>
+									<li>
+										<a href="#">
+											<img src="img/facebook.png">
+											<img src="img/facebook-hover.png" class="footer-img-hover">
+										</a>
+									</li>
+
+									<li>
+										<a href="#">
+											<img src="img/insta.png">
+											<img src="img/insta-hover.png" class="footer-img-hover">
+										</a>
+									</li>
+
+									<li>
+										<a href="#">
+											<img src="img/twitter.png">
+											<img src="img/twitter-hover.png" class="footer-img-hover">
+										</a>
+									</li>
+
+									<li>
+										<a href="#">
+											<img src="img/whatsapp.png">
+											<img src="img/whatsapp-hover.png" class="footer-img-hover">
+										</a>
+									</li>
+								</ul>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+	<!-- Mini Footer -->
+
+	<div id="mini-footer">
+		<p>Copyright &copy; 2019 Eat Klik. All Rights Reserved.</p>
+	</div>
+
+
+
+
+	<!-- Scripts -->
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/cycle.js"></script>
+	<script src="common.js"></script>
+
+	<script type="text/javascript">
+
+		$(document).ready(function () {
+
+
+			// Edti Section
+
+			$("#edit-pro-btn").click(function () {
+
+				$("#edit-pro-row").slideToggle();
+
+				$(".edit-pro-heading img").toggleClass('display');
+
+			});
+
+			// $("#edit-pro-up").click(function(){
+
+			// 	$("#edit-pro-row").slideUp();
+
+			// 	$(".edit-heading img").toggleClass('display');
+
+			// });
+
+
+			// Order Section
+
+			$("#order-pro-btn").click(function () {
+
+				$("#order-pro-row").slideToggle();
+
+				$(".order-heading img").toggleClass('display');
+
+			});
+
+			// $("#order-pro-up").click(function(){
+
+			// 	$("#order-pro-row").slideUp();
+
+			// 	$(".order-heading img").toggleClass('display');
+
+			// });
+
+
+			// Wallet Section
+
+			$("#wallet-pro-btn").click(function () {
+
+				$("#wallet-pro-row").slideToggle();
+
+				$(".wallet-heading img").toggleClass('display');
+
+			});
+
+			// $("#wallet-pro-up").click(function(){
+
+			// 	$("#wallet-pro-row").slideUp();
+
+			// 	$(".wallet-heading img").toggleClass('display');
+
+			// });
+
+
+
+			// Order Section
+
+			$(".order-panel-btn").click(function () {
+
+				$(".vanish-up").css("display", "none");
+				$(".vanish-left").css("display", "block");
+
+
+			});
+
+
+			$(".vanish-left").click(function () {
+
+				$(this).css("display", "none");
+				$(".vanish-up").css("display", "block");
+
+
+			});
+
+
+
+
+
+		});
+
+	</script>
+
+
+</body>

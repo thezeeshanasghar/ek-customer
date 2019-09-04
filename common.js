@@ -24,6 +24,7 @@ $(document).ready(function () {
         location.reload(true);
     });
     toggleCart();
+    toggleProfileAndOrders();
 });
 
 function login() {
@@ -42,6 +43,7 @@ function login() {
                 localStorage.setItem("Customer", JSON.stringify(result.ResponseData));
                 $(".login-overlay").fadeOut();
                 toggleLogInOut();
+                toggleProfileAndOrders();
             } else {
                 alert(result.Message);
             }
@@ -103,6 +105,24 @@ function toggleCart() {
     }
     html += '</a>';
     $(".cart").html(html);
+}
+function toggleProfileAndOrders() {
+    if (isLoggedIn()) {
+
+        var html = '';
+        html += '<li>';
+        html += '<a class="nav-item header-cart-icon" href="profile.html">';
+        html += '<img src="img/edit-photo.png">Profile';
+        html += '</a>';
+        html += '</li>';
+
+        html += '<li>';
+        html += '<a class="nav-item header-cart-icon" href="orders.html">';
+        html += '<img src="img/order-icon-3.jpg">My Orders';
+        html += '</a>';
+        html += '</li>';
+        $(".myProfileOrders").html(html);
+    }
 }
 
 function quoteAndEscape(str) {

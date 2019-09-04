@@ -1,156 +1,125 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Eatklik - Profile</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script type="text/javascript" src="js/jquery.js"></script>
 </head>
-<body>
 
+<body>
 
 	<!-- Banner -->
 
 	<div id="header" class="restaurant-banner">
-		
+
 		<div class="container">
-			
+
 			<div class="row">
 
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
 					<div class="left-panel">
 
-							<div class="logo">
-								<a href="index.html"><img src="img/logo.png"></a>
-							</div>
+						<div class="logo">
+							<a href="index.html"><img src="img/logo.png"></a>
+						</div>
 
 					</div>
 
 					<div class="right-panel">
 
-							
-							<div class="nav">
-								
-								<ul>
-									<li>
-										<a class="back" href="menu.html">Back to menu</a>
-									</li>
 
-									<li>
-										<a class="nav-item" href="#">
-											<img src="img/user-icon.png">
-											login
-										</a>
-									</li>
+						<div class="nav">
 
-									<li>
-										<a class="nav-item" href="#">
-											<img src="img/cart-icon.png">
-											<span>3</span> Items
-										</a>
-									</li>
+							<ul>
+								<li class="logoutLi">
+									<a class="nav-item header-user-icon" href="#">
+										<img src="img/user-icon.png">
+										logout
+									</a>
+								</li>
 
-									
-								</ul>
+								<li class="loginLi">
+									<a class="nav-item header-user-icon loginBtn" href="#">
+										<img src="img/user-icon.png">
+										login
+									</a>
+								</li>
 
-							</div>
+								<li>
+									<div class="cart"></div>
+								</li>
+								<span class="myProfileOrders"></span>
+							</ul>
+
+						</div>
 
 					</div>
 
-				</div>	
+				</div>
 
 			</div>
 
 		</div>
 
 	</div>
-
-
-	<!-- Link Panel -->
-
-	<div id="link">
-		
-		<div class="container">
-			
-			<div class="row">
-
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-					<ul>
-						
-						<li>
-							<a href="order.html"><span class="num">1</span> Your Order</a>
-						</li>
-
-						<li>
-							<a href="checkout.html"><span class="num">2</span> Checkout</a>
-						</li>
-
-						<li>
-							<a href="order-placed.html"><span class="num">3</span> Order Placed</a>
-						</li>
-
-					</ul>
-
-				</div>	
-
-			</div>
-
-		</div>
-
-	</div>
-
 
 	<!-- Profile -->
 
 	<div id="profile">
-		
-		<div id="pro-wrapper">
-			
 
-			<div class="pro-heading"><h1>Hi, Farhan Malik!</h1></div>
+		<div id="pro-wrapper">
+
+
+			<div class="pro-heading">
+				<h1></h1>
+			</div>
+			<div class="pro-heading">
+				<h1>Hi, <span class="Name"></span></h1>
+			</div>
 
 
 			<!-- Edit Section -->
 
-			<div class="pro-row">
-				
+			<!-- <div class="pro-row">
+
 				<div class="col-l">
-					
+
 					<div class="edit-icon">
 						<img src="img/edit.png">
 					</div>
 
 				</div>
 				<div class="col-r">
-					
+
 					<div class="edit-heading edit-pro-heading">
 						<span id="edit-pro-btn">Edit Profile <img src="img/down.png"></span>
 					</div>
 
 				</div>
 
-			</div>
+			</div> -->
+			<!-- id="edit-pro-row" -->
+			<div class="pro-row">
 
-			<div class="pro-row" id="edit-pro-row">
-				
 				<div class="col-l">
-					
+
 					<div class="edit-icon" id="edit-pro-up">
 						<img style="opacity: 0;" src="img/green-up-arrow.png">
 					</div>
 
 				</div>
 				<div class="col-r">
-					
+
 					<div class="edit-pro-col">
 						<h4><img src="img/pencil.png">Name</h4>
-						<p>Farhan Malik</p>
+						<p><span class="Name"></p>
 
 						<div class="edit-pro-input">
-							<input type="text" name="" placeholder="Enter Full Name">
-							<span class="submit">update</span>
+							<input type="text" name="Name" placeholder="Enter Full Name">
+							<!-- <span class="submit">update</span> -->
 						</div>
 					</div>
 
@@ -158,9 +127,11 @@
 						<h4><img src="img/edit-photo.png">Profile Picture</h4>
 
 						<div class="edit-pro-input">
-							
+
 							<div class="profile-pic-photo">
-								<label for="file-input"><img src="img/edit-profile-pic.jpg"></label>
+								<label for="file-input">
+									<span id="ProfileImage"></span>
+								</label>
 								<input id="file-input" type="file" name="">
 							</div>
 
@@ -172,18 +143,18 @@
 						<p>03336322271</p>
 
 						<div class="edit-pro-input">
-							<input type="text" name="" placeholder="Add Mobile Number">
-							<span class="submit">confirm</span>
+							<input type="text" name="MobileNumber" id="MobileNumber" placeholder="Add Mobile Number">
+							<!-- <span class="submit">confirm</span> -->
 						</div>
 					</div>
 
 					<div class="edit-pro-col">
 						<h4><img src="img/edit-mail.png">Email</h4>
-						<p>farhan.khan918@gmail.com</p>
+						<p><span class="Email"></span></p>
 
 						<div class="edit-pro-input">
-							<input type="text" name="" placeholder="Add New Email">
-							<span class="submit">update</span>
+							<input type="text" name="Email" class="Email" placeholder="Add New Email">
+							<!-- <span class="submit">update</span> -->
 						</div>
 					</div>
 
@@ -191,355 +162,23 @@
 						<h4><img src="img/edit-pswd.png">Change Password</h4>
 
 						<div class="edit-pro-input">
-							<input type="password" name="" placeholder="Current Password">
-							<input type="password" name="" placeholder="New Password">
-							<input type="password" name="" placeholder="Re-Type New Password">
-							<span class="submit">update</span>
+							<input type="password" name="" id="Password" placeholder="Current Password">
+							<input type="password" name="" id="newPassword" placeholder="New Password">
+							<input type="password" name="" id="cPassword" placeholder="Re-Type New Password">
+							<!-- <span class="submit">update</span> -->
 						</div>
 					</div>
 
 				</div>
 
 			</div>
-
-
-			<!-- Order Section -->
-
-			<div class="pro-row">
-				
-				<div class="col-l">
-					
-					<div class="edit-icon">
-						<img src="img/order-icon-3.jpg">
-					</div>
-
+			<div class="col-md-12">
+				<div class="form-group">
+					<input type="submit" onclick="update()" name="test" class="btn btn-primary" value="Update">
 				</div>
-				<div class="col-r">
-					
-					<div class="edit-heading order-heading">
-						<span id="order-pro-btn">My Orders <img src="img/down.png"></span>
-					</div>
-
-				</div>
-
 			</div>
-
-			<div class="pro-row" id="order-pro-row">
-				
-				<div class="col-l">
-					
-					<div class="edit-icon vanish-up" id="order-pro-up">
-						<img style="opacity: 0;" src="img/green-up-arrow.png">
-					</div>
-
-					<div class="vanish-left" id="order-pro-up">
-						<img src="img/green-left-arrow.png">
-					</div>
-
-				</div>
-				<div class="col-r">
-
-
-					<div class="cycle-slideshow composite-example" 
-						    data-cycle-fx="scrollHorz" 
-						    data-cycle-timeout="0"
-						    data-cycle-prev=".vanish-left" 
-						    data-cycle-next=".order-panel-btn span"
-						    data-cycle-slides="> .order-panel"
-						    >
-
-						<!-- Order Panel -->
-						
-						<div class="order-panel">
-
-							<section class="order-panel-header">
-								
-								<div class="order-panel-col order-panel-detail">
-									<h5>Short Detail</h5>	
-								</div>
-
-								<div class="order-panel-col order-panel-amount">
-									<h5>Amount</h5>	
-								</div>
-
-								<div class="order-panel-col order-panel-status">
-									<h5>Status</h5>	
-								</div>
-
-								<div class="order-panel-col order-panel-btn">
-										
-								</div>
-
-							</section>
-
-							<section>
-								
-								<div class="order-panel-col order-panel-detail">
-									<h4>Order ID #152468</h4>
-
-									<p>07:40 PM, May 12, 2019</p>
-								</div>
-
-								<div class="order-panel-col order-panel-amount">
-									<h4>Rs. 1200</h4>
-								</div>
-
-								<div class="order-panel-col order-panel-status">
-									<h4 class="order-blue">Confirmation</h4>
-								</div>
-
-								<div class="order-panel-col order-panel-btn">
-									<span>View order Detail</span>
-								</div>
-
-							</section>
-
-							<section>
-								
-								<div class="order-panel-col order-panel-detail">
-									<h4>Order ID #152468</h4>
-
-									<p>07:40 PM, May 12, 2019</p>
-								</div>
-
-								<div class="order-panel-col order-panel-amount">
-									<h4>Rs. 1200</h4>
-								</div>
-
-								<div class="order-panel-col order-panel-status">
-									<h4 class="order-orange">Pending</h4>
-								</div>
-
-								<div class="order-panel-col order-panel-btn">
-									<span>View order Detail</span>
-								</div>
-
-							</section>
-
-							<section>
-								
-								<div class="order-panel-col order-panel-detail">
-									<h4>Order ID #152468</h4>
-
-									<p>07:40 PM, May 12, 2019</p>
-								</div>
-
-								<div class="order-panel-col order-panel-amount">
-									<h4>Rs. 1200</h4>
-								</div>
-
-								<div class="order-panel-col order-panel-status">
-									<h4 class="order-green">Delivered</h4>
-								</div>
-
-								<div class="order-panel-col order-panel-btn">
-									<span>View order Detail</span>
-								</div>
-
-							</section>
-
-							<section>
-								
-								<div class="order-panel-col order-panel-detail">
-									<h4>Order ID #152468</h4>
-
-									<p>07:40 PM, May 12, 2019</p>
-								</div>
-
-								<div class="order-panel-col order-panel-amount">
-									<h4>Rs. 1200</h4>
-								</div>
-
-								<div class="order-panel-col order-panel-status">
-									<h4 class="order-red">Canceled</h4>
-								</div>
-
-								<div class="order-panel-col order-panel-btn">
-									<span>View order Detail</span>
-								</div>
-
-							</section>
-
-						</div>
-
-
-
-						<!-- Order Details Panel -->
-
-						<div class="order-panel order-detail-panel">
-
-							<section class="order-panel-header">
-								
-								<div class="order-panel-col order-panel-menu">
-									<h5>Order Menu</h5>	
-								</div>
-
-								<div class="order-panel-col order-panel-qty">
-									<h5>Qty</h5>	
-								</div>
-
-								<div class="order-panel-col order-panel-price">
-									<h5>Price</h5>	
-								</div>
-
-							</section>
-
-							<section>
-								
-								<div class="order-panel-col order-panel-menu">
-									<p>Pizza Large</p>
-								</div>
-
-								<div class="order-panel-col order-panel-qty">
-									<p>1</p>	
-								</div>
-
-								<div class="order-panel-col order-panel-price">
-									<p>Rs. 900</p>	
-								</div>
-
-							</section>
-
-							<section>
-								
-								<div class="order-panel-col order-panel-menu">
-									<p>Chicken Broast</p>
-								</div>
-
-								<div class="order-panel-col order-panel-qty">
-									<p>2</p>	
-								</div>
-
-								<div class="order-panel-col order-panel-price">
-									<p>Rs. 300</p>	
-								</div>
-
-							</section>
-
-							<section>
-								
-								<div class="order-panel-col order-panel-menu">
-									<p>Fries Large</p>
-								</div>
-
-								<div class="order-panel-col order-panel-qty">
-									<p>1</p>	
-								</div>
-
-								<div class="order-panel-col order-panel-price">
-									<p>Rs. 100</p>	
-								</div>
-
-							</section>
-
-							<section>
-								
-								<div class="order-panel-col order-panel-menu">
-									<p>Cold Drink 1.5 ltr</p>
-								</div>
-
-								<div class="order-panel-col order-panel-qty">
-									<p>2</p>	
-								</div>
-
-								<div class="order-panel-col order-panel-price">
-									<p>Rs. 150</p>	
-								</div>
-
-							</section>
-
-							<div class="order-detail-sum">
-								
-								<div class="left-panel">
-									<p>Sub Total</p>
-									<p>GST (16%)</p>
-									<p>Delivery Charges</p>
-								</div>
-
-								<div class="right-panel">
-									<p>Rs 1450</p>
-									<p>Rs 232</p>
-									<p>Rs 100</p>
-								</div>
-
-							</div>
-
-							<div class="order-detail-total">
-								
-								<div class="left-panel">
-									<p>Total</p>
-								</div>
-
-								<div class="right-panel">
-									<p>Rs 1782</p>
-								</div>
-
-							</div>
-
-						</div>
-
-					</div>
-
-
-				</div>
-
-			</div>
-
-
-			<!-- Wallet Section -->
-
-			<div class="pro-row">
-				
-				<div class="col-l">
-					
-					<div class="edit-icon">
-						<img src="img/wallet.png">
-					</div>
-
-				</div>
-				<div class="col-r">
-					
-					<div class="edit-heading wallet-heading">
-						<span id="wallet-pro-btn">My Wallet <img src="img/down.png"></span>
-					</div>
-
-				</div>
-
-			</div>
-
-			<div class="pro-row" id="wallet-pro-row">
-				
-				<div class="col-l">
-					
-					<div class="edit-icon" id="wallet-pro-up">
-						<img style="opacity: 0;" src="img/green-up-arrow.png">
-					</div>
-
-				</div>
-				<div class="col-r">
-					
-					<div class="wallet-pro-col">
-
-						<h4>PKR</h4>
-						<P>500</P>
-						<h4>Available Balance</h4>
-
-					</div>
-
-				</div>
-
-			</div>
-
-
 		</div>
 
-			
-		<div id="logout-link-wrapper">
-			<span class="logout-link">
-				Logout
-			</div>
-		</div>
-			
 
 	</div>
 
@@ -549,9 +188,9 @@
 	<div id="footer">
 
 		<div class="panel footer">
-			
+
 			<div class="container">
-				
+
 				<div class="row">
 
 					<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
@@ -564,8 +203,8 @@
 
 					<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 
-						<div class="footer-contact" >
-							
+						<div class="footer-contact">
+
 							<h4>Get in touch</h4>
 
 							<div class="double-line">
@@ -589,7 +228,7 @@
 					<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 
 						<div class="footer-contact">
-							
+
 							<h4>Follow us</h4>
 
 							<div class="double-line">
@@ -601,7 +240,7 @@
 							</div>
 
 							<div class="footer-social">
-								
+
 								<ul>
 									<li>
 										<a href="#">
@@ -643,7 +282,7 @@
 			</div>
 
 		</div>
-		
+
 	</div>
 
 
@@ -660,97 +299,99 @@
 
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/cycle.js"></script>
+	<script src="server.js"></script>
+	<script src="common.js"></script>
+	<script src="profile.js"></script>
+
+	<script type="text/javascript">
+
+		$(document).ready(function () {
 
 
-    <script type="text/javascript">
-        
-        $(document).ready(function(){
+			// Edti Section
+
+			$("#edit-pro-btn").click(function () {
+
+				$("#edit-pro-row").slideToggle();
+
+				$(".edit-pro-heading img").toggleClass('display');
+
+			});
+
+			// $("#edit-pro-up").click(function(){
+
+			// 	$("#edit-pro-row").slideUp();
+
+			// 	$(".edit-heading img").toggleClass('display');
+
+			// });
 
 
-        	// Edti Section
+			// Order Section
 
-            $("#edit-pro-btn").click(function(){
+			$("#order-pro-btn").click(function () {
 
-            	$("#edit-pro-row").slideToggle();
+				$("#order-pro-row").slideToggle();
 
-            	$(".edit-pro-heading img").toggleClass('display');
+				$(".order-heading img").toggleClass('display');
 
-            });
+			});
 
-            // $("#edit-pro-up").click(function(){
+			// $("#order-pro-up").click(function(){
 
-            // 	$("#edit-pro-row").slideUp();
+			// 	$("#order-pro-row").slideUp();
 
-            // 	$(".edit-heading img").toggleClass('display');
+			// 	$(".order-heading img").toggleClass('display');
 
-            // });
-
-
-            // Order Section
-
-            $("#order-pro-btn").click(function(){
-
-            	$("#order-pro-row").slideToggle();
-
-            	$(".order-heading img").toggleClass('display');
-
-            });
-
-            // $("#order-pro-up").click(function(){
-
-            // 	$("#order-pro-row").slideUp();
-
-            // 	$(".order-heading img").toggleClass('display');
-
-            // });
+			// });
 
 
-            // Wallet Section
+			// Wallet Section
 
-            $("#wallet-pro-btn").click(function(){
+			$("#wallet-pro-btn").click(function () {
 
-            	$("#wallet-pro-row").slideToggle();
+				$("#wallet-pro-row").slideToggle();
 
-            	$(".wallet-heading img").toggleClass('display');
+				$(".wallet-heading img").toggleClass('display');
 
-            });
+			});
 
-            // $("#wallet-pro-up").click(function(){
+			// $("#wallet-pro-up").click(function(){
 
-            // 	$("#wallet-pro-row").slideUp();
+			// 	$("#wallet-pro-row").slideUp();
 
-            // 	$(".wallet-heading img").toggleClass('display');
+			// 	$(".wallet-heading img").toggleClass('display');
 
-            // });
-
-
-
-            // Order Section
-
-            $(".order-panel-btn").click(function(){
-
-            	$(".vanish-up").css("display" , "none");
-            	$(".vanish-left").css("display" , "block");
-
-
-            });
-
-
-            $(".vanish-left").click(function(){
-
-            	$(this).css("display" , "none");
-            	$(".vanish-up").css("display" , "block");
-            	
-
-            });
+			// });
 
 
 
+			// Order Section
+
+			$(".order-panel-btn").click(function () {
+
+				$(".vanish-up").css("display", "none");
+				$(".vanish-left").css("display", "block");
 
 
-        });
+			});
 
-    </script>
+
+			$(".vanish-left").click(function () {
+
+				$(this).css("display", "none");
+				$(".vanish-up").css("display", "block");
+
+
+			});
+
+
+
+
+
+		});
+
+	</script>
 
 
 </body>

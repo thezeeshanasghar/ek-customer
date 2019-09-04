@@ -33,24 +33,23 @@
 							<div class="nav">
 								
 								<ul>
-									<li>
-										<a class="back" href="03. menu.html">Back to menu</a>
+									<li class="logoutLi">
+										<a class="nav-item header-user-icon" href="#">
+											<img src="img/user-icon.png">
+											logout
+										</a>
 									</li>
-
-									<li>
-										<a class="nav-item" href="#">
+									<li class="loginLi">
+										<a class="nav-item loginBtn" href="#">
 											<img src="img/user-icon.png">
 											login
 										</a>
 									</li>
-
+	
 									<li>
-										<a class="nav-item" href="#">
-											<img src="img/cart-icon.png">
-											<span>3</span> Items
-										</a>
+										<div class="cart"></div>
 									</li>
-
+									<span class="myProfileOrders"></span>
 									
 								</ul>
 
@@ -80,15 +79,15 @@
 					<ul>
 						
 						<li>
-							<a href="04. order.html"><span class="num">1</span> Your Order</a>
+							<a href="#"><span class="num">1</span> Your Order</a>
 						</li>
 
 						<li>
-							<a href="05. checkout.html"><span class="num">2</span> Checkout</a>
+							<a href="#"><span class="num">2</span> Checkout</a>
 						</li>
 
 						<li>
-							<a class="active" href="06. order-placed.html"><span class="num">3</span> Order Placed</a>
+							<a class="active" href="order-placed.html"><span class="num">3</span> Order Placed</a>
 						</li>
 
 					</ul>
@@ -433,7 +432,12 @@
 	<div id="mini-footer">
 		<p>Copyright &copy; 2019 Eat Klik. All Rights Reserved.</p>
 	</div>
+<!-- Srcipts -->
 
 
+<script type="text/javascript" src="js/aos.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/cycle.js"></script>
+<script src="common.js"></script>
 
 </body>
