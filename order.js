@@ -110,11 +110,11 @@ function checkout() {
                 contentType: "application/json;charset=utf-8",
                 success: function (result) {
                     if (result.IsSuccess) {
-                        alert("Your order is placed successfully");
+                       // alert("Your order is placed successfully");
                         localStorage.removeItem("items");
                         toggleCart();
-                        window.location.reload(true);
-                        location.href = 'index.html';
+                        //window.location.reload(true);
+                        location.href = 'order-placed.html';
                     } else {
                         alert(result.Message);
                     }

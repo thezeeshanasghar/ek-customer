@@ -51,9 +51,10 @@ function getResturantsFromDB() {
             '<div class="rest-info-distance" style="margin-top: 10px; color: #000;" > Approximately 45 Min </div> ' +
             '<div class="rest-info-attr" style="margin-top: 10px; color: #c6c4c7;" > ' +
             MenuList +
-            " .... </div> " +
-            '</div> </div> <div class="right-panel" style="text-transform: uppercase;"><div class="status status-open">Open</div>' +
-            '&nbsp;<a class="status" href="menu.html?id='+res.Id+'" target="_blank">View</a> </div> </div> </div>';
+            " .... </div></div> </div> " +
+            '<div class="right-panel" style="text-transform: uppercase;">' +
+            '&nbsp;<a class="status status-open" href="menu.html?id='+res.Id+'">Open</a> </div>'+
+            "</div></div>";
 
           $(".top-dishes").append(sponsers);
           $(".top-resturants").append(str);
