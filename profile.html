@@ -102,81 +102,72 @@
 
 			</div> -->
 			<!-- id="edit-pro-row" -->
-			<div class="pro-row">
-
-				<div class="col-l">
-
-					<div class="edit-icon" id="edit-pro-up">
-						<img style="opacity: 0;" src="img/green-up-arrow.png">
-					</div>
-
-				</div>
-				<div class="col-r">
-
-					<div class="edit-pro-col">
-						<h4><img src="img/pencil.png">Name</h4>
-						<p><span class="Name"></p>
-
-						<div class="edit-pro-input">
-							<input type="text" name="Name" placeholder="Enter Full Name">
-							<!-- <span class="submit">update</span> -->
+			<form id="data" method="post" enctype="multipart/form-data">
+				<div class="pro-row">
+					<div class="col-l">
+						<div class="edit-icon" id="edit-pro-up">
+							<img style="opacity: 0;" src="img/green-up-arrow.png">
 						</div>
 					</div>
+					<div class="col-r">
 
-					<div class="edit-pro-col">
-						<h4><img src="img/edit-photo.png">Profile Picture</h4>
+						<div class="edit-pro-col">
+							<h4><img src="img/pencil.png">Name</h4>
+							<p><span class="Name"></p>
 
-						<div class="edit-pro-input">
-
-							<div class="profile-pic-photo">
-								<label for="file-input">
-									<span id="ProfileImage"></span>
-								</label>
-								<input id="file-input" type="file" name="">
+							<div class="edit-pro-input">
+								<input type="text" id="Name" name="Name" placeholder="Enter Full Name">
+								<!-- <span class="submit">update</span> -->
 							</div>
+						</div>
 
+						<div class="edit-pro-col">
+							<h4><img src="img/edit-photo.png">Profile Picture</h4>
+							<div class="edit-pro-input">
+								<div class="profile-pic-photo">
+									<label for="file-input">
+										<span id="oldProfileImage"></span>
+									</label>
+									<input id="file-input" type="file" placeholder="Add Profile Image" name="profileimg">
+								</div>
+
+							</div>
+						</div>
+						<div class="edit-pro-col">
+							<h4><img src="img/edit-number.png">Mobile Number</h4>
+							<p>03336322271</p>
+
+							<div class="edit-pro-input">
+								<input type="text" name="MobileNumber" id="MobileNumber"
+									placeholder="Add Mobile Number">
+								<!-- <span class="submit">confirm</span> -->
+							</div>
+						</div>
+						<div class="edit-pro-col">
+							<h4><img src="img/edit-mail.png">Email</h4>
+							<p><span class="Email"></span></p>
+
+							<div class="edit-pro-input">
+								<input type="text" name="Email" id="Email" placeholder="Add New Email">
+								<!-- <span class="submit">update</span> -->
+							</div>
+						</div>
+						<div class="edit-pro-col">
+							<h4><img src="img/edit-pswd.png">Change Password</h4>
+
+							<div class="edit-pro-input">
+								<input type="password" name="" id="oldPassword" placeholder="Current Password">
+								<input type="password" name="" id="newPassword" placeholder="New Password">
+								<input type="password" name="" id="Password" placeholder="Re-Type New Password">
+								<!-- <span class="submit">update</span> -->
+							</div>
 						</div>
 					</div>
-
-					<div class="edit-pro-col">
-						<h4><img src="img/edit-number.png">Mobile Number</h4>
-						<p>03336322271</p>
-
-						<div class="edit-pro-input">
-							<input type="text" name="MobileNumber" id="MobileNumber" placeholder="Add Mobile Number">
-							<!-- <span class="submit">confirm</span> -->
-						</div>
-					</div>
-
-					<div class="edit-pro-col">
-						<h4><img src="img/edit-mail.png">Email</h4>
-						<p><span class="Email"></span></p>
-
-						<div class="edit-pro-input">
-							<input type="text" name="Email" class="Email" placeholder="Add New Email">
-							<!-- <span class="submit">update</span> -->
-						</div>
-					</div>
-
-					<div class="edit-pro-col">
-						<h4><img src="img/edit-pswd.png">Change Password</h4>
-
-						<div class="edit-pro-input">
-							<input type="password" name="" id="Password" placeholder="Current Password">
-							<input type="password" name="" id="newPassword" placeholder="New Password">
-							<input type="password" name="" id="cPassword" placeholder="Re-Type New Password">
-							<!-- <span class="submit">update</span> -->
-						</div>
-					</div>
-
 				</div>
-
-			</div>
-			<div class="col-md-12">
-				<div class="form-group">
-					<input type="submit" onclick="update()" name="test" class="btn btn-primary" value="Update">
+				<div class="pro-row">
+					<input type="submit"  name="test" class="btn btn-success" value="Update">
 				</div>
-			</div>
+			</form>
 		</div>
 
 
