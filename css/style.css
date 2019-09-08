@@ -2162,6 +2162,11 @@ p.for-you {
 	padding-left: 12px;
 	background: white;
 }
+.order-panel .order-panel-width {
+	width: 25%;
+	text-align:right;
+	padding-right: 30px;
+}
 
 
 

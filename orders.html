@@ -87,15 +87,12 @@
 		</div>
 
 	</div> -->
-	<div class="pro-heading">
-			<h1></h1>
-		</div>
-	<div class="pro-heading">
+	<div style="padding-top: 80px;" class="pro-heading">
 		<h1>My Orders</h1>
 	</div>
 	<div class="pro-row">
 
-		<div class="col-l">
+		<!-- <div class="col-l">
 
 			<div class="edit-icon vanish-up" id="order-pro-up">
 				<img style="opacity: 0;" src="img/green-up-arrow.png">
@@ -105,13 +102,12 @@
 				<img src="img/green-left-arrow.png">
 			</div>
 
-		</div>
+		</div> -->
 		<div class="col-r">
 
 
 			<div class="cycle-slideshow composite-example" data-cycle-fx="scrollHorz" data-cycle-timeout="0"
-				data-cycle-prev=".vanish-left" data-cycle-next=".order-panel-btn span"
-				data-cycle-slides="> .order-panel">
+				data-cycle-prev=".vanish-left" data-cycle-next=".order-panel-btn span" data-cycle-slides=".order-panel">
 
 				<!-- Order Panel -->
 
@@ -137,29 +133,9 @@
 
 					</section>
 
-					<section>
+					<span id="orders"></span>
 
-						<div class="order-panel-col order-panel-detail">
-							<h4>Order ID #152468</h4>
-
-							<p>07:40 PM, May 12, 2019</p>
-						</div>
-
-						<div class="order-panel-col order-panel-amount">
-							<h4>Rs. 1200</h4>
-						</div>
-
-						<div class="order-panel-col order-panel-status">
-							<h4 class="order-blue">Confirmation</h4>
-						</div>
-
-						<div class="order-panel-col order-panel-btn">
-							<span>View order Detail</span>
-						</div>
-
-					</section>
-
-					<section>
+					<!-- <section>
 
 						<div class="order-panel-col order-panel-detail">
 							<h4>Order ID #152468</h4>
@@ -179,9 +155,9 @@
 							<span>View order Detail</span>
 						</div>
 
-					</section>
+					</section> -->
 
-					<section>
+					<!--<section>
 
 						<div class="order-panel-col order-panel-detail">
 							<h4>Order ID #152468</h4>
@@ -223,11 +199,9 @@
 							<span>View order Detail</span>
 						</div>
 
-					</section>
+					</section> -->
 
 				</div>
-
-
 
 				<!-- Order Details Panel -->
 
@@ -469,97 +443,7 @@
 
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/cycle.js"></script>
+	<script src="server.js"></script>
 	<script src="common.js"></script>
-
-	<script type="text/javascript">
-
-		$(document).ready(function () {
-
-
-			// Edti Section
-
-			$("#edit-pro-btn").click(function () {
-
-				$("#edit-pro-row").slideToggle();
-
-				$(".edit-pro-heading img").toggleClass('display');
-
-			});
-
-			// $("#edit-pro-up").click(function(){
-
-			// 	$("#edit-pro-row").slideUp();
-
-			// 	$(".edit-heading img").toggleClass('display');
-
-			// });
-
-
-			// Order Section
-
-			$("#order-pro-btn").click(function () {
-
-				$("#order-pro-row").slideToggle();
-
-				$(".order-heading img").toggleClass('display');
-
-			});
-
-			// $("#order-pro-up").click(function(){
-
-			// 	$("#order-pro-row").slideUp();
-
-			// 	$(".order-heading img").toggleClass('display');
-
-			// });
-
-
-			// Wallet Section
-
-			$("#wallet-pro-btn").click(function () {
-
-				$("#wallet-pro-row").slideToggle();
-
-				$(".wallet-heading img").toggleClass('display');
-
-			});
-
-			// $("#wallet-pro-up").click(function(){
-
-			// 	$("#wallet-pro-row").slideUp();
-
-			// 	$(".wallet-heading img").toggleClass('display');
-
-			// });
-
-
-
-			// Order Section
-
-			$(".order-panel-btn").click(function () {
-
-				$(".vanish-up").css("display", "none");
-				$(".vanish-left").css("display", "block");
-
-
-			});
-
-
-			$(".vanish-left").click(function () {
-
-				$(this).css("display", "none");
-				$(".vanish-up").css("display", "block");
-
-
-			});
-
-
-
-
-
-		});
-
-	</script>
-
-
+	<script src="orders.js"></script>
 </body>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Eatklik - Order Details</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+</head>
+
+<body>
+    <!-- Banner -->
+    <div id="header" class="restaurant-banner">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                    <div class="left-panel">
+
+                        <div class="logo">
+                            <a href="index.html"><img src="img/logo.png"></a>
+                        </div>
+
+                    </div>
+
+                    <div class="right-panel">
+
+
+                        <div class="nav">
+
+                            <ul>
+                                <li class="logoutLi">
+                                    <a class="nav-item header-user-icon" href="#">
+                                        <img src="img/user-icon.png">
+                                        logout
+                                    </a>
+                                </li>
+
+                                <li class="loginLi">
+                                    <a class="nav-item header-user-icon loginBtn" href="#">
+                                        <img src="img/user-icon.png">
+                                        login
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <div class="cart"></div>
+                                </li>
+                                <span class="myProfileOrders"></span>
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div style="padding-top: 80px;" class="pro-heading">
+        <h1>Ordre Details</h1>
+
+    </div>
+    <div id="order-pro-up">
+        <a href="orders.html">
+            <img src="img/green-left-arrow.png">
+        </a>
+    </div>
+    <div class="pro-row">
+        <div class="col-r">
+            <!-- Order Details Panel -->
+            <div class="order-panel order-detail-panel">
+
+                <section class="order-panel-header">
+
+                    <div style="text-align: left;" class="order-panel-col order-panel-width"  >
+                        <h5>Order Menu</h5>
+                    </div>
+                    
+                    <div class="order-panel-col order-panel-width">
+                        <h5>Price</h5>
+                    </div>
+
+                    <div class="order-panel-col order-panel-width">
+                        <h5>Qty</h5>
+                    </div>
+
+                    <div class="order-panel-col order-panel-width">
+                        <h5>Total</h5>
+                    </div>
+
+                </section>
+
+                <span id="orderItems"></span>
+
+                <div class="order-detail-sum">
+
+                    <div class="left-panel">
+                        <p>Sub Total</p>
+                        <p>GST (16%)</p>
+                        <p>Delivery Charges</p>
+                    </div>
+
+                    <div class="right-panel">
+                        <p>Rs <span id="subtotal"></span></p>
+                        <p>Rs 0</p>
+                        <p>Rs 0</p>
+                    </div>
+
+                </div>
+
+                <div class="order-detail-total">
+
+                    <div class="left-panel">
+                        <p>Total</p>
+                    </div>
+
+                    <div class="right-panel">
+                        <p>Rs <span id="grandTotal"></span></p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+
+
+    <!-- Footer -->
+
+    <div id="footer">
+
+        <div class="panel footer">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+                        <div class="footer-logo">
+                            <img src="img/footer-logo.jpg">
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+                        <div class="footer-contact">
+
+                            <h4>Get in touch</h4>
+
+                            <div class="double-line">
+                                <img src="img/double-line.jpg">
+                            </div>
+
+                            <div class="footer-touch">
+                                <div class="footer-touch-row">
+                                    <img class="contact-img" src="img/phone.jpg"> <span>064-2401631</span>
+                                </div>
+
+                                <div class="footer-touch-row">
+                                    <img class="contact-img" src="img/at.jpg"> <span>info@eatklik.net</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+                        <div class="footer-contact">
+
+                            <h4>Follow us</h4>
+
+                            <div class="double-line">
+                                <img src="img/double-line.jpg">
+                            </div>
+
+                            <div class="footer-text footer-mobile">
+                                <p>Follow to get regular updates <br> about offers</p>
+                            </div>
+
+                            <div class="footer-social">
+
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <img src="img/facebook.png">
+                                            <img src="img/facebook-hover.png" class="footer-img-hover">
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <img src="img/insta.png">
+                                            <img src="img/insta-hover.png" class="footer-img-hover">
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <img src="img/twitter.png">
+                                            <img src="img/twitter-hover.png" class="footer-img-hover">
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <img src="img/whatsapp.png">
+                                            <img src="img/whatsapp-hover.png" class="footer-img-hover">
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Mini Footer -->
+
+    <div id="mini-footer">
+        <p>Copyright &copy; 2019 Eat Klik. All Rights Reserved.</p>
+    </div>
+
+    <!-- Scripts -->
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/cycle.js"></script>
+    <script src="server.js"></script>
+    <script src="common.js"></script>
+    <script src="order-details.js"></script>
+</body>
