@@ -15,12 +15,16 @@ function loadCities() {
                 $.each(result, function(index,city){
                     html += '<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3" data-aos="fade-up" data-aos-duration="2000">';
                     html +='<div class="four-panel">';
-                    html += '<div class="city-icon">';
+                    html += '<div class="ccc">';
+                    html += '<div class="ccc-border">';
+                    html += '<div class="top-right-hider"></div>';
+                    html += '<div class="bottom-left-hider"></div>';
                     html += '<a href="restaurant.html?id=' + city.Id + '">';
+                    html += '<div class="ccc-img">';
                     html += '<img src="'+IP+":"+PORT+"/"+city.ImagePath+'" />';
-                    html += '<span>' + city.Name + '</span>'
+                    html += '<div class="ccc-name">' + city.Name + '</div>';
                     html += '</a>'
-                    html += '</div></div></div>'
+                    html += '</div></div></div></div></div>'
                 }); 
                 $("#cityHtml").html(html);
             }
