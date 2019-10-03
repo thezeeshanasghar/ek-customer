@@ -40,7 +40,7 @@ function getResturantsFromDB() {
             ' style="width:100%; height: 100%;"></div> </div>';
 
           var str2 =
-            '<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9"><div class="all-rest-info">' +
+            '<div class="all-rest-info">' +
             '<div class="rest-info-img"><img src =' +
             imgpath +
             ' style="width:100%; height: 100%;"></div><div class="rest-info-content"><div class="left-panel" style="width: 280px; overflow: hidden;">' +
@@ -53,8 +53,8 @@ function getResturantsFromDB() {
             MenuList +
             " .... </div></div> </div> " +
             '<div class="right-panel" style="text-transform: uppercase;">' +
-            '&nbsp;<a class="status status-open" href="menu.html?id='+res.Id+'">Open</a> </div>'+
-            "</div></div>";
+            '&nbsp;<a class="status status-open" href="menu.html?id='+res.Id+'">Open</a> </div><a href="#" class="view-btn">view</a>'+
+            "</div>";
 
           $(".top-dishes").append(sponsers);
           $(".top-resturants").append(str);

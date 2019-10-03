@@ -123,7 +123,7 @@ button {
 .panel {
 	width: 100%;
 	float: left;
-	padding: 100px 0;
+	padding: 50px 0;
 }
 
 .heading {
@@ -472,7 +472,7 @@ button {
 	border-top-left-radius: 0;
 	overflow: hidden;
 	position: relative;
-
+	background: #aaa7a7;
 }
 
 .four-panel .ccc .ccc-img img {
@@ -633,15 +633,16 @@ button {
 /* Restaurant Page */
 .rest-update-video {
 	width: 100%;
-	height: 600px;
+	height: 332px;
 	float: left;
-	line-height: 600px;
+	line-height: 335px;
 	text-align: center;
 	background: #c6c4c7;
 	color: #fff;
 	font-size: 175px;
 	text-transform: uppercase;
-	margin: 50px 0;
+	margin-top: 50px;
+	margin-bottom: 25px;
 }
 
 .rest-news {
@@ -655,11 +656,14 @@ button {
 
 .rest-news h3 {
 	text-transform: uppercase;
+	font-size: 21px;
 }
 
 .rest-news p {
 	color: #c6c4c7;
-	font-size: 21px;
+	font-size: 16px;
+	height: 65px;
+	line-height: 21PX;
 }
 
 .rest-news ul {
@@ -692,15 +696,16 @@ p.for-you {
 
 .rest-promo-slider {
 	width: 100%;
-	height: 400px;
+	height: 500px;
 	float: left;
 	background: #c6c4c7;
 	color: #fff;
-	font-size: 100px;
+	font-size: 72px;
 	text-align: center;
 	text-transform: uppercase;
-	line-height: 100px;
-	padding-top: 60px;
+	line-height: 72px;
+	padding-top: 173px;
+	margin-top: 50px;
 }
 
 .rest-promo-slider ul {
@@ -720,6 +725,53 @@ p.for-you {
 	margin-right: -15px;
 }
 
+
+#sponsors {
+	position: relative;
+}
+
+#sponsors  {
+	position: relative;
+}
+
+
+#sponsors .left-arr {
+	position: absolute;
+	width: 30px;
+	left: 30px;
+	top: 56%;
+	cursor: pointer;
+}
+
+#sponsors .right-arr {
+	position: absolute;
+	width: 30px;
+	right: 30px;
+	top: 56%;
+	cursor: pointer;
+}
+
+#top-rest  {
+	position: relative;
+}
+
+
+#top-rest .left-arr {
+	position: absolute;
+	width: 30px;
+	left: 30px;
+	top: 56%;
+	cursor: pointer;
+}
+
+#top-rest .right-arr {
+	position: absolute;
+	width: 30px;
+	right: 30px;
+	top: 56%;
+	cursor: pointer;
+}
+
 .top-sponsor-slider {
 	width: 100%;
 	float: left;
@@ -727,8 +779,8 @@ p.for-you {
 
 .top-sponsor-item {
 	background: #c6c4c7;
-	width: 250px;
-	height: 250px;
+	width: 225px;
+	height: 225px;
 	margin: auto;
 	margin-top: 50px;
 	border-radius: 50%;
@@ -2249,7 +2301,16 @@ p.for-you {
 
 
 
-
+.view-btn {
+	position: absolute;
+	right: 20px;
+	bottom: 51px;
+	text-transform: uppercase;
+	color: #62ba64;
+	border: 1px solid #62ba64;
+	border-radius: 50px;
+	padding: 10px 32px;
+}
 
 
 
