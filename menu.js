@@ -14,14 +14,15 @@ function loadRestaurantDetails(restaurantId) {
         success: function (result) {
             var html = '';
             var cuisineHtml = '';
-            if (result.IsSuccess) {
-                var restaurant = result.ResponseData;
+           
+                var restaurant = result;
                 $("#restName").text(restaurant.Name);
                 $.each(restaurant.cuisines, function (index, cuisine) {
 
                     cuisineHtml += '<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">';
                     cuisineHtml += '<div class="cuisine">';
                     cuisineHtml += '<span>' + cuisine.Name + '</span>';
+
                     cuisineHtml += '</div></div>';
 
                 });
@@ -32,9 +33,12 @@ function loadRestaurantDetails(restaurantId) {
                     html += '<div class="large-heading">';
                     html += '<h1>' + menu.Name + '</h1>';
                     html += '</div>';
-                    html += '<div class="menu-item-img">'
-                    html += '<span>Picture related to mutton</span>';
+                    html += '<div class="menu-item-img">';
+                    html += '<img src="'+IP+":"+PORT+"/"+menu.ImagePath+'" />';
+                    
                     html += '</div></div>';
+                    
+                    
                     //Restaurant Menu Items
                     html += '<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">';
                     $.each(menu.MenuItems, function (index, menuItem) {
@@ -59,9 +63,10 @@ function loadRestaurantDetails(restaurantId) {
                     html += '</div>';
                 });
                 $("#menuAndItemsHtml").html(html);
-            } else {
-                alert(result.Message);
-            }
+            
+            // } else {
+            //     alert(result.Message);
+            // }
         },
         error: function (xhr, status, error) {
             console.log(xhr.responseText);
@@ -88,7 +93,7 @@ function getMenuSize(size) {
 }
 
 function addToCart(id, name, size, price) {
-    if (isLoggedIn()) {
+    // if (isLoggedIn()) {
         items = getObjsFromLocalStorage("items");
         if (!items) items = [];
         let isExist = false;
@@ -117,7 +122,7 @@ function addToCart(id, name, size, price) {
         } else {
             alert('This item already added in your cart, please click items on right top corner!');
         }
-    } else {
-        alert('Please login first');
-    }
+    // } else {
+    //     alert('Please login first');
+    // }
 }
