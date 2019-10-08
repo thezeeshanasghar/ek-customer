@@ -134,3 +134,9 @@ function quoteAndEscape(str) {
             .replace(/'/g, '\\&#39;')  // encode '
         + '&#39;';                     // close quote '
 }
+
+$(".acb").click(function(){
+
+    
+
+})
