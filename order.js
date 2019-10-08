@@ -1,6 +1,6 @@
 var items = getObjsFromLocalStorage("items");
 $(document).ready(function () {
-    loadOrderItems();
+    loadOrderItems(); loadextraitems();
 });
 function loadOrderItems() {
 
@@ -39,6 +39,30 @@ function loadOrderItems() {
         $("#itemValues").html(html);
         calculateOrderTotals();
     }
+}
+// extra Items
+function loadextraitems () {
+    var id = localStorage.getItem("RestaurantId")
+    $.ajax({
+        url: SERVER + "restaurant/"+id+"/extraitem",
+        type: "GET",
+        dataType: "JSON",
+        contentType: "application/json;charset=utf-8",
+        success: function (result) {
+            console.log(result);
+            var html = '';
+            $.each(result, function (index ) {
+               html += '<option value = '+result[index].Id+' >' + result[index].Name + '</option>' ; 
+               
+            });
+            
+            $("#extraItems").html(html);
+
+        },
+        error: function(xhr, status, error) {
+            console.log(xhr.responseText);
+          }
+    });
 }
 
 function minusQuantity(itemId, price, quantity) {
@@ -127,4 +151,38 @@ function checkout() {
         alert('Please login first');
     }
 
+}
+
+// Add to Cart
+//  function addToCart(id, name, price) {
+//     // if (isLoggedIn()) {
+//         items = getObjsFromLocalStorage("items");
+//         if (!items) items = [];
+//         let isExist = false;
+//         if (items.length > 0) {
+//             $.each(items, function (i, value) {
+//                 if (value.Id == id) {
+//                     isExist = true;
+//                     return false;
+//                 }
+//             });
+//         }
+//         if (!isExist) {
+//             var item = {
+//                 Id: id,
+//                 Name: name,
+//                 Price: price,
+//                 Quantity: 1,
+//                 Total: 0
+//             }
+//             item.Total = item.Price * item.Quantity;
+//             items.push(item);
+//             localStorage.setItem('items', JSON.stringify(items));
+//             toggleCart();
+//         } else {
+//             alert('This item already added in your cart, please click items on right top corner!');
+//         }
+    // } else {
+    //     alert('Please login first');
+    // }
 }

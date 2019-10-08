@@ -1,6 +1,7 @@
 var items = [];
 $(document).ready(function () {
     var id = parseInt(getParameterByName("id")) || 0;
+    localStorage.setItem("RestaurantId", id);
     loadRestaurantDetails(id);
 });
 
@@ -22,7 +23,6 @@ function loadRestaurantDetails(restaurantId) {
                     cuisineHtml += '<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">';
                     cuisineHtml += '<div class="cuisine">';
                     cuisineHtml += '<span>' + cuisine.Name + '</span>';
-
                     cuisineHtml += '</div></div>';
 
                 });
