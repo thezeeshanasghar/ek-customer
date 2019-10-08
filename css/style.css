@@ -2282,6 +2282,7 @@ p.for-you {
 	width: 100px;
 	padding-left: 12px;
 	background: white;
+	text-align: right;
 }
 .order-panel .order-panel-width {
 	width: 25%;
@@ -2324,3 +2325,37 @@ p.for-you {
 
 
 
+#extra {
+	width: 100%;
+	float: left;
+	margin-top: 50px;
+}
+
+
+
+
+
+.acb {
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	border: 1px solid #62ba64;
+	color: #62ba64;
+	border-radius: 30px;
+	margin: 100px auto;
+	text-align: center;
+	cursor: pointer;
+}
+
+
+.ace {
+	transform: translate(0, -5px);
+    -webkit-transform: translate(0, -1px); /** Chrome & Safari **/
+    -o-transform: translate(0, -1px); /** Opera **/
+    -moz-transform: translate(0, -1px); /** Firefox **/
+
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(98,186,100,1);
+	-moz-box-shadow: 0px 0px 5px 1px rgba(98,186,100,1);
+	box-shadow: 0px 0px 5px 1px rgba(98,186,100,1);
+
+}
