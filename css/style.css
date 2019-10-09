@@ -988,7 +988,7 @@ p.for-you {
 
 .large-heading h1 {
 	color: #60ba62;
-	font-size: 150px;
+	font-size: 60px;
 	text-align: center;
 	border-bottom: 1px solid #333;
 	line-height: 120px;
@@ -1002,7 +1002,11 @@ p.for-you {
 	margin-top: 30px;
 	text-align: center;
 	font-size: 50px;
-	padding-top: 180px;
+	overflow: hidden;
+}
+
+.menu-item-img img {
+	width: 100%;
 }
 
 .menu-item-info {
