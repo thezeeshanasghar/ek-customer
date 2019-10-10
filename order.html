@@ -316,7 +316,7 @@
  -->
 
 
- 	<!-- <div id="extra">
+ 	<div id="extra">
 		
 		<div class="container">
 			
@@ -326,17 +326,20 @@
 
 					<div class="left-panel">
 						<h4>Extras</h4>
-					</div>
 
-					<div class="right-panel">
 						
-						<select class="extra-select">
+						<select class="extra-select" name="extraItems" id="extraItems" >
 							<option selected="" hidden="">Choose item</option>
 							<option value="sel1">Raita</option>
 							<option value="sel2">Coke</option>
 						</select>
 
+	 					 <button class="extra-btn" onclick="AddToCart()" >Add to Cart</button> 
+
+
 					</div>
+
+					
 
 				</div>	
 
@@ -344,173 +347,89 @@
 
 		</div>
 
-	</div> -->
+	</div>
 
 
-	<!-- <div id="order" class="extra-order" style="margin-top: -100px">
+	
+
+
+	 <!-- <select name="extraItems" id="extraItems" ></select>    -->
+
+	   <!-- extra items table -->
+	  
+    	<div id="order" class="extra-order" style="margin-top: 1px">
 		
-		<div class="container">
-			
-			<div class="row">
+			<div class="container">
+				
+				<div class="row">
 
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-					<ul class="first-ul">
-						
-						<div class="left-panel">
-
-							<li>
-								
-							</li>
-
-							<li>
-								Items
-							</li>
-
-						</div>
-
-						<div class="right-panel">
-
-							<li>
-								Price
-							</li>
-
-							<li>
-								Quantity
-							</li>
-
-							<li>
-								Total
-							</li>
-
-						</div>
-
-					</ul>
-
-					<div id="itemValues">
-
-						<ul class="second-ul">
+						<ul class="first-ul">
+							
 							<div class="left-panel">
 
-								<li><img src="img/cross-dark.jpg"></li>
-								<li>Trout (Full)</li>
+								<li>
+									
+								</li>
+
+								<li>
+									Items
+								</li>
+
 							</div>
 
 							<div class="right-panel">
-								<li>Rs. 3500</li>
-								<li>
 
-									<div class="quantity-box">
-										<span class="left" onclick="minusQuantity(12,3500,1)"><img src="img/minus.png"></span>
-										<span class="qty">1</span>
-										<span class="right" onclick="plusQuantity(12,3500,1)"><img src="img/plus.png"></span>
-									</div>
+								<li>
+									Price
 								</li>
 
-								<li>3500</li>
+								<li>
+									Quantity
+								</li>
+
+								<li>
+									Total
+								</li>
 
 							</div>
 
 						</ul>
 
-					</div> -->
+						<ul class="second-ul">
 
+							<div class="left-panel">
+								<li>
+									<img src="img/cross-dark.jpg">
+								</li>
 
-					<!-- <ul class="second-ul last-ul extra-ul">
-						
-						<div class="left-panel">
+								<li>Raita</li>
+							</div>
 
-							<li>
-								<img src="img/cross-dark.jpg">
-							</li>
+							<div class="right-panel">
+								<li>Rs. 50</li>
 
-							<li class="extra-item">
-								Raita
-							</li>
+								<li>
+									<div class="quantity-box">
+										<span class="left" onclick="minusQuantity(1,50,1)"><img src="img/minus.png"></span>
+										<span class="qty">1</span>
+										<span class="right" onclick="plusQuantity(1,50,1)"><img src="img/plus.png"></span>
+									</div>
+								</li>
 
-						</div>
+								<li>50</li>
 
-						<div class="right-panel">
+							</div>
 
-							<li>
-								Rs. 100
-							</li>
+						</ul>
 
-							<li>
-								<div class="quantity-box">
-									
-									<span class="quantity">1</span>
-									<span class="quantity-control">
-										<img class="top-arrow" src="img/small-up-arrow.jpg">
-										<img class="bottom-arrow" src="img/small-down-arrow.jpg">
-									</span>
+						<div id="itemValues"></div>
 
-								</div>
-							</li>
-
-							<li>
-								Rs. 100
-							</li>
-
-						</div>
-
-					</ul> -->
-
-				<!-- </div>	
-
+					</div>
+				</div>
 			</div>
-
 		</div>
-
-	</div> -->
-
-
-	 <select name="extraItems" id="extraItems" ></select>   
-	  <button onclick="AddToCart()" >Add to Cart</button> 
-
-	   <!-- extra items table -->
-	  
-	   <div id="order" class="extra-order" style="margin-top: 1px">
-		
-		<div class="container">
-			
-			<div class="row">
-
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-					<ul class="first-ul">
-						
-						<div class="left-panel">
-
-							<li>
-								
-							</li>
-
-							<li>
-								Items
-							</li>
-
-						</div>
-
-						<div class="right-panel">
-
-							<li>
-								Price
-							</li>
-
-							<li>
-								Quantity
-							</li>
-
-							<li>
-								Total
-							</li>
-
-						</div>
-
-					</ul>
-
-					<div id="itemValues">
 
 
 	<!-- Order Totals -->
