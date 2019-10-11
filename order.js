@@ -6,14 +6,14 @@ $(document).ready(function () {
 });
 function loadOrderItems() {
 
-    if (items && items.length > 0) {
+    if (items && items.length >= 0) {
         var html = '';
         $.each(items, function (index, item) {
 
             html += '<ul class="second-ul">';
             html += '<div class="left-panel">';
             html += '<li>';
-            html += '<img src="img/cross-dark.jpg">';
+            html += '<img src="img/cross-dark.jpg" onclick = deleteItem('+index+');>';
             html += '</li>';
             html += '<li>' + item.Name + ' (' + item.Size + ')</li>';
             html += '</div>';
@@ -72,14 +72,14 @@ function loadextraitems () {
 // load extra items in table
 function loadExtraOrderItems() {
 
-    if (extraitems && extraitems.length > 0) {
+    if (extraitems && extraitems.length >= 0) {
         var html = '';
         $.each(extraitems, function (index, extraitem) {
 
             html += '<ul class="second-ul">';
             html += '<div class="left-panel">';
             html += '<li>';
-            html += '<img src="img/cross-dark.jpg">';
+            html += '<img src="img/cross-dark.jpg" onclick="deleteExtraItem('+index+')">';
             html += '</li>';
             html += '<li>' + extraitem.Name + '</li>';
             html += '</div>';
@@ -163,6 +163,24 @@ function changeExtraItemValues(extraitemId, quantity, total) {
         }
     });
     loadExtraOrderItems();
+}
+
+function deleteItem (i)
+{
+    console.log (items[i]);
+   items.splice(i , 1);
+   localStorage.setItem('items', JSON.stringify(items));
+  loadOrderItems(); toggleCart();
+
+}
+
+function deleteExtraItem (i)
+{
+    console.log (extraitems[i]);
+   extraitems.splice(i , 1);
+   localStorage.setItem('extraitems', JSON.stringify(extraitems));
+  loadExtraOrderItems();
+
 }
 
 function calculateOrderTotals() {
