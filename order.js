@@ -1,6 +1,8 @@
+var extraitems = [];
 var items = getObjsFromLocalStorage("items");
+var extraitems = getObjsFromLocalStorage("extraitems");
 $(document).ready(function () {
-    loadOrderItems(); loadextraitems();
+    loadOrderItems(); loadextraitems(); loadExtraOrderItems();
 });
 function loadOrderItems() {
 
@@ -40,7 +42,8 @@ function loadOrderItems() {
         calculateOrderTotals();
     }
 }
-// extra Items
+
+// load extra Items dropdown
 function loadextraitems () {
     var id = localStorage.getItem("RestaurantId")
     $.ajax({
@@ -66,6 +69,49 @@ function loadextraitems () {
     });
 }
 
+// load extra items in table
+function loadExtraOrderItems() {
+
+    if (extraitems && extraitems.length > 0) {
+        var html = '';
+        $.each(extraitems, function (index, extraitem) {
+
+            html += '<ul class="second-ul">';
+            html += '<div class="left-panel">';
+            html += '<li>';
+            html += '<img src="img/cross-dark.jpg">';
+            html += '</li>';
+            html += '<li>' + extraitem.Name + '</li>';
+            html += '</div>';
+
+            html += '<div class="right-panel">';
+            html += '<li>Rs. ' + extraitem.Price + '</li>';
+            html += '<li>';
+            html += '<div class="quantity-box">';
+
+            html += '<span class="left" onclick="minusExtraItem('
+                + extraitem.Id + ',' + extraitem.Price + ',' + extraitem.Quantity + ')"><img src="img/minus.png"></span>';
+
+            html += '<span class="qty">' + extraitem.Quantity + '</span>';
+
+            html += '<span class="right" onclick="plusExtraItem('
+                + extraitem.Id + ',' + extraitem.Price + ',' + extraitem.Quantity + ')"><img src="img/plus.png"></span>';
+
+            html += '</div>';
+            html += ' </li>';
+            html += '<li>' + extraitem.Total + '</li>';
+            html += '</div>';
+            html += '</ul>';
+
+        });
+        $("#extraItemValues").html(html);
+        calculateOrderTotals();
+    }
+}
+
+
+
+
 function minusQuantity(itemId, price, quantity) {
     if (quantity > 0) {
         quantity = quantity - 1;
@@ -74,10 +120,25 @@ function minusQuantity(itemId, price, quantity) {
     }
 }
 
+function minusExtraItem(extraitemId, price, quantity) {
+    if (quantity > 0) {
+        quantity = quantity - 1;
+        let total = calculateTotal(price, quantity);
+        changeExtraItemValues(extraitemId, quantity, total);
+    }
+}
+
+
 function plusQuantity(itemId, price, quantity) {
     quantity = quantity + 1;
     let total = calculateTotal(price, quantity);
     changeItemValues(itemId, quantity, total)
+}
+
+function plusExtraItem(extraitemId, price, quantity) {
+    quantity = quantity + 1;
+    let total = calculateTotal(price, quantity);
+    changeExtraItemValues(extraitemId, quantity, total)
 }
 
 function calculateTotal(price, quantity) {
@@ -94,14 +155,35 @@ function changeItemValues(itemId, quantity, total) {
     loadOrderItems();
 }
 
+function changeExtraItemValues(extraitemId, quantity, total) {
+    $.each(extraitems, function (i, value) {
+        if (value.Id == extraitemId) {
+            extraitems[i].Quantity = quantity;
+            extraitems[i].Total = total;
+        }
+    });
+    loadExtraOrderItems();
+}
+
 function calculateOrderTotals() {
+    
+    let itemsubtotal = 0;
+    let exitemsubtotal = 0;
     let subtotal = 0;
     let grandTotal = 0;
     let GST = 0;
     let fee = 0;
     $.each(items, function (i, value) {
-        subtotal = subtotal + value.Total;
+        itemsubtotal = itemsubtotal + value.Total;
     });
+
+    $.each(extraitems, function (i, value) {
+        exitemsubtotal = exitemsubtotal + value.Total;
+    });
+
+    subtotal = itemsubtotal + exitemsubtotal ;
+
+
     grandTotal = subtotal + fee + GST; // TODO: using gst and fee to cal grandtotal
     $("#subtotal").val(subtotal);
     $("#grandTotal").val(grandTotal);
@@ -166,11 +248,11 @@ function checkout() {
         success: function (result) {
             console.log(result);
         // if (isLoggedIn()) {
-            items = getObjsFromLocalStorage("items");
-            if (!items) items = [];
+            extraitems = getObjsFromLocalStorage("extraitems");
+            if (!extraitems) extraitems = [];
             let isExist = false;
-            if (items.length > 0) {
-                $.each(items, function (i, value) {
+            if (extraitems.length > 0) {
+                $.each(extraitems, function (i, value) {
                     if (value.Id == id) {
                         isExist = true;
                         return false;
@@ -178,19 +260,18 @@ function checkout() {
                 });
             }
             if (!isExist) {
-                var item = {
+                var extraitem = {
                     Id: result.Id,
                     Name: result.Name,
-                    Size : 'Full',
                     Price: result.Price,
                     Quantity: 1,
                     Total: 0
                 }
-                item.Total = item.Price * item.Quantity;
-                items.push(item);
-                localStorage.setItem('items', JSON.stringify(items));
+                extraitem.Total = extraitem.Price * extraitem.Quantity;
+                extraitems.push(extraitem);
+                localStorage.setItem('extraitems', JSON.stringify(extraitems));
                 toggleCart();
-                loadOrderItems();
+                loadExtraOrderItems();
                 
             } else {
                 alert('This item already added in your cart, please click items on right top corner!');

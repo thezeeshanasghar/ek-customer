@@ -330,8 +330,6 @@
 						
 						<select class="extra-select" name="extraItems" id="extraItems" >
 							<option selected="" hidden="">Choose item</option>
-							<option value="sel1">Raita</option>
-							<option value="sel2">Coke</option>
 						</select>
 
 	 					 <button class="extra-btn" onclick="AddToCart()" >Add to Cart</button> 
@@ -350,86 +348,55 @@
 	</div>
 
 
-	
-
-
-	 <!-- <select name="extraItems" id="extraItems" ></select>    -->
 
 	   <!-- extra items table -->
 	  
-    	<div id="order" class="extra-order" style="margin-top: 1px">
+	   <div id="order" class="extra-order" style="margin-top: 1px">
 		
-			<div class="container">
-				
-				<div class="row">
+		<div class="container">
+			
+			<div class="row">
 
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-						<ul class="first-ul">
-							
-							<div class="left-panel">
+					<ul class="first-ul">
+						
+						<div class="left-panel">
 
-								<li>
-									
-								</li>
+							<li>
+								
+							</li>
 
-								<li>
-									Items
-								</li>
+							<li>
+								Items
+							</li>
 
-							</div>
+						</div>
 
-							<div class="right-panel">
+						<div class="right-panel">
 
-								<li>
-									Price
-								</li>
+							<li>
+								Price
+							</li>
 
-								<li>
-									Quantity
-								</li>
+							<li>
+								Quantity
+							</li>
 
-								<li>
-									Total
-								</li>
+							<li>
+								Total
+							</li>
 
-							</div>
+						</div>
 
-						</ul>
+					</ul>
 
-						<ul class="second-ul">
+					<div id="extraItemValues"> </div>
 
-							<div class="left-panel">
-								<li>
-									<img src="img/cross-dark.jpg">
-								</li>
-
-								<li>Raita</li>
-							</div>
-
-							<div class="right-panel">
-								<li>Rs. 50</li>
-
-								<li>
-									<div class="quantity-box">
-										<span class="left" onclick="minusQuantity(1,50,1)"><img src="img/minus.png"></span>
-										<span class="qty">1</span>
-										<span class="right" onclick="plusQuantity(1,50,1)"><img src="img/plus.png"></span>
-									</div>
-								</li>
-
-								<li>50</li>
-
-							</div>
-
-						</ul>
-
-						<div id="itemValues"></div>
-
-					</div>
 				</div>
 			</div>
 		</div>
+	 </div>
 
 
 	<!-- Order Totals -->
