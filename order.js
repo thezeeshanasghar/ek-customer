@@ -211,17 +211,18 @@ function checkout() {
     if (isLoggedIn()) {
         var customer = getObjsFromLocalStorage("Customer");
         for (var i = 0; i <= items.length - 1; i++) {
-            delete items[i].Id;
+            delete items[i].Id; 
             if (items[i].Quantity === 0) {
-                delete items[i];
+                delete items[i]; 
                 items.length--;
 
             }
         }
-        for (var j = 0; j <= extraitems.length - 1; j++) {
-            delete extraitems[j].Id;
-            if (extraitems[j].Quantity === 0) {
-                delete extraitems[j];
+
+        for (var i = 0; i <= extraitems.length - 1; i++) {
+            delete extraitems[i].Id; 
+            if (extraitems[i].Quantity === 0) {
+                delete extraitems[i]; 
                 extraitems.length--;
 
             }
@@ -248,6 +249,7 @@ function checkout() {
                 //    if (result.IsSuccess) {
                         alert("Your order is placed successfully");
                         localStorage.removeItem("items");
+                        localStorage.removeItem("extraitems");
                         toggleCart();
                         window.location.reload(true);
                         location.href = 'order-placed.html';
