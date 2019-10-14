@@ -1037,6 +1037,12 @@ p.for-you {
 	float: left;
 	border-radius: 50%;
 	background: #c6c4c7;
+	overflow: hidden;
+	border: 1px solid #60ba62;
+}
+
+.menu-item-info-img img {
+	width: 100%;
 }
 
 .menu-item-name {
