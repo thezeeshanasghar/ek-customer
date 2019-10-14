@@ -56,7 +56,7 @@ function loadRestaurantDetails(restaurantId) {
                         html += '<a role="button" tabindex="0"  onclick="addToCart('
                             + menuItem.Id + ',' + quoteAndEscape(menuItem.Name) +
                             ',' + menuItem.Size + ',' + menuItem.Price +
-                            ')" style="cursor: pointer;">Add to cart</a>';
+                            ');cartGlow();" style="cursor: pointer;">Add to cart</a>';
 
                         html += '</div></div>';
                     });

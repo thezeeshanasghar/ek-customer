@@ -136,8 +136,18 @@ function quoteAndEscape(str) {
         + '&#39;';                     // close quote '
 }
 
-$(".acb").click(function(){
 
+
+function cartGlow() {
     
+    console.log("hello");
 
-})
+    $(".header-cart-icon").addClass("ace");
+
+    setTimeout(function(){
+    
+        $(".header-cart-icon").removeClass("ace");
+
+    },1500);
+
+}
