@@ -106,6 +106,22 @@ button {
 	border: none;
 }
 
+#subtotal[type=number]::-webkit-inner-spin-button, 
+#subtotal[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+#grandTotal[type=number]::-webkit-inner-spin-button, 
+#grandTotal[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
 .left-panel {
 	float: left;
 }
