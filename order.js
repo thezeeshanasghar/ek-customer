@@ -218,13 +218,24 @@ function checkout() {
 
             }
         }
+        for (var j = 0; j <= extraitems.length - 1; j++) {
+            delete extraitems[j].Id;
+            if (extraitems[j].Quantity === 0) {
+                delete extraitems[j];
+                extraitems.length--;
+
+            }
+        }
         if (items && items.length > 0) {
+            var allItems = [];
+            allItems = items.concat(extraitems);
+            console.log (allItems);
             var order = {
                 Subtotal: $("#subtotal").val(),
                 GrandTotal: $("#grandTotal").val(),
                 Fee: 0,
                 GST: 0,
-                OrderItems: items,
+                OrderItems : allItems,
                 CustomerId: customer.Id
             }
             $.ajax({
@@ -234,15 +245,15 @@ function checkout() {
                 dataType: "json",
                 contentType: "application/json;charset=utf-8",
                 success: function (result) {
-                    if (result.IsSuccess) {
-                       // alert("Your order is placed successfully");
+                //    if (result.IsSuccess) {
+                        alert("Your order is placed successfully");
                         localStorage.removeItem("items");
                         toggleCart();
-                        //window.location.reload(true);
+                        window.location.reload(true);
                         location.href = 'order-placed.html';
-                    } else {
-                        alert(result.Message);
-                    }
+                //    } else {
+                //        alert(result.Message);
+                //    }
                 }
             });
         } else {
@@ -265,8 +276,8 @@ function checkout() {
         contentType: "application/json;charset=utf-8",
         success: function (result) {
             console.log(result);
-        // if (isLoggedIn()) {
-            extraitems = getObjsFromLocalStorage("extraitems");
+         if (isLoggedIn()) {
+           // extraitems = getObjsFromLocalStorage("extraitems");
             if (!extraitems) extraitems = [];
             let isExist = false;
             if (extraitems.length > 0) {
@@ -279,6 +290,7 @@ function checkout() {
             }
             if (!isExist) {
                 var extraitem = {
+                    Size: 'Full',
                     Id: result.Id,
                     Name: result.Name,
                     Price: result.Price,
@@ -294,9 +306,9 @@ function checkout() {
             } else {
                 alert('This item already added in your cart, please click items on right top corner!');
             }
-        // } else {
-        //     alert('Please login first');
-        // }
+         } else {
+             alert('Please login first');
+         }
 
             
         },

@@ -39,14 +39,15 @@ function login() {
         dataType: "json",
         contentType: "application/json;charset=utf-8",
         success: function (result) {
-            if (result.IsSuccess) {
-                localStorage.setItem("Customer", JSON.stringify(result.ResponseData));
+            // if (result.IsSuccess) {
+               // localStorage.setItem("Customer", JSON.stringify(result.ResponseData));
+               localStorage.setItem("Customer", JSON.stringify(result));
                 $(".login-overlay").fadeOut();
                 toggleLogInOut();
                 toggleProfileAndOrders();
-            } else {
-                alert(result.Message);
-            }
+            // } else {
+            //     alert(result.Message);
+            // }
         },
         error: function (xhr, status, error) {
             console.log(xhr.responseText);
