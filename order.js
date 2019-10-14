@@ -13,7 +13,7 @@ function loadOrderItems() {
             html += '<ul class="second-ul">';
             html += '<div class="left-panel">';
             html += '<li>';
-            html += '<img src="img/cross-dark.jpg" onclick = deleteItem('+index+');>';
+            html += '<img src="img/cross-dark.jpg" onclick = deleteItem('+index+');cartGlow();>';
             html += '</li>';
             html += '<li>' + item.Name + ' (' + item.Size + ')</li>';
             html += '</div>';
@@ -55,6 +55,7 @@ function loadextraitems () {
             console.log(result);
             var html = '';
             $.each(result, function (index ) {
+               html += '<option selected hidden>Choose item</option>' ; 
                html += '<option value = '+result[index].Id+' >' + result[index].Name + '</option>' ; 
                
             });

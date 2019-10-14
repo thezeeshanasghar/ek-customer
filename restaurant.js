@@ -53,7 +53,7 @@ function getResturantsFromDB() {
             MenuList +
             " .... </div></div> </div> " +
             '<div class="right-panel" style="text-transform: uppercase;">' +
-            '&nbsp;<a class="status status-open" href="menu.html?id='+res.Id+'">Open</a> </div><a href="#" class="view-btn">view</a>'+
+            '&nbsp;<span class="status status-open">Open</span> </div><a href="menu.html?id='+res.Id+'" class="view-btn">view</a>'+
             "</div>";
 
           $(".top-dishes").append(sponsers);
