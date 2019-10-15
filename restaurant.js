@@ -1,6 +1,9 @@
 $(document).ready(function(){
+    
+    var id = parseInt(getParameterByName("id")) || 0;
     getResturantsFromDB();
     getCousines();
+    restBanner(id);
 });
 
 function getResturantsFromDB() {
@@ -24,9 +27,9 @@ function getResturantsFromDB() {
           var imgpath = IP + ":" + PORT + "/";
 
           if (res.CoverImagePath == null) {
-            imgpath += res.LogoImagePath;
-          } else {
             imgpath += res.CoverImagePath;
+          } else {
+            imgpath += res.LogoImagePath;
           }
 
           // console.log('image path is ===',imgpath);
@@ -76,3 +79,35 @@ function getResturantsFromDB() {
     });
   }
   
+
+
+
+
+
+function restBanner(id) {
+
+    $.ajax({
+        url: SERVER + "City/" + id ,
+        type: "GET",
+        dataType: "JSON",
+        contentType: "application/json;charset=utf-8",
+        success: function (result) {
+          
+          console.log(result);
+
+            var path = result.ImagePath;
+            var path2 = path.replace(/\\/g, "/");
+            console.log(path2);
+            
+        $("#restaurant-banner").css("background-image","url('"+IP+":"+PORT+"/"+path2+"')");
+        $(".city-restaurant h1").text(result.Name);
+
+                
+        },
+        error: function (xhr, status, error) {
+            console.log(xhr.responseText);
+        }
+    });
+}
+
+

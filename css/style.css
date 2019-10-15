@@ -200,7 +200,8 @@ button {
 	float: left;
 	position: relative;
 	overflow: hidden;
-	background: url(../img/business-dark.jpg) no-repeat 50% 70%;
+	/*background: url(../img/business-dark.jpg) no-repeat 50% 70%;*/
+	background-size: cover !important;
 }
 
 #restaurant-banner {
@@ -209,7 +210,8 @@ button {
 	float: left;
 	position: relative;
 	overflow: hidden;
-	background: url(../img/restaurant-banner.jpg) no-repeat 50% 70%;
+	background-size: cover;
+	/*background: url(../img/restaurant-banner.jpg) no-repeat 50% 70%;*/
 }
 
 .city-restaurant {
@@ -884,6 +886,7 @@ p.for-you {
 	border-bottom-left-radius: 30px;
 	border-bottom-right-radius: 30px;
 	border-top-right-radius: 30px;
+	border-right: 1px solid #60ba62;
 }
 
 .rest-info-content {
@@ -1003,7 +1006,7 @@ p.for-you {
 }
 
 .menu-heading {
-	margin-bottom: 100px;
+	/*margin-bottom: 100px;*/
 }
 
 .large-heading h1 {
@@ -1012,6 +1015,7 @@ p.for-you {
 	text-align: center;
 	border-bottom: 1px solid #333;
 	line-height: 120px;
+	margin-top: 50px
 }
 
 .menu-item-img {
@@ -1033,6 +1037,7 @@ p.for-you {
 	width: 100%;
 	float: left;
 	margin-bottom: 50px;
+	margin-top: 50px;
 }
 
 .menu-item-info-img {

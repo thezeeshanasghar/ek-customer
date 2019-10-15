@@ -3,6 +3,7 @@ $(document).ready(function () {
     var id = parseInt(getParameterByName("id")) || 0;
     localStorage.setItem("RestaurantId", id);
     loadRestaurantDetails(id);
+     menuBanner(id);
 });
 
 function loadRestaurantDetails(restaurantId) {
@@ -125,4 +126,33 @@ function addToCart(id, name, size, price) {
     // } else {
     //     alert('Please login first');
     // }
+}
+
+
+
+function menuBanner(id) {
+
+    $.ajax({
+        url: SERVER + "restaurant/" + id ,
+        type: "GET",
+        dataType: "JSON",
+        contentType: "application/json;charset=utf-8",
+        success: function (result) {
+          
+          console.log(result);
+
+            var path = result.CoverImagePath;
+            var path2 = path.replace(/\\/g, "/");
+            console.log(path2);
+            var logoPath = IP +":"+ PORT +"/"+ result.LogoImagePath;
+            
+              $("#menu-banner").css("background-image","url('"+IP+":"+PORT+"/"+path2+"')");
+              $(".menu-logo img").attr("src", logoPath);
+
+
+        },
+        error: function (xhr, status, error) {
+            console.log(xhr.responseText);
+        }
+    });
 }
