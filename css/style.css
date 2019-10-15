@@ -202,6 +202,7 @@ button {
 	overflow: hidden;
 	/*background: url(../img/business-dark.jpg) no-repeat 50% 70%;*/
 	background-size: cover !important;
+	background-position: 50% 50%;
 }
 
 #restaurant-banner {
@@ -211,6 +212,7 @@ button {
 	position: relative;
 	overflow: hidden;
 	background-size: cover;
+	background-position: 50% 50%;
 	/*background: url(../img/restaurant-banner.jpg) no-repeat 50% 70%;*/
 }
 
