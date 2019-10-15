@@ -1033,10 +1033,13 @@ p.for-you {
 	width: 100%;
 }
 
+.menu-item-info-panel {
+	margin-top: 150px;
+}
+
 .menu-item-info {
 	width: 100%;
 	float: left;
-	margin-bottom: 50px;
 	margin-top: 50px;
 }
 
@@ -1071,7 +1074,7 @@ p.for-you {
 .menu-item-info .right-panel {
 	position: relative;
 	width: 30%;
-	height: 150px;
+	margin-top: 63px;
 }
 
 .menu-item-info .right-panel a {

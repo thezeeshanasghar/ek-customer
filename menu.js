@@ -39,15 +39,14 @@ function loadRestaurantDetails(restaurantId) {
                     
                     html += '</div></div>';
                     
-                    
                     //Restaurant Menu Items
-                    html += '<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">';
+                    html += '<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7 menu-item-info-panel">';
                     $.each(menu.MenuItems, function (index, menuItem) {
 
                         html += '<div class="menu-item-info">';
 
                         html += '<div class="left-panel">';
-                        html += '<div class="menu-item-info-img"></div>';
+                        html += '<div class="menu-item-info-img"><img src="'+IP+":"+PORT+"/"+menuItem.ImagePath+'" /></div>';
                         html += '<div class="menu-item-name">';
                         html += '<h4>' + menuItem.Name + '</h4>';
                         html += '<p>' + getMenuSize(menuItem.Size) + " " + menuItem.Price + '</p>';
