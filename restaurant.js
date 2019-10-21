@@ -1,6 +1,7 @@
 $(document).ready(function(){
     
     var id = parseInt(getParameterByName("id")) || 0;
+    localStorage.setItem("CityId", id);
     getResturantsFromDB();
     getCousines();
     restBanner(id);

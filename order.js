@@ -1,6 +1,8 @@
 var extraitems = [];
 var items = getObjsFromLocalStorage("items");
 var extraitems = getObjsFromLocalStorage("extraitems");
+var CityId = getObjsFromLocalStorage("CityId");
+var RestaurantId = getObjsFromLocalStorage("RestaurantId");
 $(document).ready(function () {
     loadOrderItems(); loadextraitems(); loadExtraOrderItems();
 });
@@ -82,7 +84,7 @@ function loadExtraOrderItems() {
             html += '<li>';
             html += '<img src="img/cross-dark.jpg" onclick="deleteExtraItem('+index+')">';
             html += '</li>';
-            html += '<li>' + extraitem.Name + '</li>';
+            html += '<li>' + extraitem.Name + ' (' + extraitem.Size + ') </li>';
             html += '</div>';
 
             html += '<div class="right-panel">';
@@ -238,7 +240,9 @@ function checkout() {
                 Fee: 0,
                 GST: 0,
                 OrderItems : allItems,
-                CustomerId: customer.Id
+                CustomerId: customer.Id,
+                CityId : CityId,
+                RestaurantId: RestaurantId 
             }
             $.ajax({
                 url: SERVER + "order/customer-order",
@@ -293,7 +297,7 @@ function checkout() {
             }
             if (!isExist) {
                 var extraitem = {
-                    Size: 'Full',
+                    Size: result.Size,
                     Id: result.Id,
                     Name: result.Name,
                     Price: result.Price,
