@@ -431,6 +431,11 @@ button {
 	text-align: center;
 }
 
+.four-panel img {
+	width: 100px;
+	margin-bottom: 20px;
+}
+
 .four-panel .order-forth-img {
 	width: 133px;
 }
@@ -525,10 +530,17 @@ button {
 
 /* Your City is Not Listed? */
 
+#not-listed {
+	background: url(../img/vote.jpg);
+	background-size: cover;
+	background-position: 50% 41%;
+	overflow: hidden;
+	margin: 100px 0;
+}
+
 .not-listed {
 	width: 100%;
 	float: left;
-	background: #858585;
 	margin-top: 50px;
 	padding: 70px 0;
 }
