@@ -86,8 +86,8 @@ function SignUp() {
 
     obj = {
         "Name": $("#Name").val(),
-        "Email": $("#Email").val(),
-        "Password": $("#Password").val(),
+        "Email": $("#UserEmail").val(),
+        "Password": $("#UserPassword").val(),
         "MobileNumber": $("#Mobile").val(),
         "Address": $("#Address").val(),
         "CityId": $("#selectCities").val()
@@ -221,7 +221,7 @@ function selectCities() {
              if(result) {
                 $.each(result, function(index,city){
                     html += '<option selected hidden>Please Choose your city</option>';
-                    html += '<option>' + city.Name + '</option>';
+                    html += '<option value='+city.Id+'>' + city.Name + '</option>';
                 }); 
                 $("#selectCities").html(html);
             }
