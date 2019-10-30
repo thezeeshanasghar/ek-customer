@@ -39,15 +39,20 @@
 			</div>
 
 			<div class="signup-box-content">
-				<input type="text" id="Name" name="Name" placeholder="Please enter your name">
-				<input type="text" id="Mobile" name="Mobile" placeholder="Please enter your mobile number">
-				<input type="email" id="UserEmail" name="Email" placeholder="Please enter your email address">
-				<input type="password" id="UserPassword" name="Password" placeholder="Please enter your password">
-				<input type="password" id="re-Password" name="re-Password" placeholder="Please re-enter your password">
-				<input type="text" id="Address" name="Address" placeholder="Please enter your address">
 
-				<select id="selectCities"></select>
-				<input type="submit" value="Submit" onclick="SignUp()">
+				<form id="register-form" class="gen-form">
+
+					<input type="text" id="name" name="name" placeholder="Please enter your name">
+					<input type="text" id="mobNum" name="mobNum" placeholder="Please enter your mobile number">
+					<input type="email" id="email" name="email" placeholder="Please enter your email address">
+					<input type="password" id="password" name="password" placeholder="Please enter your password">
+					<input type="password" id="password2" name="password2" placeholder="Please re-enter your password">
+					<input type="text" id="Address" name="Address" placeholder="Please enter your address">
+
+					<select id="selectCities"></select>
+					<input type="submit" value="Submit" onclick="SignUp()">
+
+				</form>
 			</div>
 		</div>
 	</div>
@@ -794,6 +799,9 @@
 	<script type="text/javascript" src="js/aos.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/cycle.js"></script>
+	<script type="text/javascript" src="js/jquery.validate.js"></script>
+	<script type="text/javascript" src="js/validation.js"></script>
+
 	<script src="server.js"></script>
 	<script src="index.js"></script>
 	<script src="common.js"></script>
