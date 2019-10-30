@@ -27,6 +27,31 @@
 		</div>
 	</div>
 
+
+	<!-- Signup Popup -->
+	<div class="signup-overlay">
+
+		<div class="signup-box">
+
+			<div class="signup-box-header">
+				<div class="left-panel">Signup</div>
+				<div class="right-panel">x</div>
+			</div>
+
+			<div class="signup-box-content">
+				<input type="text" id="Name" name="Name" placeholder="Please enter your name">
+				<input type="text" id="Mobile" name="Mobile" placeholder="Please enter your mobile number">
+				<input type="text" id="Email" name="Email" placeholder="Please enter your email address">
+				<input type="password" id="Password" name="Password" placeholder="Please enter your password">
+				<input type="password" id="re-Password" name="re-Password" placeholder="Please re-enter your password">
+				<input type="text" id="Address" name="Address" placeholder="Please enter your address">
+
+				<select id="selectCities"></select>
+				<input type="submit" value="Submit" onclick="signup()">
+			</div>
+		</div>
+	</div>
+
 	<!-- Banner -->
 
 	<div id="header" class="restaurant-banner top-sticky">
@@ -57,12 +82,21 @@
 									</a>
 								</li>
 
+								<li class="signup signupLi">
+									<a class="nav-item header-user-icon signupBtn" href="#">
+										<img src="img/user-icon.png">
+										Sign up
+									</a>
+								</li>
+
 								<li class="loginLi">
 									<a class="nav-item header-user-icon loginBtn" href="#">
 										<img src="img/user-icon.png">
 										login
 									</a>
 								</li>
+
+
 
 								<li>
 									<div class="cart"></div>
@@ -122,6 +156,13 @@
 									<a class="nav-item header-user-icon" href="#">
 										<img src="img/user-icon.png">
 										logout
+									</a>
+								</li>
+
+								<li class="signup signupLi">
+									<a class="nav-item header-user-icon signupBtn" href="#">
+										<img src="img/user-icon.png">
+										Sign up
 									</a>
 								</li>
 

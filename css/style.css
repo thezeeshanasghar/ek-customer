@@ -2327,6 +2327,86 @@ p.for-you {
 	margin: auto;
 	display: block;
 }
+
+/*signup Popup*/
+
+
+.signup-overlay {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 10001;
+	background: rgba(0, 0, 0, 0.95);
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: none;
+}
+
+.signup-box {
+	width: 400px;
+	height: 435px;
+	margin: auto;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	z-index: 10002;
+	border-radius: 7px;
+	overflow: hidden;
+}
+
+.signup-box-header {
+	background: #4db748;
+	color: white;
+	width: 100%;
+	float: left;
+	padding: 5px 10px;
+	font-weight: bold;
+}
+
+.signup-box-header .right-panel	{
+	cursor: pointer;
+}
+
+.signup-box-content {
+	background: white;
+	padding: 20px; 
+	float: left;
+	width: 100%;
+}
+
+.signup-box-content input {
+	width: 100%;
+	margin-bottom: 20px;
+	background: none;
+	border: 1px solid #4db748;
+	padding-left: 10px;
+	border-radius: 7px;
+}
+
+.signup-box-content select {
+	width: 100%;
+	margin-bottom: 20px;
+	background: none;
+	border: 1px solid #4db748;
+	padding-left: 10px;
+	border-radius: 7px;
+}
+
+.signup-box-content input[type=submit] {
+	background: #4db748;
+	color: white;
+	width: 100px;
+	margin: auto;
+	display: block;
+}
+
+
+
+
 /**/
 .order-summary-input-values {
 	line-height: 0px;
