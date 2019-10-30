@@ -55,6 +55,32 @@ function login() {
     });
 }
 
+function SignUp() {
+
+    obj = {
+        "Name": $("#Name").val(),
+        "Email": $("#Email").val(),
+        "Password": $("#Password").val(),
+        "MobileNumber": $("#Mobile").val(),
+        "Address": $("#Address").val(),
+        "CityId": $("#selectCities").val()
+    }
+console.log (obj);
+    $.ajax({
+        url: SERVER + "customer",
+        type: "POST",
+        data: JSON.stringify(obj),
+        dataType: "json",
+        contentType: "application/json;charset=utf-8",
+        success: function (result) {
+               localStorage.setItem("Customer", JSON.stringify(result));
+        },
+        error: function (xhr, status, error) {
+            console.log(xhr.responseText);
+        }
+    });
+}
+
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
     var regexS = "[\\?&]" + name + "=([^&#]*)";
