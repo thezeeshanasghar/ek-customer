@@ -1,6 +1,9 @@
 $(document).ready(function () {
     /* Authentication */
     toggleLogInOut();
+    selectCities();
+
+    // Login popup
     $(".loginBtn").click(function () {
         $(".login-overlay").fadeIn();
     });
@@ -17,6 +20,30 @@ $(document).ready(function () {
         $(".login-overlay").fadeOut();
         $("#Email , #Password").val("");
     });
+
+
+
+    // Signup Popup
+    $(".signupBtn").click(function () {
+        $(".signup-overlay").fadeIn();
+    });
+    $(".signup-overlay").on('click', function (event) {
+        $(this).fadeOut();
+        $("#Email , #Password").val("");
+    });
+
+    $(".signup-box").on('click', function (event) {
+        event.stopPropagation();
+    });
+
+    $(".signup-box-header .right-panel").click(function () {
+        $(".signup-overlay").fadeOut();
+        $("#Email , #Password").val("");
+    });
+
+
+
+
 
     $(".logoutLi").on('click', function () {
         localStorage.clear();
@@ -104,9 +131,11 @@ function getObjsFromLocalStorage(key) {
 function toggleLogInOut() {
     if (isLoggedIn()) {
         $(".logoutLi").show();
+        $(".signupLi").hide();
         $(".loginLi").hide();
     } else {
         $(".loginLi").show();
+        $(".signupLi").show();
         $(".logoutLi").hide();
     }
 }
@@ -179,3 +208,26 @@ function cartGlow() {
 }
 
 
+function selectCities() {
+
+    $.ajax({
+        url: SERVER + "city",
+        type: "GET",
+        dataType: "JSON",
+        contentType: "application/json;charset=utf-8",
+        success: function (result) {
+            var html='';
+            
+             if(result) {
+                $.each(result, function(index,city){
+                    html += '<option selected hidden>Please Choose your city</option>';
+                    html += '<option>' + city.Name + '</option>';
+                }); 
+                $("#selectCities").html(html);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.log(xhr.responseText);
+          }
+    });
+}
