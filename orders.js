@@ -77,9 +77,9 @@ function loadCustomerOrders(customerId) {
         dataType: "JSON",
         contentType: "application/json;charset=utf-8",
         success: function (result) {
+            console.log(result);
             var html = '';
-            if (result.IsSuccess) {
-                $.each(result.ResponseData, function (key, order) {
+                $.each(result, function (key, order) {
                     html += '<section>';
                     html += '<div class="order-panel-col order-panel-detail">';
                     html += '<h4>Order ID #' + order.Id + '</h4>';
@@ -97,9 +97,9 @@ function loadCustomerOrders(customerId) {
                     html += '</section>';
                 });
 
-            } else {
-                alert(result.Message);
-            }
+            
+    
+            
             $("#orders").html(html);
         },
         error: function (xhr, status, error) {
