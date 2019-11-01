@@ -11,8 +11,9 @@ function loadCustomerProfile(customerId) {
         dataType: "JSON",
         contentType: "application/json;charset=utf-8",
         success: function (result) {
-            if (result.IsSuccess) {
-                var customer = result.ResponseData;
+          //  if (result.IsSuccess) {
+                var customer = result;
+                
                 $(".Name").text(customer.Name);
                 $(".Email").text(customer.Email);
                 $("#oldPassword").val(customer.Password);
@@ -28,12 +29,12 @@ function loadCustomerProfile(customerId) {
                 }
                 $("#oldProfileImage").html(html);
 
-            } else {
-                alert(result.Message);
-            }
+            // } else {
+            //     alert(result.Message);
+            // }
         },
         error: function (xhr, status, error) {
-            console.log(xhr.responseText);
+            console.log(error);
         }
     });
 }
@@ -61,12 +62,12 @@ $("form#data").submit(function (e) {
                 dataType: "json",
                 contentType: "application/json;charset=utf-8",
                 success: function (result) {
-                    if (result.IsSuccess) {
-                        localStorage.setItem("Customer", JSON.stringify(result.ResponseData));
+                    // if (result.IsSuccess) {
+                        localStorage.setItem("Customer", JSON.stringify(result));
                         alert("Your profile is updated successfully");
-                    } else {
-                        alert(result.Message);
-                    }
+                    // } else {
+                    //     alert(result.Message);
+                    // }
                 },
                 error: function (xhr, status, error) {
                     console.log(error);
