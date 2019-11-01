@@ -58,8 +58,7 @@ function loadextraitems () {
             var html = '';
             $.each(result, function (index ) {
                html += '<option selected hidden>Choose item</option>' ; 
-               html += '<option value = '+result[index].Id+' >' + result[index].Name + '</option>' ; 
-               
+               html += '<option value = '+result[index].Id+' >' + result[index].Name + '</option>' ;    
             });
             
             $("#extraItems").html(html);
@@ -221,7 +220,8 @@ function checkout() {
 
             }
         }
-
+        
+        if (extraitems != null)
         for (var i = 0; i <= extraitems.length - 1; i++) {
             delete extraitems[i].Id; 
             if (extraitems[i].Quantity === 0) {
@@ -232,7 +232,10 @@ function checkout() {
         }
         if (items && items.length > 0) {
             var allItems = [];
+            if (extraitems != null){
             allItems = items.concat(extraitems);
+            }
+            else {allItems = items}
             console.log (allItems);
             var order = {
                 Subtotal: $("#subtotal").val(),
@@ -251,16 +254,12 @@ function checkout() {
                 dataType: "json",
                 contentType: "application/json;charset=utf-8",
                 success: function (result) {
-                //    if (result.IsSuccess) {
                         alert("Your order is placed successfully");
                         localStorage.removeItem("items");
                         localStorage.removeItem("extraitems");
                         toggleCart();
                         window.location.reload(true);
                         location.href = 'order-placed.html';
-                //    } else {
-                //        alert(result.Message);
-                //    }
                 }
             });
         } else {

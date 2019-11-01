@@ -2,7 +2,7 @@ $(document).ready(function () {
     var customer = getObjsFromLocalStorage("Customer");
     loadCustomerOrders(customer.Id);
     // Edti Section
-
+    
     $("#edit-pro-btn").click(function () {
 
         $("#edit-pro-row").slideToggle();
@@ -78,6 +78,7 @@ function loadCustomerOrders(customerId) {
         contentType: "application/json;charset=utf-8",
         success: function (result) {
             console.log(result);
+            var status = ["New", "Active", "Complete", "Cancel"];
             var html = '';
                 $.each(result, function (key, order) {
                     html += '<section>';
@@ -89,7 +90,7 @@ function loadCustomerOrders(customerId) {
                     html += '<h4>' + order.GrandTotal + '</h4>';
                     html += '</div>';
                     html += '<div class="order-panel-col order-panel-status">';
-                    html += '<h4 class="order-orange">' + order.Status + '</h4>';
+                    html += '<h4 class="order-orange">' + status[order.OrderStatus] + '</h4>';
                     html += '</div>';
                     html += '<div class="order-panel-col order-panel-btn">';
                     html += '<span><a style="color:white;" href="order-details.html?id=' + order.Id + '">View order Detail</a></span>';

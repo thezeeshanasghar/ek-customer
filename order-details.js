@@ -13,10 +13,10 @@ function getOrderDetails(orderId) {
         dataType: "JSON",
         contentType: "application/json;charset=utf-8",
         success: function (result) {
-            if (result.IsSuccess) {
+            //if (result.IsSuccess) {
                 var html = '';
                 let subt = 0;
-                $.each(result.ResponseData.OrderItems, function (key, item) {
+                $.each(result.OrderItems, function (key, item) {
                     html += '<section>';
                     html += '<div style="text-align: left;" class="order-panel-col order-panel-width">';
                     html += '<p>' + item.Name + '</p>';
@@ -39,9 +39,9 @@ function getOrderDetails(orderId) {
                 $("#grandTotal").text(subt);
 
 
-            } else {
-                alert(result.Message);
-            }
+       //     } else {
+            //    alert(result.Message);
+            
         },
         error: function (xhr, status, error) {
             console.log(xhr.responseText);
