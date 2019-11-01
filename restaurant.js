@@ -2,13 +2,13 @@ $(document).ready(function(){
     
     var id = parseInt(getParameterByName("id")) || 0;
     localStorage.setItem("CityId", id);
-    getResturantsFromDB();
+    getResturantsFromDB(id);
     getCousines();
     restBanner(id);
 });
 
-function getResturantsFromDB() {
-    $.get(SERVER + "restaurant", function(
+function getResturantsFromDB(id) {
+    $.get(SERVER + "restaurant/city/"+id, function(
       restaurants,
       status
     ) {
