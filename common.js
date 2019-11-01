@@ -29,7 +29,7 @@ $(document).ready(function () {
     });
     $(".signup-overlay").on('click', function (event) {
         $(this).fadeOut();
-        $("#Email , #Password").val("");
+        // $("#name , #mobNum , #email , #password , #password2 , Address").val("");
     });
 
     $(".signup-box").on('click', function (event) {
@@ -38,7 +38,7 @@ $(document).ready(function () {
 
     $(".signup-box-header .right-panel").click(function () {
         $(".signup-overlay").fadeOut();
-        $("#Email , #Password").val("");
+        // $("#name , #mobNum , #email , #password , #password2 , Address").val("");
     });
 
 

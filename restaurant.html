@@ -34,6 +34,36 @@
     </div>
   </div>
 
+
+  <!-- Signup Popup -->
+  <div class="signup-overlay">
+
+    <div class="signup-box">
+
+      <div class="signup-box-header">
+        <div class="left-panel">Signup</div>
+        <div class="right-panel">x</div>
+      </div>
+
+      <div class="signup-box-content">
+
+        <form id="register-form" class="gen-form">
+
+          <input type="text" id="name" name="name" placeholder="Please enter your name">
+          <input type="text" id="mobNum" name="mobNum" placeholder="Please enter your mobile number">
+          <input type="email" id="email" name="email" placeholder="Please enter your email address">
+          <input type="password" id="password" name="password" placeholder="Please enter your password">
+          <input type="password" id="password2" name="password2" placeholder="Please re-enter your password">
+          <input type="text" id="Address" name="Address" placeholder="Please enter your address">
+
+          <select id="selectCities"></select>
+          <input type="submit" value="Submit" onclick="SignUp()">
+
+        </form>
+      </div>
+    </div>
+  </div>
+
   <!-- Banner -->
 
   <div id="header" class="restaurant-banner top-sticky">
@@ -56,6 +86,13 @@
                   <a class="nav-item header-user-icon" href="#">
                     <img src="img/user-icon.png">
                     logout
+                  </a>
+                </li>
+
+                <li class="signup signupLi">
+                  <a class="nav-item header-user-icon signupBtn" href="#">
+                    <img src="img/user-icon.png">
+                    Sign up
                   </a>
                 </li>
 
@@ -453,8 +490,20 @@
       );
     });
   </script>
-  <script src="server.js" type="text/javascript"></script>
-  <script src="restaurant.js" type="text/javascript"></script>
+
+
+
+  <!-- Srcipts -->
+
+
+  <script type="text/javascript" src="js/aos.js"></script>
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/cycle.js"></script>
+  <script type="text/javascript" src="js/jquery.validate.js"></script>
+  <script type="text/javascript" src="js/validation.js"></script>
+
+  <script src="server.js"></script>
+  <script src="menu.js"></script>
   <script src="common.js"></script>
 </body>
 
