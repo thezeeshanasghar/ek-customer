@@ -2396,12 +2396,14 @@ p.for-you {
 	border-radius: 7px;
 }
 
-.signup-box-content input[type=submit] {
+.signup-box-content #signup-btn {
 	background: #4db748;
 	color: white;
 	width: 100px;
 	margin: auto;
 	display: block;
+	border-radius: 7px;
+	
 }
 
 
