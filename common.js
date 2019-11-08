@@ -85,10 +85,10 @@ function login() {
 function SignUp() {
 
     obj = {
-        "Name": $("#Name").val(),
-        "Email": $("#UserEmail").val(),
-        "Password": $("#UserPassword").val(),
-        "MobileNumber": $("#Mobile").val(),
+        "Name": $("#name").val(),
+        "Email": $("#email").val(),
+        "Password": $("#password").val(),
+        "MobileNumber": $("#mobNum").val(),
         "Address": $("#Address").val(),
         "CityId": $("#selectCities").val()
     }
@@ -101,6 +101,7 @@ console.log (obj);
         contentType: "application/json;charset=utf-8",
         success: function (result) {
                localStorage.setItem("Customer", JSON.stringify(result));
+               location.reload();
         },
         error: function (xhr, status, error) {
             console.log(xhr.responseText);
