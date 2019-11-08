@@ -5,7 +5,9 @@ $(document).ready(function(){
     getResturantsFromDB(id);
     getCousines();
     restBanner(id);
+    
 });
+var Status = ['Open', 'Close'];
 
 function getResturantsFromDB(id) {
     $.get(SERVER + "restaurant/city/"+id, function(
@@ -57,7 +59,7 @@ function getResturantsFromDB(id) {
             MenuList +
             " .... </div></div> </div> " +
             '<div class="right-panel" style="text-transform: uppercase;">' +
-            '&nbsp;<span class="status status-open">Open</span> </div><a href="menu.html?id='+res.Id+'" class="view-btn">view</a>'+
+            '&nbsp;<span class="status status-open">'+Status[res.Status]+'</span> </div><a href="menu.html?id='+res.Id+'" class="view-btn">view</a>'+
             "</div>";
 
           $(".top-dishes").append(sponsers);

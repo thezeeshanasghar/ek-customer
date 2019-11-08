@@ -18,6 +18,7 @@ function loadRestaurantDetails(restaurantId) {
             var cuisineHtml = '';
            
                 var restaurant = result;
+                localStorage.setItem("DelCharges", restaurant.DelCharges);
                 $("#restName").text(restaurant.Name);
                 $.each(restaurant.cuisines, function (index, cuisine) {
 

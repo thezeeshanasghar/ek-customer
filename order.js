@@ -3,6 +3,7 @@ var items = getObjsFromLocalStorage("items");
 var extraitems = getObjsFromLocalStorage("extraitems");
 var CityId = getObjsFromLocalStorage("CityId");
 var RestaurantId = getObjsFromLocalStorage("RestaurantId");
+var DelCharges = getObjsFromLocalStorage("DelCharges");
 $(document).ready(function () {
     loadOrderItems(); loadextraitems(); loadExtraOrderItems();
 });
@@ -192,7 +193,7 @@ function calculateOrderTotals() {
     let subtotal = 0;
     let grandTotal = 0;
     let GST = 0;
-    let fee = 0;
+    let fee = DelCharges;
     $.each(items, function (i, value) {
         itemsubtotal = itemsubtotal + value.Total;
     });
@@ -202,10 +203,12 @@ function calculateOrderTotals() {
     });
 
     subtotal = itemsubtotal + exitemsubtotal ;
-
+    GST = (15/100)*subtotal;
 
     grandTotal = subtotal + fee + GST; // TODO: using gst and fee to cal grandtotal
     $("#subtotal").val(subtotal);
+   // $("#GST").val(GST);
+    $("#DelCharges").val(DelCharges);
     $("#grandTotal").val(grandTotal);
 }
 
@@ -240,8 +243,8 @@ function checkout() {
             var order = {
                 Subtotal: $("#subtotal").val(),
                 GrandTotal: $("#grandTotal").val(),
-                Fee: 0,
-                GST: 0,
+                Fee: $("#DelCharges").val(),
+                GST: $("#GST").val(),
                 OrderItems : allItems,
                 CustomerId: customer.Id,
                 CityId : CityId,
