@@ -2548,3 +2548,74 @@ p.for-you {
 	color: red;
 	display: block;
 }
+
+
+
+
+
+
+/* Rider Rating */
+
+#rider-rating {
+	width: 100%;
+	float: left;
+	margin-bottom: 100px;
+}
+
+.rider-rating-heading {
+	float: left;
+	font-size: 28px;
+	font-weight: 500;
+	color: #62ba64;
+	margin: 20px;
+	margin-left: 0;
+	text-transform: capitalize;
+}
+
+.rider-rating {
+	float: left;
+	display: flex;
+	transform: rotateY(180deg);
+
+}
+
+.rider-rating input {
+	display: none;
+}
+
+.rider-rating label {
+	display: block;
+	cursor: pointer;
+	width: 50px;
+}
+
+.rider-rating label:before {
+	content: '\f005';
+	font-family: fontAwesome;
+	position: relative;
+	display: block;
+	font-size: 50px;
+	color: #9b9b9b;
+}
+
+.rider-rating label:after {
+	content: '\f005';
+	font-family: fontAwesome;
+	position: absolute;
+	display: block;
+	font-size: 50px;
+	color: #4db748;
+	top: 0;
+	opacity: 0;
+	transition: .5s;
+	text-shadow: 0 2px 5px rgba(0,0,0,.5);
+
+}
+
+
+
+.rider-rating label:hover:after,
+.rider-rating label:hover ~ label:after,
+.rider-rating input:checked ~ label:after  {
+	opacity: 1;
+}
