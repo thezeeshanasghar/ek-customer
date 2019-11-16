@@ -7,6 +7,9 @@ $(document).ready(function(){
 
     $("#star1").click(function(){
 
+        $("#rider-rating label").css("pointer-events","none");
+
+
         var riderrating = {
             value: 5
         }
@@ -37,6 +40,9 @@ $(document).ready(function(){
 
 
     $("#star2").click(function(){
+
+        $("#rider-rating label").css("pointer-events","none");
+
 
         var riderrating = {
             value: 4
@@ -69,6 +75,9 @@ $(document).ready(function(){
 
     $("#star3").click(function(){
 
+        $("#rider-rating label").css("pointer-events","none");
+
+
         var riderrating = {
             value: 3
         }
@@ -98,6 +107,9 @@ $(document).ready(function(){
 
     $("#star4").click(function(){
 
+        $("#rider-rating label").css("pointer-events","none");
+
+
         var riderrating = {
             value: 2
         }
@@ -125,6 +137,9 @@ $(document).ready(function(){
 
 
     $("#star5").click(function(){
+
+        $("#rider-rating label").css("pointer-events","none");
+        
 
         var riderrating = {
             value: 1
