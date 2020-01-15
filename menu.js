@@ -50,13 +50,14 @@ function loadRestaurantDetails(restaurantId) {
                         html += '<div class="menu-item-info-img"><img src="'+IP+":"+PORT+"/"+menuItem.ImagePath+'" /></div>';
                         html += '<div class="menu-item-name">';
                         html += '<h4>' + menuItem.Name + '</h4>';
-                        html += '<p>' + getMenuSize(menuItem.Size) + " " + menuItem.Price + '</p>';
+                      //  html += '<p>' + getMenuSize(menuItem.Size) + " " + menuItem.Price + '</p>';
+                      html += '<p>(' + menuItem.Size + ") " + menuItem.Price + '</p>';
                         html += '</div></div>';
 
                         html += '<div class="right-panel">';
                         html += '<a role="button" tabindex="0"  onclick="addToCart('
                             + menuItem.Id + ',' + quoteAndEscape(menuItem.Name) +
-                            ',' + menuItem.Size + ',' + menuItem.Price +
+                            ',' + quoteAndEscape(menuItem.Size) + ',' + menuItem.Price +
                             ');cartGlow();" style="cursor: pointer;">Add to cart</a>';
 
                         html += '</div></div>';
@@ -116,7 +117,7 @@ function addToCart(id, name, size, price) {
                 Total: 0
             }
             item.Total = item.Price * item.Quantity;
-            item.Size = getMenuSize(item.Size);
+            //item.Size = getMenuSize(item.Size);
             items.push(item);
             localStorage.setItem('items', JSON.stringify(items));
             toggleCart();
