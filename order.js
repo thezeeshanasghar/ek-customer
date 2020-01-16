@@ -4,6 +4,10 @@ var extraitems = getObjsFromLocalStorage("extraitems");
 var CityId = getObjsFromLocalStorage("CityId");
 var RestaurantId = getObjsFromLocalStorage("RestaurantId");
 var DelCharges = getObjsFromLocalStorage("DelCharges");
+
+var CouponDiscount = 0 ;
+var Discount = 0;
+
 $(document).ready(function () {
     loadOrderItems(); loadextraitems(); loadExtraOrderItems();
 });
@@ -328,3 +332,58 @@ function checkout() {
 
     
 }
+
+
+
+
+
+function loadCouponCode()
+{
+    var code = $("#coupon-input").val();
+    $.ajax({
+        url: SERVER +"CouponCode/" + code,
+        type: "GET",
+        dataType: "JSON",
+        contentType: "application/json;charset=utf-8",
+        success: function (result) { 
+            console.log(result);
+            var date = result.ValidTill;
+            var jdate = new Date(date);
+            var sysdate = new Date();
+            if (sysdate < jdate)
+            {
+            // alert("Congratulations You Got " +result.PctDiscount+"% Discount");  
+            CouponDiscount = result.PctDiscount;
+            console.log(CouponDiscount);
+            calculateOrderTotals();
+            $("#coupon-input").css({
+               'border-color' : '#60ba62',
+               'color' : '#60ba62'
+            });
+
+            }
+            if(sysdate > jdate)
+            {
+            alert("Sorry This Code is Expired");
+            }
+
+
+            
+          
+            //$("#extras").html(html);
+        },
+        error: function (xhr, status, error) {
+            console.log(xhr.responseText);
+            
+             $("#coupon-input").css({
+               'border-color' : 'red',
+               'color' : 'red'
+            });
+
+
+        }
+    });
+}
+
+
+
