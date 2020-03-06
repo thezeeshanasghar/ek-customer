@@ -1,19 +1,35 @@
+var URL="";
+var id =0;
+var cuisineId=0;
+var Top="";
+var Parameters=[];
 $(document).ready(function(){
-    
-    var id = parseInt(getParameterByName("id")) || 0;
+  GenerateUrl(Parameters);
+     id = parseInt(getParameterByName("id")) || 0;
+     
+     cuisineId=parseInt(getParameterByName("cuisineId"))||0;
     localStorage.setItem("CityId", id);
-    getResturantsFromDB(id);
+     URL=SERVER + "restaurant/city/"+id;
+     cuisineId!=0?URL+="?cuisineId="+cuisineId:"";
+     Top!=""?URL+="&top=true":"";
+    getResturantsFromDB(id,URL);
     getCousines();
     restBanner(id);
     
 });
 var Status = ['Open', 'Close'];
 
-function getResturantsFromDB(id) {
-    $.get(SERVER + "restaurant/city/"+id, function(
+function getResturantsFromDB(id,url) {
+ 
+    $.get(url, function(
       restaurants,
       status
     ) {
+      console.log(restaurants)
+      // $(".top-dishes").html("");
+      // $(".top-resturants").html("");
+      // $(".all-restaurants").html("");
+   
       for (var i = 0; i < restaurants.length; i++) {
         var res = restaurants[i];
         // console.log(res.Name);
@@ -36,10 +52,17 @@ function getResturantsFromDB(id) {
           }
 
           // console.log('image path is ===',imgpath);
-          var sponsers =
+          var sponsers="";
+          
+      
+          if(res.IsSponsor==true)
+          {
+             sponsers =
             '<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"><div class="top-sponsor-item"><img src =' +
             imgpath +
             ' style="width:100%; height: 100%;"></div></div>';
+          }
+      
           var str =
             '<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"><div class="top-sponsor-item"><img src =' +
             imgpath +
@@ -75,17 +98,60 @@ function getResturantsFromDB(id) {
       var restmenuList = ' <ul><li class="active">All Cuisines</li>';
       for (var i = 0; i < val.length; i++) {
         var obj = val[i];
-        restmenuList += '<li>' + obj.Name + ' </li>'
+        restmenuList += '<li onclick=\'Cousineclk('+obj.Id+')\'>' + obj.Name + ' </li>'
       }
       restmenuList +='</ul>';
       $(".item-list").append(restmenuList);
     });
   }
   
+ function Cousineclk(Cousine)
+  {
+ 
+    setParams("cuisineId",Cousine);
+    GenerateUrl(Parameters);
+  }
 
 
+function setParams(key,val)
+{
+  var url= window.location.href;
+   Parameters= url.split("?")[1].split("&");
+  var stat=false;
+  console.log(Parameters)
+  for(var x=0;x<Parameters.length;x++){
+    console.log(Parameters[x].split("=")[0].toString()==key);
+    if(Parameters[x].split("=")[0].toString()==key)
+    {
+      Parameters[x]=key+"="+val;
 
+      stat=true;
+    }
+  }
+  if(stat==false)
+  {
+    Parameters.push(key+"="+val);
+  }
+}
+function GenerateUrl(Parameters)
+{
+ 
+  if(Parameters.length!=0)
+  {
+     var url=  window.location.href.split("?")[0]+"?";
 
+    for(var i=0;i<Parameters.length;i++){
+      if(i==0)
+      {
+        url+=Parameters[i];
+      } else{
+        url+="&"+Parameters[i];
+      }
+      
+      }
+    window.open(url,"_self");
+  }
+}
 
 function restBanner(id) {
 
@@ -104,7 +170,7 @@ function restBanner(id) {
             
         $("#restaurant-banner").css("background-image","url('"+IP+":"+PORT+"/"+path2+"')");
         $(".city-restaurant h1").text(result.Name);
-
+          $("#CityName").text("Top restaurants of "+result.Name);
                 
         },
         error: function (xhr, status, error) {
@@ -114,3 +180,12 @@ function restBanner(id) {
 }
 
 
+$("#dropdownSort").on("change",function(){
+  var value=$("#dropdownSort").val();
+
+  if(value!="0")
+  {
+    setParams("top","true");
+    GenerateUrl(Parameters);
+  }
+})
