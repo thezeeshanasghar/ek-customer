@@ -191,6 +191,14 @@ function deleteExtraItem (i)
 }
 
 function calculateOrderTotals() {
+
+    // if (CouponDiscount !=0 && CouponDiscount != null)
+    // {
+    // Discount = ((CouponDiscount/100)*itemsubtotal);
+    // subtotal = itemsubtotal-Discount ;
+    // }
+
+    // else {
     
     let itemsubtotal = 0;
     let exitemsubtotal = 0;
@@ -212,8 +220,12 @@ function calculateOrderTotals() {
     grandTotal = subtotal + fee + GST; // TODO: using gst and fee to cal grandtotal
     $("#subtotal").val(subtotal);
    // $("#GST").val(GST);
+
+   // var rounded = grandTotal.toPrecision(1);
+   var rounded = Math.round(grandTotal);
     $("#DelCharges").val(DelCharges);
-    $("#grandTotal").val(grandTotal);
+    $("#grandTotal").val(rounded);
+    // }
 }
 
 function checkout() {

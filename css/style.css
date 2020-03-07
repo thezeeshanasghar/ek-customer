@@ -2619,3 +2619,19 @@ p.for-you {
 .rider-rating input:checked ~ label:after  {
 	opacity: 1;
 }
+
+#myOrdersHeading {
+	width: 100%;
+	padding-top: 155px;
+	padding-bottom: 30px;
+}
+
+
+.col-r .order-panel {
+	position: relative !important;
+	height: auto !important;
+}
+
+#orders section:last-child {
+	border-bottom: none;
+}
