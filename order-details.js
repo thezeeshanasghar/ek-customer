@@ -19,7 +19,7 @@ function getOrderDetails(orderId) {
                 let subt = 0,gst=0.,deliveryCharges=0;
                 $.each(result.OrderItems, function (key, item) {
                     html += '<section>';
-                    html += '<div style="text-align: left;" class="order-panel-col order-panel-width">';
+                    html += '<div style="text-align: left; padding-left: 50px;" class="order-panel-col order-panel-width">';
                     html += '<p>' + item.Name + '</p>';
                     html += '</div>';
                     html += '<div class="order-panel-col order-panel-width">';

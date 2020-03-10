@@ -2013,6 +2013,17 @@ p.for-you {
 	padding: 5px 0;
 }
 
+.order-details-sum {
+	padding: 5px 50px;
+}
+
+.order-details-sum {
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+
+
 .order-detail-total {
 	width: 100%;
 	padding: 5px 30px;
@@ -2026,6 +2037,15 @@ p.for-you {
 	font-weight: 700;
 	color: #000;
 	padding-top: 0;
+}
+
+.order-details-total{
+	padding: 5px 0;
+}
+
+.order-details-total{
+	padding-left: 50px;
+	padding-right: 50px;
 }
 
 .vanish-left {
@@ -2421,7 +2441,7 @@ p.for-you {
 .order-panel .order-panel-width {
 	width: 25%;
 	text-align:right;
-	padding-right: 30px;
+	padding-right: 50px;
 }
 
 
