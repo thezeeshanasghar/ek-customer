@@ -70,7 +70,6 @@ $(document).ready(function () {
 });
 
 function loadCustomerOrders(customerId) {
-
     $.ajax({
         url: SERVER + "Customer/" + customerId + "/orders",
         type: "GET",
@@ -84,7 +83,7 @@ function loadCustomerOrders(customerId) {
                     html += '<section>';
                     html += '<div class="order-panel-col order-panel-detail">';
                     html += '<h4>Order ID #' + order.Id + '</h4>';
-                    html += '<p>' + order.Created + '</p>';
+                    html += '<p>' + moment( order.Created ).format('MMMM Do YYYY, h:mm:ss a');+ '</p>';
                     html += '</div>';
                     html += '<div class="order-panel-col order-panel-amount">';
                     html += '<h4>' + order.GrandTotal + '</h4>';

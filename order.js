@@ -31,12 +31,12 @@ function loadOrderItems() {
             html += '<div class="quantity-box">';
 
             html += '<span class="left" onclick="minusQuantity('
-                + item.Id + ',' + item.Price + ',' + item.Quantity + ')"><img src="img/minus.png"></span>';
+                +item.Type+','+ item.Id + ',' + item.Price + ',' + item.Quantity + ')"><img src="img/minus.png"></span>';
 
             html += '<span class="qty">' + item.Quantity + '</span>';
 
             html += '<span class="right" onclick="plusQuantity('
-                + item.Id + ',' + item.Price + ',' + item.Quantity + ')"><img src="img/plus.png"></span>';
+            +item.Type+','  + item.Id + ',' + item.Price + ',' + item.Quantity + ')"><img src="img/plus.png"></span>';
 
             html += '</div>';
             html += ' </li>';
@@ -46,6 +46,7 @@ function loadOrderItems() {
 
         });
         $("#itemValues").html(html);
+        localStorage.setItem("items",JSON.stringify(items));
         calculateOrderTotals();
     }
 }
@@ -111,7 +112,7 @@ function loadExtraOrderItems() {
             html += '</ul>';
 
         });
-        $("#extraItemValues").html(html);
+        $("#extraItemValues").append(html);
         calculateOrderTotals();
     }
 }
@@ -119,28 +120,25 @@ function loadExtraOrderItems() {
 
 
 
-function minusQuantity(itemId, price, quantity) {
+function minusQuantity(type,itemId, price, quantity) {
+ 
     if (quantity > 0) {
         quantity = quantity - 1;
         let total = calculateTotal(price, quantity);
-        changeItemValues(itemId, quantity, total);
-    }
-}
-
-function minusExtraItem(extraitemId, price, quantity) {
-    if (quantity > 0) {
-        quantity = quantity - 1;
-        let total = calculateTotal(price, quantity);
-        changeExtraItemValues(extraitemId, quantity, total);
+        changeItemValues(type,itemId, quantity, total);
     }
 }
 
 
-function plusQuantity(itemId, price, quantity) {
+
+function plusQuantity(type,itemId, price, quantity) {
+    debugger
     quantity = quantity + 1;
     let total = calculateTotal(price, quantity);
-    changeItemValues(itemId, quantity, total)
+    changeItemValues(type,itemId, quantity, total)
 }
+
+
 
 function plusExtraItem(extraitemId, price, quantity) {
     quantity = quantity + 1;
@@ -152,9 +150,9 @@ function calculateTotal(price, quantity) {
     return price * quantity;
 }
 
-function changeItemValues(itemId, quantity, total) {
+function changeItemValues(type,itemId, quantity, total) {
     $.each(items, function (i, value) {
-        if (value.Id == itemId) {
+        if (value.Id == itemId &&  value.Type==type) {
             items[i].Quantity = quantity;
             items[i].Total = total;
         }
@@ -213,7 +211,7 @@ function calculateOrderTotals() {
     $("#subtotal").val(subtotal);
    // $("#GST").val(GST);
     $("#DelCharges").val(DelCharges);
-    $("#grandTotal").val(grandTotal);
+    $("#grandTotal").val(Math.round(grandTotal));
 }
 
 function checkout() {
@@ -279,59 +277,59 @@ function checkout() {
 }
 
 // Add to Cart
-  function AddToCart() {
-    var id = $('option:selected').val();
+//   function AddToCart(ID) {
+//     var id = ID;//$('option:selected').val();
     
-    $.ajax({
-        url: SERVER + "restaurantextraitem/"+id,
-        type: "GET",
-        dataType: "JSON",
-        contentType: "application/json;charset=utf-8",
-        success: function (result) {
-            console.log(result);
-         if (isLoggedIn()) {
-           // extraitems = getObjsFromLocalStorage("extraitems");
-            if (!extraitems) extraitems = [];
-            let isExist = false;
-            if (extraitems.length > 0) {
-                $.each(extraitems, function (i, value) {
-                    if (value.Id == id) {
-                        isExist = true;
-                        return false;
-                    }
-                });
-            }
-            if (!isExist) {
-                var extraitem = {
-                    Size: result.Size,
-                    Id: result.Id,
-                    Name: result.Name,
-                    Price: result.Price,
-                    Quantity: 1,
-                    Total: 0
-                }
-                extraitem.Total = extraitem.Price * extraitem.Quantity;
-                extraitems.push(extraitem);
-                localStorage.setItem('extraitems', JSON.stringify(extraitems));
-                toggleCart();
-                loadExtraOrderItems();
+//     $.ajax({
+//         url: SERVER + "MenuExtraItem/"+id,
+//         type: "GET",
+//         dataType: "JSON",
+//         contentType: "application/json;charset=utf-8",
+//         success: function (result) {
+//             console.log(result);
+//          if (isLoggedIn()) {
+//            // extraitems = getObjsFromLocalStorage("extraitems");
+//             if (!extraitems) extraitems = [];
+//             let isExist = false;
+//             if (extraitems.length > 0) {
+//                 $.each(extraitems, function (i, value) {
+//                     if (value.Id == id) {
+//                         isExist = true;
+//                         return false;
+//                     }
+//                 });
+//             }
+//             if (!isExist) {
+//                 var extraitem = {
+//                     Size: result.Size,
+//                     Id: result.Id,
+//                     Name: result.Name,
+//                     Price: result.Price,
+//                     Quantity: 1,
+//                     Total: 0
+//                 }
+//                 extraitem.Total = extraitem.Price * extraitem.Quantity;
+//                 extraitems.push(extraitem);
+//                 localStorage.setItem('extraitems', JSON.stringify(extraitems));
+//                 toggleCart();
+//                 loadExtraOrderItems();
                 
-            } else {
-                alert('This item already added in your cart, please click items on right top corner!');
-            }
-         } else {
-             alert('Please login first');
-         }
+//             } else {
+//                 alert('This item already added in your cart, please click items on right top corner!');
+//             }
+//          } else {
+//              alert('Please login first');
+//          }
 
             
-        },
-        error: function(xhr, status, error) {
-            console.log(xhr.responseText);
-          }
-    });
+//         },
+//         error: function(xhr, status, error) {
+//             console.log(xhr.responseText);
+//           }
+//     });
 
     
-}
+// }
 
 
 
@@ -385,5 +383,92 @@ function loadCouponCode()
     });
 }
 
+function GetExtraItem()
+{
+    var Item =JSON.parse(localStorage.getItem("items"));
+    console.log(Item);
+   var MenuId=[];
+   $("#ExtraMenuList tbody").html("");
+    for(var  x=0;x< Item.length;x++ )
+    {
+        
+        var response = MenuId.indexOf(Item[x].MenuId)
+        if(MenuId.indexOf(Item[x].MenuId)==-1)
+        {
+            console.log(Item[x].MenuId)
+          $.ajax({
+            type:"GET",
+            dataType:"json",
+            url:SERVER + "menu/" + Item[x].MenuId + "/menuextraitem" ,
+            async: true,
+            success:function(response)
+            {
+                
+                console.log(response);
+                var rows="";
+                for(var i=0;i<response.length;i++)
+                {
+                    rows+="<tr>"
+                    rows +="<td><input type=\"checkbox\"  onclick=\"addToCart("+1+","+response[i].Id+",'"+response[i].Name+"',"+response[i].Size+","+response[i].Price+")\" /></td>"
+                    rows +="<td>"+response[i].Name+"</td>"
+                    rows +="<td>"+response[i].Price+"</td>"
+                    rows +="</tr>"
+                }
+                $("#ExtraMenuList tbody").append(rows);
+               
+            },
+            error:function(response)
+            {
+                console.log(response);
+            }
+        })
+        }
+   
+        MenuId.push(Item[x].MenuId)
+    }
+    
+    $("#ExtraItemModal").modal("show");
+
+}
 
 
+
+//Changes
+
+
+function addToCart(type,id, name, size, price) { 
+    if (!items) items = [];
+    let isExist = false;
+    if (items.length > 0) {
+        $.each(items, function (i, value) {
+            // if (value.Id == id) {
+            //     isExist = true;
+            //     return false;
+            // }
+            if (value.Id == id && value.Type == type) 
+            {
+                isExist = true;
+                return false;
+            }
+        });
+    }
+    if (!isExist) {
+        var item = {
+            Type:type,
+            Id: id,
+            Name: name,
+            Size: size,
+            Price: price,
+            Quantity: 1,
+            Total: 0
+        }
+        item.Total = item.Price * item.Quantity;
+        items.push(item);
+        localStorage.setItem('items', JSON.stringify(items));
+        console.log(items);
+        loadOrderItems();
+      
+    } else {
+        alert('This item already added in your cart');
+    }
+}

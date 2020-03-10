@@ -23,7 +23,9 @@ function loadCustomerProfile(customerId) {
                 $("#Email").val(customer.Email);
                 var html = '';
                 if (customer.ImagePath) {
-                    html += '<img src="' + RESOURCEURL + customer.ImagePath + '" />';
+                    // html += '<img src="' + RESOURCEURL + customer.ImagePath + '" />';
+                    html += '<img src="' + customer.ImagePath + '" />';
+                    
                 } else {
                     html += '<img src="img/edit-profile-pic.jpg"></img>';
                 }

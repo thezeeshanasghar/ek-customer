@@ -43,7 +43,7 @@ function loadRestaurantDetails(restaurantId) {
                     //Restaurant Menu Items
                     html += '<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7 menu-item-info-panel">';
                     $.each(menu.MenuItems, function (index, menuItem) {
-
+console.log(index)
                         html += '<div class="menu-item-info">';
 
                         html += '<div class="left-panel">';
@@ -56,8 +56,8 @@ function loadRestaurantDetails(restaurantId) {
 
                         html += '<div class="right-panel">';
                         html += '<a role="button" tabindex="0"  onclick="addToCart('
-                            + menuItem.Id + ',' + quoteAndEscape(menuItem.Name) +
-                            ',' + quoteAndEscape(menuItem.Size) + ',' + menuItem.Price +
+                        +0+','+ menuItem.Id + ',' + quoteAndEscape(menuItem.Name) +
+                            ',' + quoteAndEscape(menuItem.Size) + ',' + menuItem.Price +','+menuItem.MenuId+
                             ');cartGlow();" style="cursor: pointer;">Add to cart</a>';
 
                         html += '</div></div>';
@@ -94,27 +94,30 @@ function getMenuSize(size) {
     return sizeName;
 }
 
-function addToCart(id, name, size, price) {
+function addToCart(Type,id, name, size, price,MenuId) {
     // if (isLoggedIn()) {
         items = getObjsFromLocalStorage("items");
         if (!items) items = [];
         let isExist = false;
         if (items.length > 0) {
             $.each(items, function (i, value) {
-                if (value.Id == id) {
+                if (value.Id == id && value.Type==Type) {
                     isExist = true;
                     return false;
                 }
+              
             });
         }
         if (!isExist) {
             var item = {
+                Type:Type,
                 Id: id,
                 Name: name,
                 Size: size,
                 Price: price,
                 Quantity: 1,
-                Total: 0
+                Total: 0,
+                MenuId:MenuId
             }
             item.Total = item.Price * item.Quantity;
             //item.Size = getMenuSize(item.Size);

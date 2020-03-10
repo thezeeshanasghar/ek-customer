@@ -328,11 +328,12 @@
 						<h4>Extras</h4>
 
 						
-						<select class="extra-select" name="extraItems" id="extraItems" >
+						<!-- <select class="extra-select" name="extraItems" id="extraItems" >
 							<option selected hidden>Choose item</option>
-						</select>
+						</select> -->
 
-	 					 <button class="extra-btn" onclick="AddToCart()" >Add to Cart</button> 
+	 					 <!-- <button class="extra-btn" onclick="AddToCart()" >Add to Cart</button>  -->
+	 					 <button class="extra-btn" onclick="GetExtraItem()" >Get Extra Items</button> 
 
 
 					</div>
@@ -351,7 +352,7 @@
 
 	   <!-- extra items table -->
 	  
-	   <div id="order" class="extra-order" style="margin-top: 1px">
+	   <!-- <div id="order" class="extra-order " style="margin-top: 1px;">
 		
 		<div class="container">
 			
@@ -396,7 +397,7 @@
 				</div>
 			</div>
 		</div>
-	 </div>
+	 </div> -->
 
 
 	<!-- Order Totals -->
@@ -580,7 +581,37 @@
 
 	</div>
 
+	<div class="modal modal-lg" tabindex="-1" role="dialog" id="ExtraItemModal">
+		<div class="modal-dialog" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title">Add Extra Item</h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body">
+				<div class="table-responsive">
+					<table class="table table-hover" id="ExtraMenuList">
+						<thead>
+								<tr>
+									<th>Name</th>
+									<th>Price</th>
+								</tr>
+						</thead>
+						<tbody>
 
+						</tbody>
+					</table>
+				</div>
+		
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
 	<!-- Mini Footer -->
 
 	<div id="mini-footer">
@@ -590,6 +621,7 @@
 	<!-- Srcipts -->
 
 	<script type="text/javascript" src="js/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/cycle.js"></script>
 	<script src="server.js"></script>
 	<script src="common.js"></script>

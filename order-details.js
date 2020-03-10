@@ -14,8 +14,9 @@ function getOrderDetails(orderId) {
         contentType: "application/json;charset=utf-8",
         success: function (result) {
             //if (result.IsSuccess) {
+                console.log(result)
                 var html = '';
-                let subt = 0;
+                let subt = 0,gst=0.,deliveryCharges=0;
                 $.each(result.OrderItems, function (key, item) {
                     html += '<section>';
                     html += '<div style="text-align: left;" class="order-panel-col order-panel-width">';
@@ -32,11 +33,18 @@ function getOrderDetails(orderId) {
                     html += '</div>';
                     html += '</section>';
                     subt = calSubotal(item);
+                    gst=(subt/100)*16;
+                
+                    console.log(item.DeliveryCharges)
+               
                 });
                 $("#orderItems").html(html);
                 $("#subtotal").text(subt);
-                grandTotal = calGrandTotal();
-                $("#grandTotal").text(subt);
+                $("#GST").text(gst);
+                deliveryCharges=result.DeliveryCharges;
+                $("#DeliveryCharges").text(result.DeliveryCharges);
+                grandTotal = calGrandTotal(subt,gst,deliveryCharges);
+                $("#grandTotal").text(grandTotal);
 
 
        //     } else {
@@ -54,7 +62,8 @@ function calSubotal(item){
     return subtotal;
 }
 
-function calGrandTotal(){
-    grandTotal = grandTotal + subtotal;
-    return grandTotal;
+function calGrandTotal(subt,gst,DeliveryCharges){
+    debugger
+  let  grandTotal = subt +gst+DeliveryCharges;
+    return Math.round(grandTotal) ;
 }
