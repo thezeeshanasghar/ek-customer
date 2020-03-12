@@ -684,6 +684,7 @@ button {
 	box-sizing: border-box;
 	border: 5px solid #c6c4c7;
 	margin-bottom: 50px;
+	overflow: scroll;
 }
 
 .rest-news h3 {

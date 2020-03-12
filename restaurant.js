@@ -15,6 +15,7 @@ $(document).ready(function(){
     getResturantsFromDB(id,URL);
     getCousines();
     restBanner(id);
+   getPromotions(id);
     
 });
 var Status = ['Open', 'Close'];
@@ -178,6 +179,38 @@ function restBanner(id) {
         }
     });
 }
+
+function getPromotions(id) {
+
+      $.ajax({
+          url: SERVER + "promotion/city/" + id ,
+          type: "GET",
+          dataType: "JSON",
+          contentType: "application/json;charset=utf-8",
+          success: function (result) {
+            console.log(result);
+            $.each(result, function (index, promo) {
+              // 0-image 1-news 2-video
+              if (promo.PromoType == 0)
+              {
+                console.log("image");
+              }
+              if (promo.PromoType == 1)
+              {
+                console.log("news");
+                $("#newstitle").html(promo.Name);
+                $("#newscontent").html(promo.Content);
+              }
+            });
+  
+             
+  
+          },
+          error: function (xhr, status, error) {
+              console.log(xhr.responseText);
+          }
+      });
+  }
 
 
 $("#dropdownSort").on("change",function(){
