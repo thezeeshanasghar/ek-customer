@@ -19,10 +19,45 @@
 				<div class="right-panel">x</div>
 			</div>
 
-			<div class="login-box-content">
+			<!-- <div class="login-box-content">
 				<input type="text" id="Email" name="Email" placeholder="Please enter your email address">
 				<input type="password" id="Password" name="Password" placeholder="Please enter your password">
-				<input type="submit" value="Submit" onclick="login()">
+				<button type="button" onclick="login()">Login</button>
+			</div> -->
+
+
+			<div class="signup-box-content">
+
+				<div class="signHeadings">
+					
+					<h2>Login</h2>
+					<p>Don't have an account? <span id="signLink">Register Now</span></p>
+
+				</div>
+
+
+				<div class="loginImg">
+					<img src="img/edit-profile-pic.jpg">
+				</div>
+
+
+				<form id="register-form" class="gen-form">
+
+
+	
+				<div class="signBox">
+					<div class="signBoxIcon"><img src="img/edit-photo.png"></div>	
+				<input type="text" id="Email" name="Email" placeholder="Email Address">
+				</div>
+
+				<div class="signBox">
+					<div class="signBoxIcon"><img src="img/edit-photo.png"></div>	
+					<input type="password" id="Password" name="Password" placeholder="Please enter your password">
+				</div>
+
+				<button type="button" onclick="login()">Login</button>
+
+				</form>
 			</div>
 		</div>
 	</div>
@@ -40,17 +75,43 @@
 
 			<div class="signup-box-content">
 
+				<div class="signHeadings">
+					
+					<h2>Register</h2>
+					<p>Already registered? <span id="loginLink">Login Here</span></p>
+
+				</div>
+
 				<form id="register-form" class="gen-form">
 
-					<input type="text" id="name" name="name" placeholder="Please enter your name">
-					<input type="text" id="mobNum" name="mobNum" placeholder="Please enter your mobile number">
-					<input type="email" id="email" name="email" placeholder="Please enter your email address">
-					<input type="password" id="password" name="password" placeholder="Please enter your password">
-					<input type="password" id="password2" name="password2" placeholder="Please re-enter your password">
-					<input type="text" id="Address" name="Address" placeholder="Please enter your address">
 
-					<select id="selectCities"></select>
-					<button id="signup-btn" type="button" onclick="SignUp()">Submit</button>
+	
+				<div class="signBox">
+					<div class="signBoxIcon"><img src="img/edit-photo.png"></div>	
+					<input type="text" id="name" name="name" placeholder="Name">
+				</div>
+
+				<div class="signBox">
+					<div class="signBoxIcon"><img src="img/edit-photo.png"></div>	
+					<input type="text" id="mobNum" name="mobNum" placeholder="Mobile Number">
+				</div>
+
+				<div class="signBox">
+					<div class="signBoxIcon"><img src="img/edit-photo.png"></div>	
+					<input type="email" id="email" name="email" placeholder="Email Address">
+				</div>
+
+				<div class="signBox">
+					<div class="signBoxIcon"><img src="img/edit-photo.png"></div>	
+					<input type="password" id="password" name="password" placeholder="Password">
+				</div>
+
+				<div class="signBox">
+					<div class="signBoxIcon"><img src="img/edit-photo.png"></div>	
+					<input type="password" id="password2" name="password2" placeholder="Confirm Password">
+				</div>
+
+				<button id="signup-btn" type="button" onclick="SignUp()">Register</button>
 
 				</form>
 			</div>
