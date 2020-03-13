@@ -19,6 +19,7 @@ $(document).ready(function () {
     $(".login-box-header .right-panel").click(function () {
         $(".login-overlay").fadeOut();
         $("#Email , #Password").val("");
+        $(".otp-overlay").fadeOut();
     });
 
      $("#loginLink").click(function () {
@@ -27,9 +28,21 @@ $(document).ready(function () {
         $("#Email , #Password").val("");
     });
 
+     $("#otploginLink").click(function () {
+        $(".otp-overlay").fadeOut();
+        $(".login-overlay").fadeIn();
+        $("#Email , #Password").val("");
+    });
+
      $("#signLink").click(function () {
         $(".login-overlay").fadeOut();
         $(".signup-overlay").fadeIn();
+        $("#Email , #Password").val("");
+    });
+
+    $("#otpLink").click(function () {
+        $(".login-overlay").fadeOut();
+        $(".otp-overlay").fadeIn();
         $("#Email , #Password").val("");
     });
 
@@ -55,6 +68,41 @@ $(document).ready(function () {
 
 
 
+    $(".nonReg-overlay, .login-box-header .right-panel").on('click', function (event) {
+        $(".nonReg-overlay").fadeOut();
+        // $("#name , #mobNum , #email , #password , #password2 , Address").val("");
+    });
+
+
+
+
+    // OTP function
+
+     $(".otp-overlay").on('click', function (event) {
+        $(this).fadeOut();
+        // $("#name , #mobNum , #email , #password , #password2 , Address").val("");
+    });
+
+    $(".web-otp li").click(function(){
+        var dot = $(this).find(".otpDot");
+        var num = $(this).find(".otpNum");
+
+        $(dot).hide();
+        $(num).show();
+        $(num).focus();
+    });
+
+    $(".otpNum").focusout(function(){
+        console.log("focusOut");
+        var val = $(this).val();
+        if (val.length == 0) {
+        $(this).hide();
+        $(this).prev(".otpDot").show();   
+        }
+    })
+
+
+
 
 
     $(".logoutLi").on('click', function () {
@@ -66,6 +114,19 @@ $(document).ready(function () {
     toggleProfileAndOrders();
 });
 
+function nonReg() {
+    $(".otp-overlay").fadeOut();
+    $(".nonReg-overlay").fadeIn();
+}
+
+function freeReg() {
+    $(".nonReg-overlay").fadeOut();
+    $(".signup-overlay").fadeIn();
+}
+
+
+
+ 
 function login() {
     obj = {
         "Email": $("#Email").val(),

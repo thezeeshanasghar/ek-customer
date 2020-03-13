@@ -2301,7 +2301,7 @@ p.for-you {
 
 .login-box {
 	width: 400px;
-	height: 495px;
+	height: 512px;
 	margin: auto;
 	top: 0;
 	right: 0;
@@ -2339,7 +2339,7 @@ p.for-you {
 	margin: auto;
 	display: block;
 	clear: both;
-	margin-bottom: 27px;
+	margin-bottom: 17px;
 }
 
 
@@ -2394,9 +2394,9 @@ p.for-you {
 
 .signup-box {
 	width: 400px;
-	height: 625px;
+	height: 512px;
 	margin: auto;
-	top: 18%;
+	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
@@ -2522,6 +2522,124 @@ p.for-you {
   color: #ccc;
 }
 
+.reg-link {
+	float: right;
+	border-bottom: 2px solid #4db748;
+	margin-top: 7px;
+	font-size: 18px;
+	line-height: 18px;
+	cursor: pointer;
+}
+
+.otp-overlay {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 10001;
+	background: rgba(0, 0, 0, 0.95);
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: none;
+}
+
+.web-otp {
+	width: 100%;
+	float: left;
+	margin: 20px 0;
+}
+
+.web-otp p {
+	font-family: 'taj' , sans-sarif;
+	font-size: 17px;
+	font-weight: 500;
+	line-height: 18px;
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+.web-otp ul {
+	width: 100%;
+	float: left;
+}
+
+.web-otp ul li {
+	width: 23.15%;
+	height: 38px;
+	line-height: 35px;
+	border: 2px solid #ddd;
+	text-align: center;
+	display: inline-block;
+	margin-left: 5px;
+}
+
+.web-otp ul li .otpDot {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: #4db748;
+	display: inline-block;
+}
+
+.web-otp ul li .otpNum {
+
+}
+
+.web-otp ul li:first-child {
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	margin: 0;
+}
+
+.web-otp ul li:last-child {
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+
+#otploginLink {
+	margin-bottom: 15px;
+}
+
+
+.web-otp input::-webkit-outer-spin-button,
+.web-otp input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.web-otp input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.web-otp input{
+	width: 70%;
+	text-align: center;
+	margin: auto;
+	height: 32px;
+	border: none;
+	display: none;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+
+
+.nonReg-overlay {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 10001;
+	background: rgba(0, 0, 0, 0.95);
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: none;
+}
+
+
 
 
 /**/
@@ -2538,6 +2656,9 @@ p.for-you {
 	text-align:right;
 	padding-right: 50px;
 }
+
+
+
 
 
 

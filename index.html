@@ -46,18 +46,141 @@
 
 	
 				<div class="signBox">
-					<div class="signBoxIcon"><img src="img/edit-photo.png"></div>	
+					<div class="signBoxIcon"><img src="img/email-reg.png"></div>	
 				<input type="text" id="Email" name="Email" placeholder="Email Address">
 				</div>
 
 				<div class="signBox">
-					<div class="signBoxIcon"><img src="img/edit-photo.png"></div>	
+					<div class="signBoxIcon"><img src="img/pswd-reg.png"></div>	
 					<input type="password" id="Password" name="Password" placeholder="Please enter your password">
 				</div>
 
 				<button type="button" onclick="login()">Login</button>
 
+				<div id="otpLink" class="reg-link">
+					Forgot password?
+				</div>
+
 				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- not registered Popup -->
+
+	<div class="nonReg-overlay">
+
+		<div class="login-box">
+
+			<div class="login-box-header">
+				<div class="left-panel">Ooops</div>
+				<div class="right-panel">x</div>
+			</div>
+
+			<!-- <div class="login-box-content">
+				<input type="text" id="Email" name="Email" placeholder="Please enter your email address">
+				<input type="password" id="Password" name="Password" placeholder="Please enter your password">
+				<button type="button" onclick="login()">Login</button>
+			</div> -->
+
+
+			<div class="signup-box-content">
+
+				<div class="signHeadings">
+					
+					<h2>Ooooops!</h2>
+					<p>Your Number is not registered with us. Kindly fill required details to get your self registered for free.</p>
+
+				</div>
+
+
+				<form id="register-form" class="gen-form">
+				
+
+				<button type="button" onclick="freeReg()">Free register</button>
+
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- OTP Popup -->
+	<div class="otp-overlay">
+
+		<div class="login-box">
+
+			<div class="login-box-header">
+				<div class="left-panel">Reset</div>
+				<div class="right-panel">x</div>
+			</div>
+
+			<!-- <div class="login-box-content">
+				<input type="text" id="Email" name="Email" placeholder="Please enter your email address">
+				<input type="password" id="Password" name="Password" placeholder="Please enter your password">
+				<button type="button" onclick="login()">Login</button>
+			</div> -->
+
+
+			<div class="signup-box-content">
+
+				<div class="signHeadings">
+					
+					<h2>Reset</h2>
+					<p>Please enter your registered mobile number</p>
+
+				</div>
+
+
+				<form id="register-form" class="gen-form">
+
+
+	
+					<div class="signBox">
+						<div class="signBoxIcon"><img src="img/mobile-reg.png"></div>	
+					<input type="text" id="Email" name="Email" placeholder="Mobile Number">
+					</div>
+
+					<div class="web-otp">
+						<p>Enter OTP Code on below <br>that received on your Mobile Number </p>
+
+						<ul>
+							
+							<li>
+								<span class="otpDot"></span>
+								<input class="otpNum" pattern="\d*" onKeyPress="if(this.value.length==1) return false;" type="number" name="">
+							</li>
+
+							<li>
+								<span class="otpDot "></span>
+								<input class="otpNum" pattern="\d*" onKeyPress="if(this.value.length==1) return false;" type="number" name="">
+							</li>
+
+							<li>
+								<span class="otpDot"></span>
+								<input class="otpNum" pattern="\d*" onKeyPress="if(this.value.length==1) return false;" type="number" name="">
+							</li>
+
+							<li>
+								<span class="otpDot"></span>
+								<input class="otpNum" pattern="\d*" onKeyPress="if(this.value.length==1) return false;" type="number" name="">
+							</li>
+
+						</ul>
+
+					</div>
+
+
+					<button type="button" onclick="nonReg()">Reset</button>
+
+					<div id="otploginLink" class="reg-link">
+						Login
+					</div>
+
+				</form>
+
+
 			</div>
 		</div>
 	</div>
@@ -87,27 +210,27 @@
 
 	
 				<div class="signBox">
-					<div class="signBoxIcon"><img src="img/edit-photo.png"></div>	
+					<div class="signBoxIcon"><img src="img/name-reg.png"></div>	
 					<input type="text" id="name" name="name" placeholder="Name">
 				</div>
 
 				<div class="signBox">
-					<div class="signBoxIcon"><img src="img/edit-photo.png"></div>	
+					<div class="signBoxIcon"><img src="img/mobile-reg.png"></div>	
 					<input type="text" id="mobNum" name="mobNum" placeholder="Mobile Number">
 				</div>
 
 				<div class="signBox">
-					<div class="signBoxIcon"><img src="img/edit-photo.png"></div>	
+					<div class="signBoxIcon"><img src="img/email-reg.png"></div>	
 					<input type="email" id="email" name="email" placeholder="Email Address">
 				</div>
 
 				<div class="signBox">
-					<div class="signBoxIcon"><img src="img/edit-photo.png"></div>	
+					<div class="signBoxIcon"><img src="img/pswd-reg.png"></div>	
 					<input type="password" id="password" name="password" placeholder="Password">
 				</div>
 
 				<div class="signBox">
-					<div class="signBoxIcon"><img src="img/edit-photo.png"></div>	
+					<div class="signBoxIcon"><img src="img/pswd-reg.png"></div>	
 					<input type="password" id="password2" name="password2" placeholder="Confirm Password">
 				</div>
 
