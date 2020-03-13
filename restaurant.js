@@ -15,7 +15,7 @@ $(document).ready(function(){
     getResturantsFromDB(id,URL);
     getCousines();
     restBanner(id);
-    
+
 });
 var Status = ['Open', 'Close'];
 
@@ -189,3 +189,59 @@ $("#dropdownSort").on("change",function(){
     GenerateUrl(Parameters);
   }
 })
+
+GetPromotionByCity();
+function GetPromotionByCity()
+{
+  debugger;
+  var Id=localStorage.getItem("CityId");
+$.ajax({
+type:"GET",
+dataType:"json",
+url:SERVER+"Promotion/"+Id+"/Promotions",
+success:function(response)
+{
+  console.log(response);
+  var News_rows="";
+  var Video_rows="";
+  for(var i=0;i<response.length;i++)
+  {
+    if(response[i].PromoType==1)
+    {
+  
+
+      
+     News_rows+=" <div class=\"item\" ><h3>"+response[i].Name+"</h3><h4 >"+response[i].Content+"</h4><br></div>"
+     
+    }else if(response[i].PromoType==2)
+    {
+      Video_rows+=" <div class=\"item\" >  <video width=\"400px\" controls>"
+      //Video_rows+="<source src="++" type=\"video/mp4\">"
+      Video_rows+="Your browser does not support HTML5 video.</video></div>"
+
+    }else if(response[i].PromoType==3)
+    {
+
+      Picture_owl
+    }
+  }
+console.log(Video_rows)
+  $("#Video_owl").html(Video_rows); 
+ $("#News_owl").html(News_rows);
+
+
+ $('.owl-carousel').owlCarousel({
+  margin:10,
+  loop:false,
+  autoWidth:false,
+  items:1
+});
+
+},error:function(response)
+{
+  console.log(response)
+}
+
+})
+
+}
