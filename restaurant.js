@@ -225,7 +225,7 @@ $("#dropdownSort").on("change",function(){
 GetPromotionByCity();
 function GetPromotionByCity()
 {
-  debugger;
+ 
   var Id=localStorage.getItem("CityId");
 $.ajax({
 type:"GET",
@@ -248,9 +248,9 @@ success:function(response)
      
     }else if(response[i].PromoType==2)
     {
-      Video_rows+=" <div class=\"item\" >  <video width=\"400px\" controls>"
-      Video_rows+="<source src="+response[i].Content+" type=\"video/mp4\">"
-      Video_rows+="Your browser does not support HTML5 video.</video></div>"
+      Video_rows+=" <div class=\"item\">"
+      Video_rows+="<iframe width=\"853\" height=\"335\" src="+response[i].Content+" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
+     Video_rows+="</div>"
 
     }else if(response[i].PromoType==0)
     {
@@ -260,6 +260,9 @@ success:function(response)
   }
   
 console.log(Video_rows)
+$("#Video_owl").html("");
+$("#News_owl").html("");
+$("#Picture_owl").html("");
   $("#Video_owl").html(Video_rows); 
  $("#News_owl").html(News_rows);
 $("#Picture_owl").html(Picture_owl);
@@ -270,7 +273,7 @@ owl.owlCarousel({
     loop:true,
     margin:10,
     autoplay:true,
-    autoplayTimeout:1000,
+    autoplayTimeout:10000,
     autoplayHoverPause:true
 });
 

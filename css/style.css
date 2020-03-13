@@ -684,7 +684,8 @@ button {
 	box-sizing: border-box;
 	border: 5px solid #c6c4c7;
 	margin-bottom: 50px;
-	overflow: scroll;
+	overflow-y: scroll;
+	height: 176px;
 }
 
 .rest-news h3 {
@@ -737,7 +738,7 @@ p.for-you {
 	text-align: center;
 	text-transform: uppercase;
 	line-height: 72px;
-	padding-top: 173px;
+	/* padding-top: 173px; */
 	margin-top: 50px;
 }
 
@@ -772,7 +773,7 @@ p.for-you {
 	position: absolute;
 	width: 30px;
 	left: 30px;
-	top: 56%;
+	top: 90%;
 	cursor: pointer;
 }
 
@@ -780,7 +781,7 @@ p.for-you {
 	position: absolute;
 	width: 30px;
 	right: 30px;
-	top: 56%;
+	top: 90%;
 	cursor: pointer;
 }
 
