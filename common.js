@@ -21,6 +21,18 @@ $(document).ready(function () {
         $("#Email , #Password").val("");
     });
 
+     $("#loginLink").click(function () {
+        $(".signup-overlay").fadeOut();
+        $(".login-overlay").fadeIn();
+        $("#Email , #Password").val("");
+    });
+
+     $("#signLink").click(function () {
+        $(".login-overlay").fadeOut();
+        $(".signup-overlay").fadeIn();
+        $("#Email , #Password").val("");
+    });
+
 
 
     // Signup Popup

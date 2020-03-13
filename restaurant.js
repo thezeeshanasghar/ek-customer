@@ -15,7 +15,7 @@ $(document).ready(function(){
     getResturantsFromDB(id,URL);
     getCousines();
     restBanner(id);
-
+  
 });
 var Status = ['Open', 'Close'];
 
@@ -179,6 +179,38 @@ function restBanner(id) {
     });
 }
 
+function getPromotions(id) {
+
+      $.ajax({
+          url: SERVER + "promotion/city/" + id ,
+          type: "GET",
+          dataType: "JSON",
+          contentType: "application/json;charset=utf-8",
+          success: function (result) {
+            console.log(result);
+            $.each(result, function (index, promo) {
+              // 0-image 1-news 2-video
+              if (promo.PromoType == 0)
+              {
+                console.log("image");
+              }
+              if (promo.PromoType == 1)
+              {
+                console.log("news");
+                $("#newstitle").html(promo.Name);
+                $("#newscontent").html(promo.Content);
+              }
+            });
+  
+             
+  
+          },
+          error: function (xhr, status, error) {
+              console.log(xhr.responseText);
+          }
+      });
+  }
+
 
 $("#dropdownSort").on("change",function(){
   var value=$("#dropdownSort").val();
@@ -198,12 +230,13 @@ function GetPromotionByCity()
 $.ajax({
 type:"GET",
 dataType:"json",
-url:SERVER+"Promotion/"+Id+"/Promotions",
+url:SERVER+"Promotion/city/"+Id,
 success:function(response)
 {
   console.log(response);
   var News_rows="";
   var Video_rows="";
+  var Picture_owl="";
   for(var i=0;i<response.length;i++)
   {
     if(response[i].PromoType==1)
@@ -216,25 +249,29 @@ success:function(response)
     }else if(response[i].PromoType==2)
     {
       Video_rows+=" <div class=\"item\" >  <video width=\"400px\" controls>"
-      //Video_rows+="<source src="++" type=\"video/mp4\">"
+      Video_rows+="<source src="+response[i].Content+" type=\"video/mp4\">"
       Video_rows+="Your browser does not support HTML5 video.</video></div>"
 
-    }else if(response[i].PromoType==3)
+    }else if(response[i].PromoType==0)
     {
 
-      Picture_owl
+      Picture_owl+="<div class=\"item\"><img src="+response[i].Content+" alt="+response[i].Name+"></div>"
     }
   }
+  
 console.log(Video_rows)
   $("#Video_owl").html(Video_rows); 
  $("#News_owl").html(News_rows);
+$("#Picture_owl").html(Picture_owl);
 
-
- $('.owl-carousel').owlCarousel({
-  margin:10,
-  loop:false,
-  autoWidth:false,
-  items:1
+var owl = $('.owl-carousel');
+owl.owlCarousel({
+    items:1,
+    loop:true,
+    margin:10,
+    autoplay:true,
+    autoplayTimeout:1000,
+    autoplayHoverPause:true
 });
 
 },error:function(response)

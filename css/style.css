@@ -684,6 +684,7 @@ button {
 	box-sizing: border-box;
 	border: 5px solid #c6c4c7;
 	margin-bottom: 50px;
+	overflow: scroll;
 }
 
 .rest-news h3 {
@@ -2013,6 +2014,17 @@ p.for-you {
 	padding: 5px 0;
 }
 
+.order-details-sum {
+	padding: 5px 50px;
+}
+
+.order-details-sum {
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+
+
 .order-detail-total {
 	width: 100%;
 	padding: 5px 30px;
@@ -2026,6 +2038,15 @@ p.for-you {
 	font-weight: 700;
 	color: #000;
 	padding-top: 0;
+}
+
+.order-details-total{
+	padding: 5px 0;
+}
+
+.order-details-total{
+	padding-left: 50px;
+	padding-right: 50px;
 }
 
 .vanish-left {
@@ -2279,7 +2300,7 @@ p.for-you {
 
 .login-box {
 	width: 400px;
-	height: 196px;
+	height: 495px;
 	margin: auto;
 	top: 0;
 	right: 0;
@@ -2311,6 +2332,20 @@ p.for-you {
 	width: 100%;
 }
 
+.loginImg {
+	width: 100px;
+	height: 100px;
+	margin: auto;
+	display: block;
+	clear: both;
+	margin-bottom: 27px;
+}
+
+
+.loginImg img {
+	width: 100%;
+}
+
 .login-box-content input {
 	width: 100%;
 	margin-bottom: 20px;
@@ -2318,6 +2353,18 @@ p.for-you {
 	border: 1px solid #4db748;
 	padding-left: 10px;
 	border-radius: 7px;
+}
+
+.login-box-content input::-webkit-input-placeholder { /* Edge */
+  color: red;
+}
+
+.login-box-content input::-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: red;
+}
+
+.login-box-content input::placeholder {
+  color: red;
 }
 
 .login-box-content input[type=submit] {
@@ -2346,9 +2393,9 @@ p.for-you {
 
 .signup-box {
 	width: 400px;
-	min-height: 435px;
+	height: 625px;
 	margin: auto;
-	top: 25%;
+	top: 18%;
 	right: 0;
 	bottom: 0;
 	left: 0;
@@ -2373,39 +2420,106 @@ p.for-you {
 
 .signup-box-content {
 	background: white;
-	padding: 20px; 
+	padding: 20px;
+	padding-bottom: 30px;
 	float: left;
 	width: 100%;
+	font-family: 'taj' , sans-sarif;
 }
 
-.signup-box-content input {
+.signHeadings {
 	width: 100%;
-	margin-bottom: 20px;
-	background: none;
-	border: 1px solid #4db748;
-	padding-left: 10px;
-	border-radius: 7px;
+	float: left;
+	margin-top: 20px;
+	margin-bottom: 30px;
+	/* clear: both; */
 }
 
-.signup-box-content select {
+.signHeadings h2 {
+	color: #4db748;
+	font-size: 72px;
+	font-family: 'taj' , sans-sarif;
+	margin-bottom: 10px;
+	letter-spacing: -3px;
+}
+
+.signHeadings p {
+	font-family: 'taj' , sans-sarif;
+	font-size: 17px;
+	font-weight: 500;
+}
+
+.signHeadings p #loginLink {
+	color: #4db748;
+	cursor: pointer;
+}
+
+.signHeadings p #signLink {
+	color: #4db748;
+	cursor: pointer;
+}
+
+.signBox {
 	width: 100%;
-	margin-bottom: 20px;
-	background: none;
-	border: 1px solid #4db748;
-	padding-left: 10px;
-	border-radius: 7px;
+	height: 38px;
+	float: left;
+	margin-bottom: 10px;
+	border-radius: 30px;
+	border: 1px solid #ddd;
+	background-color: #fff;
+	position: relative;
+	overflow: hidden;
 }
 
-.signup-box-content #signup-btn {
-	background: #4db748;
+.signBox .signBoxIcon {
+	width: 50px;
+	height: 38px;
+	float: left;
+	background-color: #4db748;
+	text-align: center;
+	line-height: 34px;
+}
+
+.signBox .signBoxIcon img {
+	width: 50%;
+}
+
+.signBox input {
+	height: 38px;
+	width: calc(100% - 50px);
+	padding-left: 10px;
+	border: none;
+	font-family: 'taj' ,  sans-sarif;
+}
+
+.signup-box-content button {
+	width: 100%;
+	height: 38px;
+	float: left;
+	margin-bottom: 10px;
+	border-radius: 30px;
+	border: 1px solid #4db748;
+	background-color: #4db748;
 	color: white;
-	width: 100px;
-	margin: auto;
-	display: block;
-	border-radius: 7px;
-	
+	position: relative;
+	overflow: hidden;
+	outline: none;
+	text-transform: uppercase;
+	font-size: 21px;
 }
 
+
+.signup-box-content input::-webkit-input-placeholder { /* Edge */
+  color: #ccc;
+}
+
+.signup-box-content input::-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #ccc;
+}
+
+.signup-box-content input::placeholder {
+  color: #ccc;
+}
 
 
 
@@ -2421,7 +2535,7 @@ p.for-you {
 .order-panel .order-panel-width {
 	width: 25%;
 	text-align:right;
-	padding-right: 30px;
+	padding-right: 50px;
 }
 
 
