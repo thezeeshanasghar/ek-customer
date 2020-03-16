@@ -2,8 +2,10 @@ var items = [];
 $(document).ready(function () {
     var id = parseInt(getParameterByName("id")) || 0;
    var PreId= localStorage.getItem("RestaurantId");
-   if(PreId)
-{
+   if(localStorage.getItem("items")!=null)
+   {
+     if(PreId)
+    {
     if(PreId==id)
     {
  
@@ -18,6 +20,8 @@ $(document).ready(function () {
    
     }
 }
+   }
+
    
   
     loadRestaurantDetails(id);
