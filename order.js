@@ -273,6 +273,7 @@ function checkout() {
                         alert("Your order is placed successfully");
                         localStorage.removeItem("items");
                         localStorage.removeItem("extraitems");
+                        localStorage.removeItem("RestaurantId");
                         toggleCart();
                         window.location.reload(true);
                         location.href = 'order-placed.html';

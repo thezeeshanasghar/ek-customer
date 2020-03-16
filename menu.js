@@ -1,7 +1,25 @@
 var items = [];
 $(document).ready(function () {
     var id = parseInt(getParameterByName("id")) || 0;
-    localStorage.setItem("RestaurantId", id);
+   var PreId= localStorage.getItem("RestaurantId");
+   if(PreId)
+{
+    if(PreId==id)
+    {
+ 
+    }else{
+     
+        if (confirm('Are you sure to Remove Previous Selected Items')) {
+            localStorage.setItem("RestaurantId", id);
+        localStorage.removeItem("items");
+        } else {
+            window.open("index.html","_self");
+        }
+   
+    }
+}
+   
+  
     loadRestaurantDetails(id);
      menuBanner(id);
 });
