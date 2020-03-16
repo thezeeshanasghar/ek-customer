@@ -1,7 +1,7 @@
 $(document).ready(function () {
     /* Authentication */
     toggleLogInOut();
-    selectCities();
+    //selectCities();
 
     // Login popup
     $(".loginBtn").click(function () {
@@ -156,14 +156,14 @@ function login() {
 }
 
 function SignUp() {
-
+debugger
     obj = {
         "Name": $("#name").val(),
         "Email": $("#email").val(),
         "Password": $("#password").val(),
         "MobileNumber": $("#mobNum").val(),
         "Address": $("#Address").val(),
-        "CityId": $("#selectCities").val()
+        // "CityId": $("#selectCities").val()
     }
 console.log (obj);
     $.ajax({
@@ -282,26 +282,26 @@ function cartGlow() {
 }
 
 
-function selectCities() {
+// function selectCities() {
 
-    $.ajax({
-        url: SERVER + "city",
-        type: "GET",
-        dataType: "JSON",
-        contentType: "application/json;charset=utf-8",
-        success: function (result) {
-            var html='';
+//     $.ajax({
+//         url: SERVER + "city",
+//         type: "GET",
+//         dataType: "JSON",
+//         contentType: "application/json;charset=utf-8",
+//         success: function (result) {
+//             var html='';
             
-             if(result) {
-                $.each(result, function(index,city){
-                    html += '<option selected hidden>Please Choose your city</option>';
-                    html += '<option value='+city.Id+'>' + city.Name + '</option>';
-                }); 
-                $("#selectCities").html(html);
-            }
-        },
-        error: function(xhr, status, error) {
-            console.log(xhr.responseText);
-          }
-    });
-}
+//              if(result) {
+//                 $.each(result, function(index,city){
+//                     html += '<option selected hidden>Please Choose your city</option>';
+//                     html += '<option value='+city.Id+'>' + city.Name + '</option>';
+//                 }); 
+//                 $("#selectCities").html(html);
+//             }
+//         },
+//         error: function(xhr, status, error) {
+//             console.log(xhr.responseText);
+//           }
+//     });
+// }
