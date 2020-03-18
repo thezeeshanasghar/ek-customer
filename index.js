@@ -10,9 +10,10 @@ function loadCities() {
         contentType: "application/json;charset=utf-8",
         success: function (result) {
             var html='';
-			
+            console.log(result)
+    
              if(result) {
-                $.each(result, function(index,city){
+                $.each(result.filter(x=>x.Status), function(index,city){
                     html += '<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3" data-aos="fade-up" data-aos-duration="2000">';
                     html +='<div class="four-panel">';
                     html += '<div class="ccc">';

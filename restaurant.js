@@ -24,7 +24,7 @@ function getResturantsFromDB(id,url) {
     $.get(url, function(
       restaurants,
       status
-    ) {
+    ) {;
       console.log(restaurants)
       // $(".top-dishes").html("");
       // $(".top-resturants").html("");
