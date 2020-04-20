@@ -2313,6 +2313,10 @@ p.for-you {
 	overflow: hidden;
 }
 
+.nonReg-box {
+	height: 322px;
+}
+
 .login-box-header {
 	background: #4db748;
 	color: white;
@@ -2870,4 +2874,89 @@ p.for-you {
 
 #orders section:last-child {
 	border-bottom: none;
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+
+	#banner {
+		height: 454px;
+	}
+
+    #banner h1 {
+        font-size: 30px;
+        margin-top: -50px;
+    }
+
+    .banner-text p {
+    	font-size: 17px;
+    }
+
+    #banner .left-panel {
+    	width: 100%;
+    	text-align: center;
+    } 
+
+    #banner .logo {
+    	display: inline-block;
+    }
+
+    #banner .nav {
+    	margin-top: 20px;
+    }
+
+    .left_arrow img {
+    	width: 20px;
+    	height: 40px;
+    }
+
+    .right_arrow img {
+    	width: 20px;
+    	height: 40px;
+    }
+
+
+    h2 {
+    	font-size: 34px;
+    }
+
+    .business {
+    	background-position: 0 0 ;
+    }
+
+
+    .about {
+    	background-position: 0 0;
+    }
+
+    .footer-logo {
+    	text-align: center;
+    }
+
+    .footer-touch-row {
+    	text-align: center;
+    }
+
+    #link {
+    	height: 300px;
+    }
+
+    #link ul li {
+    	display: inline-block;
+	    margin: 11px auto;
+	    text-align: left;
+	    clear: both;
+	    width: 50%;
+    }
+
+    #link ul li a span {
+    	text-align: center;
+    }
+
 }
