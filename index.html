@@ -135,44 +135,48 @@
 
 				<form id="register-form" class="gen-form">
 
-
-	
-					<div class="signBox">
-						<div class="signBoxIcon"><img src="img/mobile-reg.png"></div>	
-					<input type="text" id="Email" name="Email" placeholder="Mobile Number">
+					<div id="Contactform">
+						<div class="signBox">
+							<div class="signBoxIcon"><img src="img/mobile-reg.png"></div>	
+						<input type="text" id="ContactNumber" name="ContactNumber"  placeholder="Mobile Number">
+						
 					</div>
+					<button type="button" onclick="VerifyNumber()">Verify</button>
+					</div>
+	
+					
 
-					<div class="web-otp">
+					<div class="web-otp" style="display: none;">
 						<p>Enter OTP Code on below <br>that received on your Mobile Number </p>
 
 						<ul>
 							
 							<li>
 								<span class="otpDot"></span>
-								<input class="otpNum" pattern="\d*" onKeyPress="if(this.value.length==1) return false;" type="number" name="">
+								<input class="otpNum" pattern="\d*" id="Key1" onKeyPress="if(this.value.length==1) return false;" type="number" name="">
 							</li>
 
 							<li>
 								<span class="otpDot "></span>
-								<input class="otpNum" pattern="\d*" onKeyPress="if(this.value.length==1) return false;" type="number" name="">
+								<input class="otpNum" pattern="\d*" id="Key2" onKeyPress="if(this.value.length==1) return false;" type="number" name="">
 							</li>
 
 							<li>
 								<span class="otpDot"></span>
-								<input class="otpNum" pattern="\d*" onKeyPress="if(this.value.length==1) return false;" type="number" name="">
+								<input class="otpNum" pattern="\d*" id="Key3" onKeyPress="if(this.value.length==1) return false;" type="number" name="">
 							</li>
 
 							<li>
 								<span class="otpDot"></span>
-								<input class="otpNum" pattern="\d*" onKeyPress="if(this.value.length==1) return false;" type="number" name="">
+								<input class="otpNum" pattern="\d*" id="Key4" onKeyPress="if(this.value.length==1) return false;" type="number" name="">
 							</li>
 
 						</ul>
+						<button type="button" onclick="VerifyUser()">Reset</button>
 
 					</div>
 
 
-					<button type="button" onclick="nonReg()">Reset</button>
 
 					<div id="otploginLink" class="reg-link">
 						Login

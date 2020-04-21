@@ -141,10 +141,22 @@ function login() {
         success: function (result) {
             // if (result.IsSuccess) {
                // localStorage.setItem("Customer", JSON.stringify(result.ResponseData));
-               localStorage.setItem("Customer", JSON.stringify(result));
+               if(result.IsVerified==1)
+               {
+                        localStorage.setItem("Customer", JSON.stringify(result));
                 $(".login-overlay").fadeOut();
                 toggleLogInOut();
                 toggleProfileAndOrders();
+               }else{
+                localStorage.setItem("CustomerId",result.Id)
+                console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7")
+
+                $(".login-overlay").fadeOut();
+                $("#Contactform").css("display","none");
+               $(".web-otp").css("display","block");
+                $(".otp-overlay").fadeIn();
+               }
+          
             // } else {
             //     alert(result.Message);
             // }
@@ -305,3 +317,91 @@ function cartGlow() {
 //           }
 //     });
 // }
+function VerifyNumber()
+{
+var Number=$("#ContactNumber").val()
+    $.ajax({
+        url: SERVER + "Customer/VerifyNumber/"+Number,
+        type: "GET",
+        dataType: "json",
+        contentType: "application/json;charset=utf-8",
+        beforeSend:function(){
+            // $('#loading').removeClass("d-none");
+        },
+        success: function (result) {
+          console.log(result);
+          if(result)
+          {
+            localStorage.setItem("CustomerId",result.Id);
+            // window.open("03. verify.html","_self");
+        $(".web-otp").css("display","block"); 
+        }$("#Contactform").css("display","none");
+             
+        },
+        error: function (xhr, status, error) 
+        {
+            //var resp=JSON.parse(xhr.responseText);
+
+           // alert(resp.message);
+        alert("error")
+        },
+        complete:function()
+        {
+            // $('#loading').addClass("d-none");
+        }
+ 
+    });
+}
+function VerifyUser()
+{
+    var code=$("#Key1").val()+$("#Key2").val()+$("#Key3").val()+$("#Key4").val();
+   var Id=localStorage.getItem("CustomerId");
+    $.ajax({
+        url: SERVER + "customer/VerifyCustomer/"+Id,
+        type: "PUT",
+        dataType: "json",
+        data:{Code:code},
+        contentType: "application/json;charset=utf-8",
+        beforeSend:function(){
+            $('#loading').removeClass("d-none");
+        },
+        success: function (result) {
+          console.log(result);
+          if(result)
+          {
+              if(result.IsVerified==1)
+              {
+                localStorage.setItem("Customer", JSON.stringify(result));
+                localStorage.removeItem("CustomerId");
+                // window.open("01. starting-page.html","_self"); 
+               $("#Contactform").css("display","block");
+               $(".web-otp").css("display","none");
+
+                $(".otp-overlay").fadeOut();
+                toggleLogInOut();
+                toggleProfileAndOrders();
+              }else{
+                  alert("Invalid Code");
+              }
+             
+                // $(".login-overlay").fadeOut();
+                // toggleLogInOut();
+                // toggleProfileAndOrders();
+                // window.open("01. starting-page.html","_self");  
+          }
+             
+        },
+        error: function (xhr, status, error) 
+        {
+            //var resp=JSON.parse(xhr.responseText);
+
+           // alert(resp.message);
+        alert("error")
+        },
+        complete:function()
+        {
+            $('#loading').addClass("d-none");
+        }
+ 
+    });
+}
