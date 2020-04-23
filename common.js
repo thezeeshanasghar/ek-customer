@@ -336,7 +336,7 @@ var Number=$("#ContactNumber").val()
             // window.open("03. verify.html","_self");
         $(".web-otp").css("display","block"); 
         }$("#Contactform").css("display","none");
-             
+        GetCode();
         },
         error: function (xhr, status, error) 
         {
@@ -404,4 +404,26 @@ function VerifyUser()
         }
  
     });
+}
+
+function GetCode()
+{
+    var Id=localStorage.getItem("CustomerId");
+    $.ajax({
+        url: SERVER + "Setting/sms/"+Id+"/Customer",
+        type: "GET",
+        dataType: "json",
+        contentType: "application/json;charset=utf-8",
+        beforeSend:function(){
+            $('#loading').removeClass("d-none");
+        },
+        success: function (result) {
+          console.log(result);
+        },error:function(resp)
+        {
+
+        }
+    });
+
+
 }
