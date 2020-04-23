@@ -129,7 +129,7 @@ function freeReg() {
  
 function login() {
     obj = {
-        "Email": $("#Email").val(),
+        "MobileNumber": $("#txtContactNumber").val(),
         "Password": $("#Password").val()
     }
     $.ajax({
