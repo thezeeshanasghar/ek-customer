@@ -13,6 +13,7 @@ $(document).ready(function(){
      cuisineId!=0?URL+="?cuisineId="+cuisineId:"";
      Top!=""?URL+="&top=true":"";
     getResturantsFromDB(id,URL);
+    loadRest();
     getCousines();
     restBanner(id);
   
@@ -68,26 +69,26 @@ function getResturantsFromDB(id,url) {
             imgpath +
             ' style="width:100%; height: 100%;"></div> </div>';
 
-          var str2 =
-            '<div class="all-rest-info">' +
-            '<div class="rest-info-img"><img src =' +
-            imgpath +
-            ' style="width:100%; height: 100%;"></div><div class="rest-info-content"><div class="left-panel" style="width: 280px; overflow: hidden;">' +
-            "<h4>" +
-            res.Name +
-            '</h4> <div class="rating"><img src="img/stars.png" /> <span class="rating-num" style="margin-left: 10px; color: #62ba64;" >4.5 Excellent ' +
-            '</span > <span class="rating-reviews" style="margin-left: 10px; color: #c6c4c7;" >(50+)</span >' +
-            '<div class="rest-info-distance" style="margin-top: 10px; color: #000;" > Approximately 45 Min </div> ' +
-            '<div class="rest-info-attr" style="margin-top: 10px; color: #c6c4c7;" > ' +
-            MenuList +
-            " .... </div></div> </div> " +
-            '<div class="right-panel" style="text-transform: uppercase;">' +
-            '&nbsp;<span class="status status-open">'+Status[res.Status]+'</span> </div><a href="menu.html?id='+res.Id+'" class="view-btn">view</a>'+
-            "</div>";
+          // var str2 =
+          //   '<div class="all-rest-info">' +
+          //   '<div class="rest-info-img"><img src =' +
+          //   imgpath +
+          //   ' style="width:100%; height: 100%;"></div><div class="rest-info-content"><div class="left-panel" style="width: 280px; overflow: hidden;">' +
+          //   "<h4>" +
+          //   res.Name +
+          //   '</h4> <div class="rating"><img src="img/stars.png" /> <span class="rating-num" style="margin-left: 10px; color: #62ba64;" >4.5 Excellent ' +
+          //   '</span > <span class="rating-reviews" style="margin-left: 10px; color: #c6c4c7;" >(50+)</span >' +
+          //   '<div class="rest-info-distance" style="margin-top: 10px; color: #000;" > Approximately 45 Min </div> ' +
+          //   '<div class="rest-info-attr" style="margin-top: 10px; color: #c6c4c7;" > ' +
+          //   MenuList +
+          //   " .... </div></div> </div> " +
+          //   '<div class="right-panel" style="text-transform: uppercase;">' +
+          //   '&nbsp;<span class="status status-open">'+Status[res.Status]+'</span> </div><a href="menu.html?id='+res.Id+'" class="view-btn">view</a>'+
+          //   "</div>";
 
           $(".top-dishes").append(sponsers);
           $(".top-resturants").append(str);
-          $(".all-restaurants").append(str2);
+          // $(".all-restaurants").append(str2);
         });
       }
     });
@@ -284,4 +285,88 @@ owl.owlCarousel({
 
 })
 
+}
+
+function loadRest() {
+  navigator.geolocation.getCurrentPosition(function(position) {
+ 
+  var FilterURL="";
+  $.ajax({
+    //  url: SERVER + "restaurant/city/"+cityid+"?"+ FilterURL,
+    url: SERVER + "restaurant/"+position.coords.latitude+"/"+position.coords.longitude + "?"+ FilterURL,
+      type: "GET",
+      dataType: "JSON",
+      contentType: "application/json;charset=utf-8",
+      success: function (result) {
+        localStorage.setItem("lat",position.coords.latitude);
+        localStorage.setItem("lng",position.coords.longitude);
+      // addCoordinates("",position.coords.latitude+","+position.coords.longitude,result.Id);
+
+          result=result.filter(x=>x.Status==1);
+        console.log(result);
+          var spohtml='';
+          var html='';
+           if(result) {
+            var   MenuList="";
+            var row="";
+            $(".all-restaurants").html("");
+              $.each(result, function(index,rest){
+           
+                var resMenu = SERVER + "restaurant/" + rest.Id + "/menu";
+                var MenuList = [];
+        $.get(resMenu, function(menus, stat) {
+        
+          for (var j = 0; j < menus.length; j++) {
+            MenuList.push(menus[j].Name);
+          }
+        });
+      
+      // For All Restaurants
+                  // html += '<div class="rest-slider">';
+                  // html += '<a href="19. view-order.html?id='+rest.Id+'">';
+                  // html += '<div class="all-rest-item rest-item">';
+                  // html += '<div class="rest-photo">';
+                  // html += '<div class="img"><img src="'+IP+":"+PORT+"/"+rest.CoverImagePath+'" /></div>';
+                  // html += '<span class="distance">Approximately<br><b>'+rest.approximateTime+' Min</b></span>';
+                  // html += '</div>';
+                  // html += '<div class="rest-info">';
+                  // html += '<h4>'+rest.Name+'</h4>';
+                  // html += '<p><span><img src="img/star.jpg" />'+rest.Rating+' Good</span>('+rest.reviewCount+'+) - BBQ - Chinese - Pak...</p>';
+                  // html += '</div></div></a></div>';
+                   row =
+                  '<div class="all-rest-info">' +
+                  '<div class="rest-info-img"><img src =' +
+                   "'"+IP+":"+PORT+"/"+rest.CoverImagePath+"'" +
+                  ' style="width:100%; height: 100%;"></div><div class="rest-info-content"><div class="left-panel" style="width: 280px; overflow: hidden;">' +
+                  "<h4>" +
+                  rest.Name +
+                  '</h4> <div class="rating"><img src="img/stars.png" /> <span class="rating-num" style="margin-left: 10px; color: #62ba64;" >'+(rest.rating==null?0:rest.rating)+'' +
+                  '</span > <span class="rating-reviews" style="margin-left: 10px; color: #c6c4c7;" >('+(rest.reviewCount==null?0:rest.reviewCount)+')</span >' +
+                  '<div class="rest-info-distance" style="margin-top: 10px; color: #000;" > '+(rest.approximateTime==null?'Not found':'Approximately in '+rest.approximateTime +' min')+' </div> ' +
+                  '<div class="rest-info-attr" style="margin-top: 10px; color: #c6c4c7;" > ' +
+                  MenuList +
+                  " .... </div></div> </div> " +
+                  '<div class="right-panel" style="text-transform: uppercase;">' +
+                  '&nbsp;<span class="status status-open">'+(rest.Status==1?'Open':'Close')+'</span> </div><a href="menu.html?id='+rest.Id+'" class="view-btn">view</a>'+
+                  "</div>";
+                  $(".all-restaurants").append(row);
+
+                  console.log(row);
+           //Status[res.Status]
+                }); 
+              // $("#spon-rest").html(spohtml);
+              // var swiper = new Swiper('.s2', {
+              //     slidesPerView: 'auto',
+              //     spaceBetween: 14,
+              //     freeMode: true,
+              //   });
+              console.log(row);
+              
+          }
+      },
+      error: function(xhr, status, error) {
+          console.log(xhr.responseText);
+        }
+  });
+});
 }

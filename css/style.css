@@ -687,6 +687,15 @@ button {
 	overflow-y: scroll;
 	height: 176px;
 }
+.order-pick-map {
+	width: 100%;
+	height: 400px;
+	float: left;
+	/* background: url(../img/map.png) no-repeat; */
+	background-size: cover;
+	background-position: -50px;
+}
+
 
 .rest-news h3 {
 	text-transform: uppercase;

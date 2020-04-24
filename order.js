@@ -4,13 +4,13 @@ var extraitems = getObjsFromLocalStorage("extraitems");
 var CityId = getObjsFromLocalStorage("CityId");
 var RestaurantId = getObjsFromLocalStorage("RestaurantId");
 var DelCharges = getObjsFromLocalStorage("DelCharges");
-
 var CouponDiscount = 0 ;
 var Discount = 0;
 
 $(document).ready(function () {
     loadOrderItems(); loadextraitems(); loadExtraOrderItems();
 });
+
 function loadOrderItems() {
 
     if (items && items.length >= 0) {
@@ -270,13 +270,28 @@ function checkout() {
                 dataType: "json",
                 contentType: "application/json;charset=utf-8",
                 success: function (result) {
+                    console.log(result);
+
                         alert("Your order is placed successfully");
-                        localStorage.removeItem("items");
-                        localStorage.removeItem("extraitems");
-                        localStorage.removeItem("RestaurantId");
-                        toggleCart();
-                        window.location.reload(true);
+                 
+                       
+                        // navigator.geolocation.getCurrentPosition(function(position) {
+                        //     localStorage.setItem("lat",position.coords.latitude);
+                        //     localStorage.setItem("long",position.coords.longitude);
+                            addCoordinates("",localStorage.getItem("lat")+","+localStorage.getItem("lng"),result.Id);
+                            localStorage.removeItem("items");
+                            localStorage.removeItem("extraitems");
+                            // localStorage.removeItem("RestaurantId");
+                            localStorage.setItem("OrderId",result.Id);
+                            toggleCart();
+                             window.location.reload(true);
                         location.href = 'order-placed.html';
+                        //});
+
+                       
+                        
+                       
+                      
                 }
             });
         } else {
@@ -483,4 +498,31 @@ function addToCart(type,id, name, size, price) {
     } else {
         alert('This item already added in your cart');
     }
+}
+
+
+function addCoordinates(driver_Coordinates,customer_Coordinates,order_Id)
+{
+    var obj={
+        Id:0,
+        RiderCoordinates:driver_Coordinates,
+        CustomerCoordinates:customer_Coordinates,
+        OrderId:order_Id
+    }
+$.ajax({
+    type:"POST",
+    url:SERVER+"Coordinates",
+    data:JSON.stringify(obj),
+    dataType:"json",
+    contentType: "application/json;charset=utf-8",
+    success:function(response)
+    {
+        
+      //   window.location.reload(true);
+        //  location.href = '23. order-placed.html';
+    },error:function(response)
+    {
+        console.log("error",response);
+    }
+})
 }
