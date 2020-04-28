@@ -399,7 +399,8 @@ function loadCouponCode()
         },
         error: function (xhr, status, error) {
             console.log(xhr.responseText);
-            
+            alert("Invalid Token");
+
              $("#coupon-input").css({
                'border-color' : 'red',
                'color' : 'red'
