@@ -24,10 +24,10 @@ function loadCustomerProfile(customerId) {
                 var html = '';
                 if (customer.ImagePath) {
                     // html += '<img src="' + RESOURCEURL + customer.ImagePath + '" />';
-                    html += '<img src="' + customer.ImagePath + '" />';
+                    html += '<img src="' +RESOURCEURL+ customer.ImagePath + '" />';
                     
                 } else {
-                    html += '<img src="img/edit-profile-pic.jpg"></img>';
+                    html += '<img id="output" src="img/edit-profile-pic.jpg"></img>';
                 }
                 $("#oldProfileImage").html(html);
 
@@ -98,3 +98,34 @@ function validatePassword() {
         return true;
     }
 }
+
+ function  loadFile(event) {
+      var html="";
+	// var image = document.getElementById('output');
+    // image.src = URL.createObjectURL(event.target.files[0]);
+    if (event.target.files[0]) {
+        // html += '<img src="' + RESOURCEURL + customer.ImagePath + '" />';
+        html += '<img src="'+  URL.createObjectURL(event.target.files[0]) + '" />';
+        
+    } else {
+        html += '<img id="output" src="img/edit-profile-pic.jpg"></img>';
+    }
+    $("#oldProfileImage").html(html);
+}
+const myForm = document.getElementById('myForm');
+const inpFile = document.getElementById('file-input');
+myForm.addEventListener("submit" , e=> {
+    e.preventDefault();
+    const endpoint = SERVER + "upload";
+    const formData = new FormData();
+    formData.append("inpFile" , inpFile.files[0]);
+    fetch(endpoint , {
+        method: "POST",
+        body : formData  
+    }).then(response => response.json())
+    .then(data => {
+        customer.ImagePath = data.dbPath;
+      console.log(customer) // Prints result from `response.json()` in getRequest
+    }).catch(console.error);
+   
+});

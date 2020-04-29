@@ -122,13 +122,13 @@
 						</div>
 
 						<div class="edit-pro-col">
-							<h4><img src="img/edit-photo.png">Profile Picture</h4>
+							<h4><img src="img/edit-photo.png" >Profile Picture</h4>
 							<div class="edit-pro-input">
-								<div class="profile-pic-photo">
+								<div class="profile-pic-photo" id="myForm">
 									<label for="file-input">
 										<span id="oldProfileImage"></span>
 									</label>
-									<input id="file-input" type="file" placeholder="Add Profile Image" name="profileimg">
+									<input id="file-input"  onchange="loadFile(event)" type="file" placeholder="Add Profile Image" name="profileimg">
 								</div>
 
 							</div>
