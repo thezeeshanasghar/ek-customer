@@ -77,7 +77,8 @@ function loadCustomerOrders(customerId) {
         contentType: "application/json;charset=utf-8",
         success: function (result) {
             console.log(result);
-            var status = ["New", "Active", "Complete", "Cancel"];
+         
+            var status = ["New", "Active", "Dispatch","Complete", "Cancel","Assigned","RiderAccepted","RiderRejected"];
             var html = '';
                 $.each(result, function (key, order) {
                     html += '<section>';
