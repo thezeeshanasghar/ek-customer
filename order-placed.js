@@ -1,6 +1,9 @@
 var cust_latitude=localStorage.getItem("lat");
 var cust_longitude=localStorage.getItem("lng");
 var OrderId=localStorage.getItem("OrderId");
+loadOrderById(OrderId);
+var Customer=0;
+var Rider=0;
 var RestaurantId=localStorage.getItem("RestaurantId");
 var Executed=0;
 $(document).ready(function(){
@@ -10,170 +13,14 @@ $(document).ready(function(){
 
 
 
-    $("#star1").click(function(){
-
-        $("#rider-rating label").css("pointer-events","none");
-
-
-        var riderrating = {
-            value: 5
-        }
-
-        $.ajax({
-            type: "POST",
-            url: "http://localhost:5000/riderrating",
-            data: riderrating,
-            dataType: "JSON",
-            // contentType: "application/json;charset=utf-8",
-            success: function (data) {
-
-                
-                console.log("Successfully Rated!");
-
-            },
-
-            error: function(xhr, status, error) {
-                console.log(xhr.responseText);
-            }
-
-        });
-
-    });
 
 
 
 
-
-    $("#star2").click(function(){
-
-        $("#rider-rating label").css("pointer-events","none");
-
-
-        var riderrating = {
-            value: 4
-        }
-
-        $.ajax({
-            type: "POST",
-            url: "http://localhost:5000/riderrating",
-            data: riderrating,
-            dataType: "JSON",
-            // contentType: "application/json;charset=utf-8",
-            success: function (data) {
-
-                
-                console.log("Successfully Rated!");
-
-            },
-
-            error: function(xhr, status, error) {
-                console.log(xhr.responseText);
-            }
-
-        });
-
-    });
-
-
-
-
-
-    $("#star3").click(function(){
-
-        $("#rider-rating label").css("pointer-events","none");
-
-
-        var riderrating = {
-            value: 3
-        }
-
-        $.ajax({
-            type: "POST",
-            url: "http://localhost:5000/riderrating",
-            data: riderrating,
-            dataType: "JSON",
-            // contentType: "application/json;charset=utf-8",
-            success: function (data) {
-
-                
-                console.log("Successfully Rated!");
-
-            },
-
-            error: function(xhr, status, error) {
-                console.log(xhr.responseText);
-            }
-
-        });
-
-    });
-
-
-
-    $("#star4").click(function(){
-
-        $("#rider-rating label").css("pointer-events","none");
-
-
-        var riderrating = {
-            value: 2
-        }
-
-        $.ajax({
-            type: "POST",
-            url: "http://localhost:5000/riderrating",
-            data: riderrating,
-            dataType: "JSON",
-            // contentType: "application/json;charset=utf-8",
-            success: function (data) {
-
-                
-                console.log("Successfully Rated!");
-
-            },
-
-            error: function(xhr, status, error) {
-                console.log(xhr.responseText);
-            }
-
-        });
-
-    });
-
-
-    $("#star5").click(function(){
-
-        $("#rider-rating label").css("pointer-events","none");
-        
-
-        var riderrating = {
-            value: 1
-        }
-
-        $.ajax({
-            type: "POST",
-            url: "http://localhost:5000/riderrating",
-            data: riderrating,
-            dataType: "JSON",
-            // contentType: "application/json;charset=utf-8",
-            success: function (data) {
-
-                
-                console.log("Successfully Rated!");
-
-            },
-
-            error: function(xhr, status, error) {
-                console.log(xhr.responseText);
-            }
-
-        });
-
-    });
 
     loadOrderStatus(OrderId);
     window.setInterval("loadOrderStatus(OrderId)", 10000);
-  
+
 
 
 });
@@ -213,7 +60,7 @@ function loadOrderStatus (id)
             console.log("Status",result);
             if (result ==1 || result == 5 || result == 6 || result == 7)
             {
-                
+
             setTimeout('$(".order-con-2 .green-bar").css("height" , "100%");', 3000);
 
             setTimeout('$(".order-con-2 .green-round").css("height" , "18px");', 4300);
@@ -221,7 +68,9 @@ function loadOrderStatus (id)
             setTimeout('$(".order-con-2 .green-bar2").css("height" , "100%");', 5800);
             if(result==6 )
             {
-                
+                $("#rider-info").css("display","block");
+                GetRider(Rider);
+
                 if(Executed==0)
                 {
                     Executed+=1;
@@ -230,14 +79,14 @@ function loadOrderStatus (id)
                       GetResturent(RestaurantId);
                     },0)
                 }
-               
-            
+
+
             }
             }
             else if (result ==2)
             {
-               
-               
+
+
 
                 setTimeout('$(".order-con-2 .green-bar").css("height" , "100%");', 3000);
 
@@ -262,7 +111,7 @@ function loadOrderStatus (id)
                     },0)
 
                 }
-               
+
             }
             else if (result ==3)
             {
@@ -281,7 +130,8 @@ function loadOrderStatus (id)
 
                 $("#orderTrackBtn").attr("onclick" ,"window.location.href='25. track-location.html'");
                 $("#orderTrackBtn").css("background-color", "#039611");
-
+                loadOrderById(OrderId);
+                    $("#rider-rating").css("display","block");
             }
         },
         error: function(xhr, status, error) {
@@ -293,11 +143,11 @@ function mapLocation() {
     var directionsDisplay;
     var directionsService = new google.maps.DirectionsService();
     var map;
-  
+
     function initialize() {
       directionsDisplay = new google.maps.DirectionsRenderer({ suppressMarkers: true });
-     
-      
+
+
       var mapOptions = {
         zoom: 7,
         center: new google.maps.LatLng(30.3753, 69.3451)
@@ -306,7 +156,7 @@ function mapLocation() {
       directionsDisplay.setMap(map);
        calcRoute();
     }
-  
+
     function calcRoute() {
       var start = new google.maps.LatLng(rest_latitude, rest_longitude);
       var end = new google.maps.LatLng(cust_latitude, cust_longitude);
@@ -325,28 +175,28 @@ function mapLocation() {
           url:SERVER+"Coordinates/"+OrderId,
           success:function(response)
           {
-              debugger;
+              //debugger;
             var ridlat = parseFloat(response.RiderCoordinates.split(",")[0]);
             var ridlng = parseFloat(response.RiderCoordinates.split(",")[1]);
-  
+
             marker.setPosition( new google.maps.LatLng(ridlat,ridlng));
             marker.setMap(map);
-  
+
             var distance = getDistanceFromLatLonInKm(cust_latitude, cust_longitude, ridlat, ridlng);
             console.log(distance);
             $("#time").html(distance*3);
-  
+
           },
           error:function(response)
           {
-  
+
           }
         })
-       
-        
-        
+
+
+
       },10000)
-     
+
       // var request_1 = {
       //   origin: start,
       //   destination: end,
@@ -389,7 +239,7 @@ function mapLocation() {
     return deg * (Math.PI / 180)
   }
 
-  loadOrderById(OrderId);
+  
        function loadOrderById(id)
             {
                 $.ajax({
@@ -400,12 +250,75 @@ function mapLocation() {
                     success: function (result) {
                      if(result!=null)
                      {
+                         console.log(result);
                          $(".total-amount").html("Rs. "+result.GrandTotal);
+                         CustomerId=result.CustomerId;
+                         Rider=result.RiderId;
                      }
-                     
+
                     },
                     error: function(xhr, status, error) {
                         console.log(xhr.responseText);
                       }
                 });
             }
+
+
+  function Feedback(Val){
+
+    $("#rider-rating label").css("pointer-events","none");
+
+
+    var riderrating = {
+        value: Val,
+        CustomerId:CustomerId,
+        RiderId:Rider
+    }
+
+    $.ajax({
+        type: "POST",
+        url: SERVER + "RiderRating",
+        data: JSON.stringify( riderrating),
+        dataType: "JSON",
+        contentType: "application/json;charset=utf-8",
+
+        // contentType: "application/json;charset=utf-8",
+        success: function (data) {
+            window.open("index.html","_self");
+
+            console.log("Successfully Rated!");
+
+        },
+
+        error: function(xhr, status, error) {
+            console.log(xhr.responseText);
+        }
+
+    });
+
+}
+
+function GetRider(Id){
+
+
+
+
+    $.ajax({
+        type: "Get",
+        url: SERVER + "Rider/"+Id,
+        dataType: "JSON",
+        contentType: "application/json;charset=utf-8",
+
+        // contentType: "application/json;charset=utf-8",
+        success: function (data) {
+          console.log(data)
+          $(".rider-name").html(data.Name);
+        },
+
+        error: function(xhr, status, error) {
+            console.log(xhr.responseText);
+        }
+
+    });
+
+}

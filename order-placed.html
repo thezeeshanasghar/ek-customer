@@ -245,7 +245,7 @@
 
 	<!-- Mode of Payment -->
 
-	<div id="mode" style="font-size: 28px; font-weight: 500;">
+	<!-- <div id="mode" style="font-size: 28px; font-weight: 500;">
 		
 		<div class="container">
 			
@@ -268,7 +268,7 @@
 
 		</div>
 
-	</div>
+	</div> -->
 
 
 	<!-- total-payable -->
@@ -295,7 +295,7 @@
 
 	<!-- Rider info -->
 
-	<div id="rider-info">
+	<div id="rider-info" style="display: none;">
 		
 		<div class="container">
 			
@@ -311,7 +311,7 @@
 							
 							<div class="rider-name">Rider Name</div>
 
-							<div class="rider-arrival">Expected arrival within 20 minutes at your doorstep.</div>
+							<div class="rider-arrival">Expected arrival within Few minutes at your doorstep.</div>
 
 						</div>
 
@@ -327,7 +327,7 @@
 
 	<!-- Rider Rating -->
 	
-	<div id="rider-rating">
+	<div id="rider-rating" style="display: none;">
 		
 		<div class="container">
 			
@@ -339,11 +339,11 @@
 
 					<div class="rider-rating">
 		
-						<input type="radio" name="star" id="star1"><label for="star1"></label>
-						<input type="radio" name="star" id="star2"><label for="star2"></label>
-						<input type="radio" name="star" id="star3"><label for="star3"></label>
-						<input type="radio" name="star" id="star4"><label for="star4"></label>
-						<input type="radio" name="star" id="star5"><label for="star5"></label>
+						<input type="radio" name="star" id="star1" onclick="Feedback(5)"><label for="star1"></label>
+						<input type="radio" name="star" id="star2" onclick="Feedback(4)"><label for="star2"></label>
+						<input type="radio" name="star" id="star3" onclick="Feedback(3)"><label for="star3"></label>
+						<input type="radio" name="star" id="star4" onclick="Feedback(2)"><label for="star4"></label>
+						<input type="radio" name="star" id="star5" onclick="Feedback(1)"><label for="star5"></label>
 
 					</div>
 

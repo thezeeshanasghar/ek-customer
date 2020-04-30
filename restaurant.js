@@ -1,105 +1,33 @@
-var URL="";
+
 var id =0;
-var cuisineId=0;
+var cuisineId="";
 var Top="";
+var FilterURL="";
 var Parameters=[];
 $(document).ready(function(){
-  GenerateUrl(Parameters);
+  // GenerateUrl(Parameters);
      id = parseInt(getParameterByName("id")) || 0;
      
-     cuisineId=parseInt(getParameterByName("cuisineId"))||0;
+    //  cuisineId=parseInt(getParameterByName("cuisineId"))||0;
     localStorage.setItem("CityId", id);
-     URL=SERVER + "restaurant/city/"+id;
-     cuisineId!=0?URL+="?cuisineId="+cuisineId:"";
-     Top!=""?URL+="&top=true":"";
-    getResturantsFromDB(id,URL);
+ 
+    //  cuisineId!=0?FilterURL+="?cuisineId="+cuisineId:"";
+    //  Top!=""?FilterURL+="&top=true":"";
     loadRest();
     getCousines();
     restBanner(id);
   
 });
+
 var Status = ['Open', 'Close'];
 
-function getResturantsFromDB(id,url) {
- 
-    $.get(url, function(
-      restaurants,
-      status
-    ) {;
-      console.log(restaurants)
-      // $(".top-dishes").html("");
-      // $(".top-resturants").html("");
-      // $(".all-restaurants").html("");
-   
-      for (var i = 0; i < restaurants.length; i++) {
-        var res = restaurants[i];
-        // console.log(res.Name);
-        var resMenu = SERVER + "restaurant/" + res.Id + "/menu";
-
-        jQuery.ajaxSetup({ async: false }); // this line is used for Synchronous JavaScript call
-
-        $.get(resMenu, function(menus, stat) {
-          var MenuList = [];
-          for (var j = 0; j < menus.length; j++) {
-            MenuList.push(menus[j].Name);
-          }
-          // console.log('res.CoverImagePath',res.CoverImagePath);
-          var imgpath = IP + ":" + PORT + "/";
-
-          if (res.CoverImagePath == null) {
-            imgpath += res.CoverImagePath;
-          } else {
-            imgpath += res.LogoImagePath;
-          }
-
-          // console.log('image path is ===',imgpath);
-          var sponsers="";
-          
-      
-          if(res.IsSponsor==true)
-          {
-             sponsers =
-            '<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"><div class="top-sponsor-item"><img src =' +
-            imgpath +
-            ' style="width:100%; height: 100%;"></div></div>';
-          }
-      
-          var str =
-            '<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"><div class="top-sponsor-item"><img src =' +
-            imgpath +
-            ' style="width:100%; height: 100%;"></div> </div>';
-
-          // var str2 =
-          //   '<div class="all-rest-info">' +
-          //   '<div class="rest-info-img"><img src =' +
-          //   imgpath +
-          //   ' style="width:100%; height: 100%;"></div><div class="rest-info-content"><div class="left-panel" style="width: 280px; overflow: hidden;">' +
-          //   "<h4>" +
-          //   res.Name +
-          //   '</h4> <div class="rating"><img src="img/stars.png" /> <span class="rating-num" style="margin-left: 10px; color: #62ba64;" >4.5 Excellent ' +
-          //   '</span > <span class="rating-reviews" style="margin-left: 10px; color: #c6c4c7;" >(50+)</span >' +
-          //   '<div class="rest-info-distance" style="margin-top: 10px; color: #000;" > Approximately 45 Min </div> ' +
-          //   '<div class="rest-info-attr" style="margin-top: 10px; color: #c6c4c7;" > ' +
-          //   MenuList +
-          //   " .... </div></div> </div> " +
-          //   '<div class="right-panel" style="text-transform: uppercase;">' +
-          //   '&nbsp;<span class="status status-open">'+Status[res.Status]+'</span> </div><a href="menu.html?id='+res.Id+'" class="view-btn">view</a>'+
-          //   "</div>";
-
-          $(".top-dishes").append(sponsers);
-          $(".top-resturants").append(str);
-          // $(".all-restaurants").append(str2);
-        });
-      }
-    });
-  }
 
   function getCousines() {
     $.get(SERVER + "Cuisine", function(val, status) {
-      var restmenuList = ' <ul><li class="active">All Cuisines</li>';
+      var restmenuList = ' <ul><li Id="Rest-All" class="active" onclick=\'Cousineclk("All")\'>All Cuisines</li>';
       for (var i = 0; i < val.length; i++) {
         var obj = val[i];
-        restmenuList += '<li onclick=\'Cousineclk('+obj.Id+')\'>' + obj.Name + ' </li>'
+        restmenuList += '<li id="Rest-'+obj.Id+'" onclick=\'Cousineclk('+obj.Id+')\'>' + obj.Name + ' </li>'
       }
       restmenuList +='</ul>';
       $(".item-list").append(restmenuList);
@@ -108,10 +36,22 @@ function getResturantsFromDB(id,url) {
   
  function Cousineclk(Cousine)
   {
- 
-    setParams("cuisineId",Cousine);
-    GenerateUrl(Parameters);
+    $("#Rest-"+Cousine).addClass("active");
+    if(cuisineId=="")
+    {
+      $("#Rest-All").removeClass("active");
+
+    }else{
+      $("#Rest-"+cuisineId).removeClass("active");
+
+    }
+    cuisineId=Cousine;
+    loadRest();
   }
+//  e.currentTarget.addClass("active");
+    // setParams("cuisineId",Cousine);
+    // GenerateUrl(Parameters);
+
 
 
 function setParams(key,val)
@@ -132,25 +72,6 @@ function setParams(key,val)
   if(stat==false)
   {
     Parameters.push(key+"="+val);
-  }
-}
-function GenerateUrl(Parameters)
-{
- 
-  if(Parameters.length!=0)
-  {
-     var url=  window.location.href.split("?")[0]+"?";
-
-    for(var i=0;i<Parameters.length;i++){
-      if(i==0)
-      {
-        url+=Parameters[i];
-      } else{
-        url+="&"+Parameters[i];
-      }
-      
-      }
-    window.open(url,"_self");
   }
 }
 
@@ -216,11 +137,15 @@ function getPromotions(id) {
 $("#dropdownSort").on("change",function(){
   var value=$("#dropdownSort").val();
 
-  if(value!="0")
+  if(value=="0")
   {
-    setParams("top","true");
-    GenerateUrl(Parameters);
+    Top="false"
+    // GenerateUrl(Parameters);
+  }else{
+    Top="true"
+
   }
+  loadRest()
 })
 
 GetPromotionByCity();
@@ -288,9 +213,12 @@ owl.owlCarousel({
 }
 
 function loadRest() {
+ cuisineId=="" || cuisineId=="All" ?FilterURL="":FilterURL="cuisineId="+cuisineId;
+ Top=="" || Top=="false"?FilterURL+="":FilterURL+="&top="+Top;
   navigator.geolocation.getCurrentPosition(function(position) {
  
-  var FilterURL="";
+
+  
   $.ajax({
     //  url: SERVER + "restaurant/city/"+cityid+"?"+ FilterURL,
     url: SERVER + "restaurant/"+position.coords.latitude+"/"+position.coords.longitude + "?"+ FilterURL,
@@ -298,6 +226,7 @@ function loadRest() {
       dataType: "JSON",
       contentType: "application/json;charset=utf-8",
       success: function (result) {
+        console.log("adasdasdasddddddddddddddddddddddddddddddddddd",result);
         localStorage.setItem("lat",position.coords.latitude);
         localStorage.setItem("lng",position.coords.longitude);
       // addCoordinates("",position.coords.latitude+","+position.coords.longitude,result.Id);
@@ -310,17 +239,34 @@ function loadRest() {
             var   MenuList="";
             var row="";
             $(".all-restaurants").html("");
+            $(".top-dishes").html("");
+            $(".top-resturants").html("");
+
               $.each(result, function(index,rest){
            
                 var resMenu = SERVER + "restaurant/" + rest.Id + "/menu";
                 var MenuList = [];
         $.get(resMenu, function(menus, stat) {
+
         
           for (var j = 0; j < menus.length; j++) {
             MenuList.push(menus[j].Name);
           }
         });
-      
+            var sponsers="";
+         
+
+        if(rest.IsSponsor==true)
+        {
+           sponsers =
+          '<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" onclick="Render('+rest.Id+')" ><div class="top-sponsor-item"><img src =' +
+          "'"+IP+":"+PORT+"/"+rest.CoverImagePath+"'" +
+          ' style="width:100%; height: 100%;"></div></div>';
+        }
+        var str =
+        '<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" onclick="Render('+rest.Id+')"  ><div class="top-sponsor-item"><img src =' +
+        "'"+IP+":"+PORT+"/"+rest.CoverImagePath+"'" +
+        ' style="width:100%; height: 100%;"></div> </div>';
       // For All Restaurants
                   // html += '<div class="rest-slider">';
                   // html += '<a href="19. view-order.html?id='+rest.Id+'">';
@@ -349,6 +295,9 @@ function loadRest() {
                   '<div class="right-panel" style="text-transform: uppercase;">' +
                   '&nbsp;<span class="status status-open">'+(rest.Status==1?'Open':'Close')+'</span> </div><a href="menu.html?id='+rest.Id+'" class="view-btn">view</a>'+
                   "</div>";
+                  $(".top-dishes").append(sponsers);
+                  $(".top-resturants").append(str);
+
                   $(".all-restaurants").append(row);
 
                   console.log(row);
@@ -369,4 +318,9 @@ function loadRest() {
         }
   });
 });
+}
+
+function Render(Id)
+{
+  window.open("menu.html?id="+Id,"_self");
 }
