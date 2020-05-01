@@ -185,12 +185,18 @@ console.log (obj);
         dataType: "json",
         contentType: "application/json;charset=utf-8",
         success: function (result) {
-               localStorage.setItem("Customer", JSON.stringify(result));
-               location.reload();
+
+            //    localStorage.setItem("Customer", JSON.stringify(result));
+            //    location.reload();
+            localStorage.setItem("CustomerId",result.Id)
+
+            $(".signup-overlay").fadeOut();
+            $("#Contactform").css("display","none");
+           $(".web-otp").css("display","block");
+            $(".otp-overlay").fadeIn();
         },
         error: function (xhr, status, error) {
-            console.log(xhr.responseText);
-        }
+            alert(xhr.responseText);        }
     });
 }
 

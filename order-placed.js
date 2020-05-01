@@ -104,6 +104,8 @@ function loadOrderStatus (id)
                 $("#orderTrackBtn").css("background-color", "#039611");
                 if(Executed==0)
                 {
+                  $("#rider-info").css("display","block");
+                GetRider(Rider);
                     Executed+=1;
                     setTimeout(function()
                     {

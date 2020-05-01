@@ -256,7 +256,7 @@ function loadRest() {
             var sponsers="";
          
 
-        if(rest.IsSponsor==true)
+        if(rest.IsSponsor==true )
         {
            sponsers =
           '<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" onclick="Render('+rest.Id+')" ><div class="top-sponsor-item"><img src =' +
