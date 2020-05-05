@@ -383,7 +383,7 @@ function loadCouponCode()
         contentType: "application/json;charset=utf-8",
         success: function (result) { 
             console.log(result);
-            var UsedTokens = localStorage.getItem("UsedCoupon").split(',');
+            var UsedTokens = localStorage.getItem("UsedCoupon")==null?[]:localStorage.getItem("UsedCoupon").split(',');
             var date = result.ValidTill;
             var jdate = new Date(date);
             var sysdate = new Date();
