@@ -6,7 +6,7 @@ var RestaurantId = getObjsFromLocalStorage("RestaurantId");
 var DelCharges = getObjsFromLocalStorage("DelCharges");
 var CouponDiscount = localStorage.getItem("CouponDiscount");
  var CouponCode=localStorage.getItem("Code");
- if(CouponCode!=null || CouponCode !="")
+ if(CouponCode!=null && CouponCode !="")
  {
 $("#coupon-input").val(CouponCode);
 document.getElementById("coupon-input").disabled=true;
@@ -213,6 +213,7 @@ function calculateOrderTotals() {
     $.each(extraitems, function (i, value) {
         exitemsubtotal = exitemsubtotal + value.Total;
     });
+    CouponDiscount=localStorage.getItem("CouponDiscount");
     Discount = ((CouponDiscount/100)*(itemsubtotal + exitemsubtotal ));
 
     subtotal = (itemsubtotal + exitemsubtotal)-Discount ;
@@ -221,7 +222,7 @@ function calculateOrderTotals() {
     GST = (15/100)*subtotal;
 
     grandTotal = subtotal + fee + GST; // TODO: using gst and fee to cal grandtotal
-    $("#subtotal").val(subtotal);
+    $("#subtotal").val(subtotal.toString().split(".")[0]);
    // $("#GST").val(GST);
 
    // var rounded = grandTotal.toPrecision(1);
@@ -287,6 +288,8 @@ function checkout() {
                             localStorage.removeItem("items");
                             localStorage.removeItem("extraitems");
                             localStorage.removeItem("CouponDiscount");
+                            var UsedCoupon=localStorage.getItem("Code")+","+ (localStorage.getItem("UsedCoupon")==null?"":localStorage.getItem("UsedCoupon"));
+                            localStorage.setItem("UsedCoupon",UsedCoupon);
                             localStorage.removeItem("Code");
 
                             // localStorage.removeItem("RestaurantId");
@@ -380,15 +383,23 @@ function loadCouponCode()
         contentType: "application/json;charset=utf-8",
         success: function (result) { 
             console.log(result);
+            var UsedTokens = localStorage.getItem("UsedCoupon").split(',');
             var date = result.ValidTill;
             var jdate = new Date(date);
             var sysdate = new Date();
-            if (sysdate < jdate)
+            if(UsedTokens.filter(x=>x==code).length>0)
+            {
+                alert("Code already Used");
+            }else{
+                if (sysdate < jdate)
             {
             // alert("Congratulations You Got " +result.PctDiscount+"% Discount");  
             localStorage.setItem("Code",code);
             localStorage.setItem("CouponDiscount",result.PctDiscount);
             console.log(CouponDiscount);
+
+       
+            
             calculateOrderTotals();
             $("#coupon-input").css({
                'border-color' : '#60ba62',
@@ -396,6 +407,9 @@ function loadCouponCode()
             });
 
             }
+            }
+    
+            
             if(sysdate > jdate)
             {
             alert("Sorry This Code is Expired");
