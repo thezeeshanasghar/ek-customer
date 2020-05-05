@@ -4,7 +4,13 @@ var extraitems = getObjsFromLocalStorage("extraitems");
 var CityId = getObjsFromLocalStorage("CityId");
 var RestaurantId = getObjsFromLocalStorage("RestaurantId");
 var DelCharges = getObjsFromLocalStorage("DelCharges");
-var CouponDiscount = 0 ;
+var CouponDiscount = localStorage.getItem("CouponDiscount");
+ var CouponCode=localStorage.getItem("Code");
+ if(CouponCode!=null || CouponCode !="")
+ {
+$("#coupon-input").val(CouponCode);
+document.getElementById("coupon-input").disabled=true;
+ }
 var Discount = 0;
 
 $(document).ready(function () {
@@ -190,12 +196,7 @@ function deleteExtraItem (i)
 
 function calculateOrderTotals() {
 
-    // if (CouponDiscount !=0 && CouponDiscount != null)
-    // {
-    // Discount = ((CouponDiscount/100)*itemsubtotal);
-    // subtotal = itemsubtotal-Discount ;
-    // }
-
+   
     // else {
     
     let itemsubtotal = 0;
@@ -204,6 +205,7 @@ function calculateOrderTotals() {
     let grandTotal = 0;
     let GST = 0;
     let fee = DelCharges;
+   
     $.each(items, function (i, value) {
         itemsubtotal = itemsubtotal + value.Total;
     });
@@ -211,8 +213,11 @@ function calculateOrderTotals() {
     $.each(extraitems, function (i, value) {
         exitemsubtotal = exitemsubtotal + value.Total;
     });
+    Discount = ((CouponDiscount/100)*(itemsubtotal + exitemsubtotal ));
 
-    subtotal = itemsubtotal + exitemsubtotal ;
+    subtotal = (itemsubtotal + exitemsubtotal)-Discount ;
+   
+
     GST = (15/100)*subtotal;
 
     grandTotal = subtotal + fee + GST; // TODO: using gst and fee to cal grandtotal
@@ -281,6 +286,9 @@ function checkout() {
                             addCoordinates("",localStorage.getItem("lat")+","+localStorage.getItem("lng"),result.Id);
                             localStorage.removeItem("items");
                             localStorage.removeItem("extraitems");
+                            localStorage.removeItem("CouponDiscount");
+                            localStorage.removeItem("Code");
+
                             // localStorage.removeItem("RestaurantId");
                             localStorage.setItem("OrderId",result.Id);
                             toggleCart();
@@ -378,7 +386,8 @@ function loadCouponCode()
             if (sysdate < jdate)
             {
             // alert("Congratulations You Got " +result.PctDiscount+"% Discount");  
-            CouponDiscount = result.PctDiscount;
+            localStorage.setItem("Code",code);
+            localStorage.setItem("CouponDiscount",result.PctDiscount);
             console.log(CouponDiscount);
             calculateOrderTotals();
             $("#coupon-input").css({

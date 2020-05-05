@@ -163,6 +163,7 @@ function login() {
         },
         error: function (xhr, status, error) {
             console.log(xhr.responseText);
+            alert("Login Failed->Contact No or Password is wrong")
         }
     });
 }
@@ -196,7 +197,8 @@ console.log (obj);
             $(".otp-overlay").fadeIn();
         },
         error: function (xhr, status, error) {
-            alert(xhr.responseText);        }
+            alert("Operation unsuccessfull");    
+            }
     });
 }
 
